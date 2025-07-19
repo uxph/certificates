@@ -1,0 +1,16 @@
+{
+    "2025": {
+        "mini-conf-mnl": {
+            "title": "Mini Conference 2025 - MNL",
+            "helixpayProductId": 1
+        },
+        "mini-conf-ceb": {
+            "title": "Mini Conference 2025 - CEB",
+            "helixpayProductId": 2
+        },
+        "mini-conf-dvo": {
+            "title": "Mini Conference 2025 - DVO",
+            "helixpayProductId": 3
+        }
+    }
+}
