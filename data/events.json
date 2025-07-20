@@ -1,16 +1,32 @@
 {
     "2025": {
+        "business-of-design": {
+            "title": "The Business of Design (UXPH February 2025 Meetup)",
+            "validator": {
+                "regex": "^HLX-\\d{6}-\\d{6}-\\d{5}$",
+                "pattern": "HLX-XXXXXX-XXXXXX-XXXXX"
+            }
+        },
         "mini-conf-mnl": {
             "title": "Mini Conference 2025 - MNL",
-            "helixpayProductId": 1
+            "validator": {
+                "regex": "/^HLX-\\d{6}-\\d{6}-\\d{5}$/",
+                "pattern": "HLX-XXXXXX-XXXXXX-XXXXX"
+            }
         },
         "mini-conf-ceb": {
             "title": "Mini Conference 2025 - CEB",
-            "helixpayProductId": 2
+            "validator": {
+                "regex": "/^HLX-\\d{6}-\\d{6}-\\d{5}$/",
+                "pattern": "HLX-XXXXXX-XXXXXX-XXXXX"
+            }
         },
         "mini-conf-dvo": {
             "title": "Mini Conference 2025 - DVO",
-            "helixpayProductId": 3
+            "validator": {
+                "regex": "/^HLX-\\d{6}-\\d{6}-\\d{5}$/",
+                "pattern": "HLX-XXXXXX-XXXXXX-XXXXX"
+            }
         }
     }
 }

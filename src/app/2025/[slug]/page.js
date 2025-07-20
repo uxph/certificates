@@ -17,7 +17,7 @@ export default async function Page({ params }) {
 
     if (!eventInfo) return notFound();
 
-    return <Certificate title={eventInfo.title} />;
+    return <Certificate {...eventInfo} />;
 }
 
 export const generateMetadata = async ({ params }) => {

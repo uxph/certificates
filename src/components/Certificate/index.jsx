@@ -36,11 +36,12 @@ const Debugger = ({ info, setInfo }) => {
     );
 };
 
-const Certificate = ({ title }) => {
+const Certificate = ({ title, validator }) => {
     const [message, setMessage] = useState({
         status: "info",
         message: "",
     });
+    const [ticketId, setTicketId] = useState("");
     const [loading, setLoading] = useState(false);
     const [debuggerInfo, setDebuggerInfo] = useState({
         triggerError: false,
@@ -53,8 +54,26 @@ const Certificate = ({ title }) => {
                 message: "",
             });
             setLoading(true);
-            if (debuggerInfo.triggerError) throw new Error("Invalid Order ID. Please check and try again.");
-            await generate({ certName: debuggerInfo.certName });
+
+            if (validator) {
+                let reg = RegExp(validator.regex);
+                let test = reg.test(ticketId.trim());
+                if (!test)
+                    throw new Error(
+                        `Invalid ticket format. Please make sure you are following the proper ticket format.`
+                    );
+            }
+
+            let response = await fetch("/api/attendee", {
+                method: "POST",
+                body: JSON.stringify({ title: title, ticketId: ticketId.trim() }),
+            });
+
+            let result = await response.json();
+            if (!result.success) throw new Error(result.error);
+
+            let { customer_name } = result.data;
+            await generate({ certName: customer_name });
             setMessage({
                 status: "success",
                 message: "Certificate successfully generated! Please check your downloads folder.",
@@ -87,18 +106,24 @@ const Certificate = ({ title }) => {
             <p className="font-light text-base md:text-xl tracking-wide text-center">
                 Enter your{" "}
                 <a href="#" className="underline font-semibold">
-                    order identification number
+                    ticket identification number
                 </a>{" "}
-                that came with your confirmation email.
+                which is found below your Ticket QR Code.
             </p>
             <div className="flex max-w-prose w-full gap-4 mt-4 md:px-0 px-4 md:text-lg text-base">
                 <input
                     type="text"
+                    name={ticketId}
+                    value={ticketId}
+                    onChange={(e) => {
+                        setMessage({ status: "info", message: "" });
+                        setTicketId(e.target.value);
+                    }}
                     className="grow border border-white rounded-sm w-full py-1 px-2"
-                    placeholder="Order Identification No."
+                    placeholder={validator?.pattern || "Ticket ID No."}
                 />
                 <button
-                    disabled={loading}
+                    disabled={loading || ticketId === ""}
                     className="relative disabled:opacity-80 disabled:cursor-not-allowed cursor-pointer uppercase bg-[#1b50d8] hover:bg-[#1b50d8]/80 border border-[#1b50d8] py-1 rounded-sm font-semibold tracking-wider w-48 flex gap-2 items-center justify-center"
                     onClick={submit}
                 >
@@ -133,7 +158,7 @@ const Certificate = ({ title }) => {
                     className="icon-[fa-brands--linkedin]"
                 ></Link>
             </div>
-            <Debugger info={debuggerInfo} setInfo={setDebuggerInfo} />
+            {/* <Debugger info={debuggerInfo} setInfo={setDebuggerInfo} /> */}
         </div>
     );
 };
