@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function WorkshopRegistrationLayout({ children }) {
     return (
-        <div className="flex w-full min-h-screen bg-gray-800 text-white justify-center items-center flex-col py-8 px-4">
+        <div className="flex w-full min-h-screen bg-white text-gray-800 justify-center items-center flex-col py-8 px-4">
             <div className="flex items-center w-24 md:w-32 h-24 md:h-32 relative mb-6">
                 <Image alt="UXPH Vertical Logo" src={"/uxph_vertical.svg"} fill={true} className="object-contain" />
             </div>
