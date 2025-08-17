@@ -25,13 +25,9 @@ const WorkshopRegistration = ({
   // Fetch latest slotsLeft from server
   const refreshSlots = useCallback(async () => {
     try {
-      const allIds = Object.values(workshopData)
-        .flat()
-        .map((w) => w.id);
+      if (!eventSlug) return;
 
-      if (allIds.length === 0) return;
-
-      const res = await fetch(`/api/workshop-slots?ids=${allIds.join(",")}`);
+      const res = await fetch(`/api/workshop-slots?eventSlug=${eventSlug}`);
       const json = await res.json();
 
       if (!json.success) throw new Error(json.error || "Unable to fetch slots");
@@ -49,7 +45,7 @@ const WorkshopRegistration = ({
     } catch (err) {
       console.error("Refresh slots error", err);
     }
-  }, [workshopData]);
+  }, [eventSlug]);
 
   // Initial fetch on mount
   useEffect(() => {
