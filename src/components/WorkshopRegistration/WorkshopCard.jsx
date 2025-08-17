@@ -46,6 +46,9 @@ const WorkshopCard = ({ workshop, blockName, isSelected, onSelect }) => {
                 {workshop.speaker}
               </p>
               <p className="text-xs text-gray-600">{workshop.role}</p>
+              {workshop.room && (
+                <p className="text-xs text-gray-500">Venue: {workshop.room}</p>
+              )}
             </div>
           </div>
 
