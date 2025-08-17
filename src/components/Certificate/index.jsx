@@ -108,7 +108,7 @@ const Certificate = ({ title, validator }) => {
                 <a href="#" className="underline font-semibold">
                     ticket identification number
                 </a>{" "}
-                which is found below your Ticket QR Code.
+                which is found below your Ticket QR Code or after your Onsite Registration.
             </p>
             <div className="flex max-w-prose w-full gap-4 mt-4 md:px-0 px-4 md:text-lg text-base">
                 <input

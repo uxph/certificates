@@ -3,28 +3,31 @@
         "business-of-design": {
             "title": "The Business of Design (UXPH February 2025 Meetup)",
             "validator": {
-                "regex": "^HLX-\\d{6}-\\d{6}-\\d{5}$",
+                "regex": "^HLX-[A-Za-z0-9]{6}-\\d{6}-\\d{5}$",
                 "pattern": "HLX-XXXXXX-XXXXXX-XXXXX"
-            }
+            },
+            "onsite_code": "FEB_M4UX5"
         },
         "mini-conf-mnl": {
             "title": "Mini Conference 2025 - MNL",
             "validator": {
-                "regex": "/^HLX-\\d{6}-\\d{6}-\\d{5}$/",
+                "regex": "^HLX-[A-Za-z0-9]{6}-\\d{6}-\\d{5}$",
                 "pattern": "HLX-XXXXXX-XXXXXX-XXXXX"
-            }
+            },
+            "onsite_code": "MNL_9YI45"
         },
         "mini-conf-ceb": {
             "title": "Mini Conference 2025 - CEB",
             "validator": {
-                "regex": "/^HLX-\\d{6}-\\d{6}-\\d{5}$/",
+                "regex": "^HLX-[A-Za-z0-9]{6}-\\d{6}-\\d{5}$",
                 "pattern": "HLX-XXXXXX-XXXXXX-XXXXX"
-            }
+            },
+            "onsite_code": "CEB_98YMM"
         },
         "mini-conf-dvo": {
             "title": "Mini Conference 2025 - DVO",
             "validator": {
-                "regex": "/^HLX-\\d{6}-\\d{6}-\\d{5}$/",
+                "regex": "/^HLX-[A-Za-z0-9]{6}-\\d{6}-\\d{5}$/",
                 "pattern": "HLX-XXXXXX-XXXXXX-XXXXX"
             }
         }
