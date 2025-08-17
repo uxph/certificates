@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import WorkshopBlock from "./WorkshopBlock";
 import SelectionSummary from "./SelectionSummary";
 import RegistrationForm from "./RegistrationForm";
@@ -10,6 +10,7 @@ const WorkshopRegistration = ({
   subtitle = "Online Workshops",
   eventSlug,
 }) => {
+  const [workshopData, setWorkshopData] = useState(workshopBlocks);
   const [selectedWorkshops, setSelectedWorkshops] = useState({
     blockA: "",
     blockB: "",
@@ -20,6 +21,41 @@ const WorkshopRegistration = ({
     message: "",
   });
   const [loading, setLoading] = useState(false);
+
+  // Fetch latest slotsLeft from server
+  const refreshSlots = useCallback(async () => {
+    try {
+      const allIds = Object.values(workshopData)
+        .flat()
+        .map((w) => w.id);
+
+      if (allIds.length === 0) return;
+
+      const res = await fetch(`/api/workshop-slots?ids=${allIds.join(",")}`);
+      const json = await res.json();
+
+      if (!json.success) throw new Error(json.error || "Unable to fetch slots");
+
+      setWorkshopData((prev) => {
+        const updated = {};
+        for (const [blockName, workshops] of Object.entries(prev)) {
+          updated[blockName] = workshops.map((w) => ({
+            ...w,
+            slotsLeft: json.data?.[w.id] ?? w.slotsLeft,
+          }));
+        }
+        return updated;
+      });
+    } catch (err) {
+      console.error("Refresh slots error", err);
+    }
+  }, [workshopData]);
+
+  // Initial fetch on mount
+  useEffect(() => {
+    refreshSlots();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleWorkshopSelect = (blockName, workshopId) => {
     setSelectedWorkshops((prev) => ({
@@ -78,6 +114,9 @@ const WorkshopRegistration = ({
         message: `Registration successful! Welcome ${result.data.attendeeName}. You will receive a confirmation email shortly.`,
       });
       setLoading(false);
+
+      // Refresh slots after successful registration
+      await refreshSlots();
     } catch (e) {
       setMessage({
         status: "error",
@@ -99,7 +138,7 @@ const WorkshopRegistration = ({
       )}
 
       <div className="max-w-6xl w-full space-y-8">
-        {Object.entries(workshopBlocks).map(([blockName, workshops]) => (
+        {Object.entries(workshopData).map(([blockName, workshops]) => (
           <WorkshopBlock
             key={blockName}
             blockName={blockName}
@@ -114,7 +153,7 @@ const WorkshopRegistration = ({
 
       <SelectionSummary
         selectedWorkshops={selectedWorkshops}
-        workshopBlocks={workshopBlocks}
+        workshopBlocks={workshopData}
       />
 
       <RegistrationForm

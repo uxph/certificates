@@ -7,7 +7,7 @@ const path = require("path");
 const serviceAccount = require("./serviceAccountKey.json"); // Replace with correct path
 
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
+  credential: admin.credential.cert(serviceAccount),
 });
 
 const db = admin.firestore();
@@ -16,31 +16,33 @@ const db = admin.firestore();
 const csvDirectory = path.join(__dirname, "data/workshops"); // Replace with your directory name
 
 async function importAllCsvFiles() {
-    try {
-        const files = fs.readdirSync(csvDirectory).filter((file) => file.endsWith(".csv"));
+  try {
+    const files = fs
+      .readdirSync(csvDirectory)
+      .filter((file) => file.endsWith(".csv"));
 
-        for (const file of files) {
-            const filePath = path.join(csvDirectory, file);
-            const jsonArray = await csv().fromFile(filePath);
+    for (const file of files) {
+      const filePath = path.join(csvDirectory, file);
+      const jsonArray = await csv().fromFile(filePath);
 
-            // delete all first
-            await db.collection("workshops_counter").doc().delete();
+      // delete all first
+      await db.collection("workshops_counter").doc().delete();
 
-            console.log("Importing CSV to DB");
-            const batch = db.batch();
-            jsonArray.forEach((item) => {
-                const docRef = db.collection("workshops_counter").doc(); // Change to doc(item.id) if needed
-                batch.set(docRef, item);
-            });
+      console.log("Importing CSV to DB");
+      const batch = db.batch();
+      jsonArray.forEach((item) => {
+        const docRef = db.collection("workshops_counter").doc(); // Change to doc(item.id) if needed
+        batch.set(docRef, { ...item, slotsLeft: 50 });
+      });
 
-            await batch.commit();
-            console.log(`✅ Imported ${jsonArray.length} records from "${file}"`);
-        }
-
-        console.log("🎉 All CSV files imported to Firestore collection");
-    } catch (err) {
-        console.error("❌ Error during import:", err);
+      await batch.commit();
+      console.log(`✅ Imported ${jsonArray.length} records from "${file}"`);
     }
+
+    console.log("🎉 All CSV files imported to Firestore collection");
+  } catch (err) {
+    console.error("❌ Error during import:", err);
+  }
 }
 
 importAllCsvFiles();
