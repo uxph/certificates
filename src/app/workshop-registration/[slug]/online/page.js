@@ -70,6 +70,7 @@ export default async function Page({ params }) {
             title="Workshop Registration"
             subtitle={eventInfo.title}
             eventSlug={slug}
+            helixpayPattern={eventInfo?.validator?.pattern || "HLX-XXXXXX-XXXXXX-XXXXX"}
         />
     );
 }

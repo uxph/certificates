@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import SelectionSummary from "./SelectionSummary";
 
-const CheckRegistration = ({ workshopBlocks, eventSlug, initialCode = "" }) => {
+const CheckRegistration = ({ workshopBlocks, eventSlug, initialCode = "", helixpayPattern = "" }) => {
   const [helixpayCode, setHelixpayCode] = useState(initialCode);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -52,7 +52,7 @@ const CheckRegistration = ({ workshopBlocks, eventSlug, initialCode = "" }) => {
       <div className="space-y-4">
         <input
           type="text"
-          placeholder="Enter your Helixpay code"
+          placeholder={helixpayPattern || "Enter your Helixpay code"}
           value={helixpayCode}
           onChange={(e) => setHelixpayCode(e.target.value)}
           className="w-full p-3 border border-gray-600 rounded"

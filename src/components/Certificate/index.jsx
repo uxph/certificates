@@ -95,7 +95,7 @@ const Certificate = ({ title, validator }) => {
     };
 
     return (
-        <div className="flex w-full h-screen max-h-screen max-w-screen bg-gray-800 justify-center items-center flex-col">
+        <div className="flex w-full h-screen max-h-screen max-w-screen bg-[#FEFCF6] text-gray-800 justify-center items-center flex-col">
             <div className="flex items-center w-24 md:w-32 h-24 md:h-32 relative">
                 <Image alt="UXPH Vertical Logo" src={"/uxph_vertical.svg"} fill={true} className="object-contain" />
             </div>
@@ -119,12 +119,12 @@ const Certificate = ({ title, validator }) => {
                         setMessage({ status: "info", message: "" });
                         setTicketId(e.target.value);
                     }}
-                    className="grow border border-white rounded-sm w-full py-1 px-2"
+                    className="grow border border-gray-800 rounded-sm w-full py-1 px-2 bg-transparent text-gray-800"
                     placeholder={validator?.pattern || "Ticket ID No."}
                 />
                 <button
                     disabled={loading || ticketId === ""}
-                    className="relative disabled:opacity-80 disabled:cursor-not-allowed cursor-pointer uppercase bg-[#1b50d8] hover:bg-[#1b50d8]/80 border border-[#1b50d8] py-1 rounded-sm font-semibold tracking-wider w-48 flex gap-2 items-center justify-center"
+                    className="relative disabled:opacity-80 disabled:cursor-not-allowed cursor-pointer text-white uppercase bg-[#1b50d8] hover:bg-[#1b50d8]/80 border border-[#1b50d8] py-1 rounded-sm font-semibold tracking-wider w-48 flex gap-2 items-center justify-center"
                     onClick={submit}
                 >
                     {loading && <span className="icon-[eos-icons--loading]"></span>}
@@ -140,7 +140,7 @@ const Certificate = ({ title, validator }) => {
             </div>
 
             <p className="tracking-wide mt-8">Join the community and follow us for updates!</p>
-            <div className="flex gap-5 items-center justify-center text-white text-xl md:text-2xl py-4">
+            <div className="flex gap-5 items-center justify-center text-gray-800 text-xl md:text-2xl py-4">
                 <Link
                     target="_blank"
                     href={"https://www.facebook.com/uxphofficial/"}

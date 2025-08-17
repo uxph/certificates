@@ -10,6 +10,7 @@ const RegistrationForm = ({
   onSubmit,
   setMessage,
   eventSlug,
+  helixpayPattern = "",
 }) => {
   const status = {
     info: "text-gray-400",
@@ -35,7 +36,7 @@ const RegistrationForm = ({
             setHelixpayCode(e.target.value);
           }}
           className="grow border  rounded-sm w-full py-2 px-3 border-gray-800  placeholder-gray-400"
-          placeholder="Enter your Helixpay code"
+          placeholder={helixpayPattern || "Enter your Helixpay code"}
         />
         <button
           disabled={

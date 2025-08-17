@@ -10,6 +10,7 @@ const WorkshopRegistration = ({
   title = "Workshop Registration",
   subtitle = "Online Workshops",
   eventSlug,
+  helixpayPattern = "",
 }) => {
   const router = useRouter();
   const [workshopData, setWorkshopData] = useState(workshopBlocks);
@@ -173,6 +174,7 @@ const WorkshopRegistration = ({
         onSubmit={handleSubmit}
         setMessage={setMessage}
         eventSlug={eventSlug}
+        helixpayPattern={helixpayPattern}
       />
     </>
   );

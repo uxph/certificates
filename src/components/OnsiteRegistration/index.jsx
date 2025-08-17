@@ -103,21 +103,21 @@ export default function OnsiteRegistration({ options }) {
 
     if (successData) {
         return (
-            <div className="flex w-full h-screen max-h-screen max-w-screen bg-gray-800 justify-center items-center flex-col px-4 py-16">
+            <div className="flex w-full h-screen max-h-screen max-w-screen bg-[#FEFCF6] text-gray-800 justify-center items-center flex-col px-4 py-16">
                 <div className="flex items-center w-24 md:w-32 h-24 md:h-32 relative">
                     {" "}
                     <Image alt="UXPH Vertical Logo" src={"/uxph_vertical.svg"} fill={true} className="object-contain" />
                 </div>
 
-                <div className="w-full max-w-prose bg-gray-900/40 border border-white/20 rounded-md p-6 my-16">
-                    <p className="text-2xl md:text-3xl font-bold text-white text-center">
+                <div className="w-full max-w-prose bg-white border border-gray-300 rounded-md p-6 my-16">
+                    <p className="text-2xl md:text-3xl font-bold text-gray-800 text-center">
                         Congratulations {successData.firstName}!
                     </p>
 
-                    <p className="text-gray-200 text-center mt-4">You have successfully registered to:</p>
-                    <p className="text-white text-center font-semibold mt-1">{successData.eventName}</p>
+                    <p className="text-gray-600 text-center mt-4">You have successfully registered to:</p>
+                    <p className="text-gray-800 text-center font-semibold mt-1">{successData.eventName}</p>
 
-                    <p className="font-light text-base md:text-lg tracking-wide text-center text-gray-200 mt-6">
+                    <p className="font-light text-base md:text-lg tracking-wide text-center text-gray-600 mt-6">
                         Please take a screenshot or copy the event code below for your reference:
                     </p>
 
@@ -125,7 +125,7 @@ export default function OnsiteRegistration({ options }) {
                         <input
                             readOnly
                             value={successData.code || ""}
-                            className="grow border border-white rounded-sm py-2 px-3 bg-transparent text-white tracking-widest text-center"
+                            className="grow border border-gray-800 rounded-sm py-2 px-3 bg-transparent text-gray-800 tracking-widest text-center"
                         />
                         <button
                             onClick={copyCode}
@@ -154,12 +154,12 @@ export default function OnsiteRegistration({ options }) {
     }
 
     return (
-        <div className="flex w-full h-screen bg-gray-800 justify-start py-16 items-center flex-col px-4">
+        <div className="flex w-full h-screen bg-[#FEFCF6] text-gray-800 justify-start py-16 items-center flex-col px-4">
             <div className="flex items-center w-24 md:w-32 h-24 md:h-32 relative">
                 <Image alt="UXPH Vertical Logo" src={"/uxph_vertical.svg"} fill={true} className="object-contain" />
             </div>
 
-            <h1 className="text-4xl font-bold text-white my-6">Onsite Registration</h1>
+            <h1 className="text-4xl font-bold my-6">Onsite Registration</h1>
             <form onSubmit={onSubmit} className="flex flex-col gap-3 w-full max-w-md">
                 <input
                     name="firstName"
@@ -167,7 +167,7 @@ export default function OnsiteRegistration({ options }) {
                     onChange={onChange}
                     onBlur={onBlur}
                     placeholder="First Name"
-                    className="border border-white rounded-sm py-2 px-3 bg-transparent text-white"
+                    className="border border-gray-800 rounded-sm py-2 px-3 bg-transparent text-gray-800"
                 />
                 {touched.firstName && errors.firstName && (
                     <span className="text-red-400 text-sm">{errors.firstName}</span>
@@ -179,7 +179,7 @@ export default function OnsiteRegistration({ options }) {
                     onChange={onChange}
                     onBlur={onBlur}
                     placeholder="Last Name"
-                    className="border border-white rounded-sm py-2 px-3 bg-transparent text-white"
+                    className="border border-gray-800 rounded-sm py-2 px-3 bg-transparent text-gray-800"
                 />
                 {touched.lastName && errors.lastName && <span className="text-red-400 text-sm">{errors.lastName}</span>}
 
@@ -190,7 +190,7 @@ export default function OnsiteRegistration({ options }) {
                     onChange={onChange}
                     onBlur={onBlur}
                     placeholder="Email"
-                    className="border border-white rounded-sm py-2 px-3 bg-transparent text-white"
+                    className="border border-gray-800 rounded-sm py-2 px-3 bg-transparent text-gray-800"
                 />
                 {touched.email && errors.email && <span className="text-red-400 text-sm">{errors.email}</span>}
 
@@ -199,7 +199,7 @@ export default function OnsiteRegistration({ options }) {
                     value={form.eventId}
                     onChange={onChange}
                     onBlur={onBlur}
-                    className="border border-white rounded-sm py-2 px-3 bg-gray-900 text-white"
+                    className="border border-gray-800 rounded-sm py-2 px-3 bg-white text-gray-800"
                 >
                     <option value="">Select Event</option>
                     {options.map((option) => (
@@ -216,7 +216,7 @@ export default function OnsiteRegistration({ options }) {
                     onChange={onChange}
                     onBlur={onBlur}
                     placeholder="Event Code"
-                    className="border border-white rounded-sm py-2 px-3 bg-transparent text-white tracking-widest"
+                    className="border border-gray-800 rounded-sm py-2 px-3 bg-transparent text-gray-800 tracking-widest"
                 />
                 {touched.eventCode && errors.eventCode && (
                     <span className="text-red-400 text-sm">{errors.eventCode}</span>
@@ -237,7 +237,7 @@ export default function OnsiteRegistration({ options }) {
                                 ? "text-green-400"
                                 : message.type === "error"
                                 ? "text-red-400"
-                                : "text-gray-300"
+                                : "text-gray-600"
                         }`}
                     >
                         {message.text}

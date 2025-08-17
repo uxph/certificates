@@ -9,11 +9,18 @@ async function getWorkshopInfo({ slug }) {
   return data["2025"]?.[slug];
 }
 
+async function getEventInfo({ slug }) {
+  const filePath = path.join(process.cwd(), "data/events.json");
+  const data = JSON.parse(await fsPromises.readFile(filePath));
+  return data["2025"]?.[slug];
+}
+
 export default async function Page({ params, searchParams }) {
   const { slug } = params;
   const initialCode = searchParams?.helixpayCode || "";
 
   const workshopBlocks = await getWorkshopInfo({ slug });
+  const eventInfo = await getEventInfo({ slug });
 
   if (!workshopBlocks) return notFound();
 
@@ -22,6 +29,7 @@ export default async function Page({ params, searchParams }) {
       workshopBlocks={workshopBlocks}
       eventSlug={slug}
       initialCode={initialCode}
+      helixpayPattern={eventInfo?.validator?.pattern || "HLX-XXXXXX-XXXXXX-XXXXX"}
     />
   );
 }
