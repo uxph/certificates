@@ -107,7 +107,7 @@ const WorkshopRegistration = ({
         // If already registered (conflict)
         if (response.status === 409) {
           router.push(
-            `/workshop-registration/${eventSlug}/online/registered?helixpayCode=${encodeURIComponent(
+            `/workshop-registration/${eventSlug}/online/check-registration?helixpayCode=${encodeURIComponent(
               helixpayCode.trim()
             )}`
           );

@@ -1,0 +1,85 @@
+"use client";
+
+import React, { useState } from "react";
+import SelectionSummary from "./SelectionSummary";
+
+const CheckRegistration = ({ workshopBlocks, eventSlug, initialCode = "" }) => {
+  const [helixpayCode, setHelixpayCode] = useState(initialCode);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [registration, setRegistration] = useState(null);
+
+  const handleSubmit = async () => {
+    try {
+      setError("");
+      setLoading(true);
+      setRegistration(null);
+
+      if (!helixpayCode.trim()) {
+        throw new Error("Please enter your Helixpay code.");
+      }
+
+      const res = await fetch(
+        `/api/workshop-registration?helixpayCode=${encodeURIComponent(
+          helixpayCode.trim()
+        )}&eventSlug=${eventSlug}`
+      );
+      const json = await res.json();
+
+      if (!json.success) {
+        throw new Error(json.error || "Unable to fetch registration.");
+      }
+
+      if (!json.isRegistered) {
+        throw new Error("No registration found for this code.");
+      }
+
+      setRegistration(json.data);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      setError(err.message || "An unexpected error occurred");
+    }
+  };
+
+  return (
+    <div className="w-full max-w-xl space-y-6">
+      <h1 className="text-2xl md:text-4xl font-bold text-center">
+        Check Your Workshop Registration
+      </h1>
+
+      <div className="space-y-4">
+        <input
+          type="text"
+          placeholder="Enter your Helixpay code"
+          value={helixpayCode}
+          onChange={(e) => setHelixpayCode(e.target.value)}
+          className="w-full p-3 border border-gray-600 rounded"
+        />
+        <button
+          onClick={handleSubmit}
+          disabled={loading}
+          className="w-full py-3 bg-[#1b50d8] text-white font-semibold rounded disabled:opacity-50"
+        >
+          {loading ? "Checking..." : "Check Registration"}
+        </button>
+      </div>
+
+      {error && (
+        <p className="text-red-500 text-center font-medium">{error}</p>
+      )}
+
+      {registration && (
+        <SelectionSummary
+          selectedWorkshops={{
+            blockA: registration.blockA,
+            blockB: registration.blockB,
+          }}
+          workshopBlocks={workshopBlocks}
+        />
+      )}
+    </div>
+  );
+};
+
+export default CheckRegistration;
