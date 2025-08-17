@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const RegistrationForm = ({
   helixpayCode,
@@ -61,6 +62,19 @@ const RegistrationForm = ({
             {message.message}
           </p>
         )}
+      </div>
+
+      {/* Link to check registration */}
+      <div className="mt-4 text-center">
+        <p className="text-sm">
+          Already registered?{' '}
+          <Link
+            href={`/workshop-registration/${eventSlug}/online/check-registration`}
+            className="text-[#1b50d8] underline font-medium hover:text-[#1b50d8]/80"
+          >
+            Check your registration here
+          </Link>
+        </p>
       </div>
     </div>
   );

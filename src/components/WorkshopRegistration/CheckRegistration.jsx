@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import SelectionSummary from "./SelectionSummary";
 
 const CheckRegistration = ({ workshopBlocks, eventSlug, initialCode = "" }) => {
@@ -78,6 +79,19 @@ const CheckRegistration = ({ workshopBlocks, eventSlug, initialCode = "" }) => {
           workshopBlocks={workshopBlocks}
         />
       )}
+
+      {/* Small CTA link */}
+      <div className="text-center">
+        <p className="text-sm">
+          Haven't registered yet?{' '}
+          <Link
+            href={`/workshop-registration/${eventSlug}/online`}
+            className="text-[#1b50d8] underline font-medium hover:text-[#1b50d8]/80"
+          >
+            Register here
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };
