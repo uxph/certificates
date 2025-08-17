@@ -30,6 +30,7 @@ export default async function Page({ params }) {
             workshopBlocks={workshopBlocks}
             title="Workshop Registration"
             subtitle={eventInfo.title}
+            eventSlug={slug}
         />
     );
 }

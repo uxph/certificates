@@ -8,6 +8,7 @@ const RegistrationForm = ({
   message,
   onSubmit,
   setMessage,
+  eventSlug,
 }) => {
   const status = {
     info: "text-gray-400",

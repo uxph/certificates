@@ -4,7 +4,7 @@ import WorkshopBlock from "./WorkshopBlock";
 import SelectionSummary from "./SelectionSummary";
 import RegistrationForm from "./RegistrationForm";
 
-const WorkshopRegistration = ({ workshopBlocks, title = "Workshop Registration", subtitle = "Online Workshops" }) => {
+const WorkshopRegistration = ({ workshopBlocks, title = "Workshop Registration", subtitle = "Online Workshops", eventSlug }) => {
     const [selectedWorkshops, setSelectedWorkshops] = useState({
         "Block A": "",
         "Block B": ""
@@ -39,12 +39,32 @@ const WorkshopRegistration = ({ workshopBlocks, title = "Workshop Registration",
                 throw new Error("Please enter your Helixpay code to proceed with registration.");
             }
 
-            // Simulate API call for registration
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            if (!eventSlug) {
+                throw new Error("Event information is missing. Please refresh the page and try again.");
+            }
+
+            // Call the workshop registration API
+            const response = await fetch("/api/workshop-registration", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    eventSlug: eventSlug,
+                    helixpayCode: helixpayCode.trim(),
+                    workshopSelections: selectedWorkshops,
+                }),
+            });
+
+            const result = await response.json();
+
+            if (!result.success) {
+                throw new Error(result.error);
+            }
 
             setMessage({
                 status: "success",
-                message: "Registration successful! You will receive a confirmation email shortly.",
+                message: `Registration successful! Welcome ${result.data.attendeeName}. You will receive a confirmation email shortly.`,
             });
             setLoading(false);
         } catch (e) {
@@ -86,6 +106,7 @@ const WorkshopRegistration = ({ workshopBlocks, title = "Workshop Registration",
                 message={message}
                 onSubmit={handleSubmit}
                 setMessage={setMessage}
+                eventSlug={eventSlug}
             />
         </>
     );
