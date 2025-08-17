@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import WorkshopBlock from "./WorkshopBlock";
 import SelectionSummary from "./SelectionSummary";
 import RegistrationForm from "./RegistrationForm";
@@ -10,6 +11,7 @@ const WorkshopRegistration = ({
   subtitle = "Online Workshops",
   eventSlug,
 }) => {
+  const router = useRouter();
   const [workshopData, setWorkshopData] = useState(workshopBlocks);
   const [selectedWorkshops, setSelectedWorkshops] = useState({
     blockA: "",
@@ -101,7 +103,17 @@ const WorkshopRegistration = ({
 
       const result = await response.json();
 
-      if (!result.success) {
+      if (!response.ok) {
+        // If already registered (conflict)
+        if (response.status === 409) {
+          router.push(
+            `/workshop-registration/${eventSlug}/online/registered?helixpayCode=${encodeURIComponent(
+              helixpayCode.trim()
+            )}`
+          );
+          return;
+        }
+
         throw new Error(result.error);
       }
 

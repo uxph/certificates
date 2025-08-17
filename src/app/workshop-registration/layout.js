@@ -11,7 +11,7 @@ export default function WorkshopRegistrationLayout({ children }) {
             {children}
 
             <p className="tracking-wide mt-8 text-center">Join the community and follow us for updates!</p>
-            <div className="flex gap-5 items-center justify-center text-white text-xl md:text-2xl py-4">
+            <div className="flex gap-5 items-center justify-center text-gray-800 text-xl md:text-2xl py-4">
                 <Link
                     target="_blank"
                     href={"https://www.facebook.com/uxphofficial/"}
