@@ -4,7 +4,13 @@ import React, { useState } from "react";
 import Link from "next/link";
 import SelectionSummary from "./SelectionSummary";
 
-const CheckRegistration = ({ workshopBlocks, eventSlug, initialCode = "", helixpayPattern = "" }) => {
+const CheckRegistration = ({
+  workshopBlocks,
+  eventSlug,
+  initialCode = "",
+  helixpayPattern = "",
+  helixpayRegex = "",
+}) => {
   const [helixpayCode, setHelixpayCode] = useState(initialCode);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -18,6 +24,13 @@ const CheckRegistration = ({ workshopBlocks, eventSlug, initialCode = "", helixp
 
       if (!helixpayCode.trim()) {
         throw new Error("Please enter your Helixpay code.");
+      }
+
+      if (helixpayRegex) {
+        const regex = new RegExp(helixpayRegex);
+        if (!regex.test(helixpayCode.trim())) {
+          throw new Error("Invalid Helixpay code format.");
+        }
       }
 
       const res = await fetch(
@@ -66,9 +79,7 @@ const CheckRegistration = ({ workshopBlocks, eventSlug, initialCode = "", helixp
         </button>
       </div>
 
-      {error && (
-        <p className="text-red-500 text-center font-medium">{error}</p>
-      )}
+      {error && <p className="text-red-500 text-center font-medium">{error}</p>}
 
       {registration && (
         <SelectionSummary
@@ -83,7 +94,7 @@ const CheckRegistration = ({ workshopBlocks, eventSlug, initialCode = "", helixp
       {/* Small CTA link */}
       <div className="text-center">
         <p className="text-sm">
-          Haven't registered yet?{' '}
+          Haven't registered yet?{" "}
           <Link
             href={`/workshop-registration/${eventSlug}/online`}
             className="text-[#1b50d8] underline font-medium hover:text-[#1b50d8]/80"

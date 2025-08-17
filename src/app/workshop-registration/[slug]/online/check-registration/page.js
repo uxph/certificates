@@ -30,6 +30,7 @@ export default async function Page({ params, searchParams }) {
       eventSlug={slug}
       initialCode={initialCode}
       helixpayPattern={eventInfo?.validator?.pattern || "HLX-XXXXXX-XXXXXX-XXXXX"}
+      helixpayRegex={eventInfo?.validator?.regex || "^HLX-[A-Za-z0-9]{6}-\\d{6}-\\d{5}$"}
     />
   );
 }

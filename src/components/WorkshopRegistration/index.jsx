@@ -11,6 +11,7 @@ const WorkshopRegistration = ({
   subtitle = "Online Workshops",
   eventSlug,
   helixpayPattern = "",
+  helixpayRegex = "",
 }) => {
   const router = useRouter();
   const [workshopData, setWorkshopData] = useState(workshopBlocks);
@@ -70,7 +71,9 @@ const WorkshopRegistration = ({
         message: "",
       });
       setLoading(true);
-      console.log(!(selectedWorkshops["blockA"] && selectedWorkshops["blockB"]))
+      console.log(
+        !(selectedWorkshops["blockA"] && selectedWorkshops["blockB"])
+      );
       if (!(selectedWorkshops["blockA"] && selectedWorkshops["blockB"])) {
         throw new Error(
           "Please select one workshop from both Block A and Block B to continue."
@@ -81,6 +84,16 @@ const WorkshopRegistration = ({
         throw new Error(
           "Please enter your Helixpay code to proceed with registration."
         );
+      }
+
+      // Validate Helixpay format if regex provided
+      if (helixpayRegex) {
+        const regex = new RegExp(helixpayRegex);
+        if (!regex.test(helixpayCode.trim())) {
+          throw new Error(
+            "Invalid Helixpay code format. Please follow the required pattern."
+          );
+        }
       }
 
       if (!eventSlug) {
@@ -129,9 +142,7 @@ const WorkshopRegistration = ({
     } catch (e) {
       setMessage({
         status: "error",
-        message:
-          e?.message ||
-          "An error has occurred. Please contact us",
+        message: e?.message || "An error has occurred. Please contact us",
       });
       setLoading(false);
     }
