@@ -7,6 +7,7 @@ const WorkshopCard = ({ workshop, blockName, isSelected, onSelect }) => {
     }
   };
 
+
   return (
     <div
       className={`border rounded-lg p-4 cursor-pointer transition-all duration-200 relative ${

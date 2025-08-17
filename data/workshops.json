@@ -7,48 +7,42 @@
                     "title": "Davao Design Community",
                     "description": "Building and nurturing the design community in Mindanao.",
                     "speaker": "Shannen Yu Sapaar",
-                    "role": "Co-founder & Community Lead @ UX Davao",
-                    "slotsLeft": 28
+                    "role": "Co-founder & Community Lead @ UX Davao"
                 },
                 {
                     "id": "dvo-a-2",
                     "title": "Sustainable Design Practices",
                     "description": "Environmentally conscious design approaches.",
                     "speaker": "Green Design Advocate",
-                    "role": "Environmental UX Designer",
-                    "slotsLeft": 16
+                    "role": "Environmental UX Designer"
                 },
                 {
                     "id": "dvo-a-3",
                     "title": "Agricultural Tech UX",
                     "description": "Designing technology solutions for farmers and agriculture.",
                     "speaker": "Farm Tech Specialist",
-                    "role": "AgTech UX Designer",
-                    "slotsLeft": 12
+                    "role": "AgTech UX Designer"
                 },
                 {
                     "id": "dvo-a-4",
                     "title": "Indigenous Design Elements",
                     "description": "Incorporating Mindanao cultural elements in modern design.",
                     "speaker": "Cultural Design Expert",
-                    "role": "Indigenous Design Researcher",
-                    "slotsLeft": 9
+                    "role": "Indigenous Design Researcher"
                 },
                 {
                     "id": "dvo-a-5",
                     "title": "Disaster Response UX",
                     "description": "Designing systems for emergency and disaster response.",
                     "speaker": "Emergency Systems Designer",
-                    "role": "Crisis UX Specialist",
-                    "slotsLeft": 6
+                    "role": "Crisis UX Specialist"
                 },
                 {
                     "id": "dvo-a-6",
                     "title": "Regional E-governance",
                     "description": "Improving government digital services for citizens.",
                     "speaker": "Gov Tech Designer",
-                    "role": "Public Service UX Designer",
-                    "slotsLeft": 15
+                    "role": "Public Service UX Designer"
                 }
             ],
             "blockB": [
@@ -57,48 +51,42 @@
                     "title": "Cross-cultural Design",
                     "description": "Designing for diverse cultural groups in Mindanao.",
                     "speaker": "Multicultural Design Expert",
-                    "role": "Cultural UX Researcher",
-                    "slotsLeft": 20
+                    "role": "Cultural UX Researcher"
                 },
                 {
                     "id": "dvo-b-2",
                     "title": "Regional Business Development",
                     "description": "Growing design businesses outside Metro Manila.",
                     "speaker": "Regional Business Coach",
-                    "role": "Business Development Consultant",
-                    "slotsLeft": 17
+                    "role": "Business Development Consultant"
                 },
                 {
                     "id": "dvo-b-3",
                     "title": "Community-Driven Design",
                     "description": "Involving local communities in the design process.",
                     "speaker": "Community Design Facilitator",
-                    "role": "Participatory Design Expert",
-                    "slotsLeft": 13
+                    "role": "Participatory Design Expert"
                 },
                 {
                     "id": "dvo-b-4",
                     "title": "Local Content Creation",
                     "description": "Creating regionally relevant content and experiences.",
                     "speaker": "Content Strategy Expert",
-                    "role": "Regional Content Strategist",
-                    "slotsLeft": 11
+                    "role": "Regional Content Strategist"
                 },
                 {
                     "id": "dvo-b-5",
                     "title": "Mindanao Tech Ecosystem",
                     "description": "Understanding and contributing to the regional tech scene.",
                     "speaker": "Tech Ecosystem Builder",
-                    "role": "Regional Tech Community Lead",
-                    "slotsLeft": 24
+                    "role": "Regional Tech Community Lead"
                 },
                 {
                     "id": "dvo-b-6",
                     "title": "Social Impact Design",
                     "description": "Using design to address social issues in Mindanao.",
                     "speaker": "Social Impact Designer",
-                    "role": "Non-profit UX Designer",
-                    "slotsLeft": 0
+                    "role": "Non-profit UX Designer"
                 }
             ]
         }
