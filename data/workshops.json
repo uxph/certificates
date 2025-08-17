@@ -1,0 +1,106 @@
+{
+    "2025": {
+        "business-of-design": {
+            "blockA": [
+                {
+                    "id": "bd-a-1",
+                    "title": "Davao Design Community",
+                    "description": "Building and nurturing the design community in Mindanao.",
+                    "speaker": "Shannen Yu Sapaar",
+                    "role": "Co-founder & Community Lead @ UX Davao",
+                    "room": "A Room 1"
+                },
+                {
+                    "id": "bd-a-2",
+                    "title": "Sustainable Design Practices",
+                    "description": "Environmentally conscious design approaches.",
+                    "speaker": "Green Design Advocate",
+                    "role": "Environmental UX Designer",
+                    "room": "A Room 2"
+                },
+                {
+                    "id": "bd-a-3",
+                    "title": "Agricultural Tech UX",
+                    "description": "Designing technology solutions for farmers and agriculture.",
+                    "speaker": "Farm Tech Specialist",
+                    "role": "AgTech UX Designer",
+                    "room": "A Room 3"
+                },
+                {
+                    "id": "bd-a-4",
+                    "title": "Indigenous Design Elements",
+                    "description": "Incorporating Mindanao cultural elements in modern design.",
+                    "speaker": "Cultural Design Expert",
+                    "role": "Indigenous Design Researcher",
+                    "room": "A Room 4"
+                },
+                {
+                    "id": "bd-a-5",
+                    "title": "Disaster Response UX",
+                    "description": "Designing systems for emergency and disaster response.",
+                    "speaker": "Emergency Systems Designer",
+                    "role": "Crisis UX Specialist",
+                    "room": "A Room 5"
+                },
+                {
+                    "id": "bd-a-6",
+                    "title": "Regional E-governance",
+                    "description": "Improving government digital services for citizens.",
+                    "speaker": "Gov Tech Designer",
+                    "role": "Public Service UX Designer",
+                    "room": "A Room 6"
+                }
+            ],
+            "blockB": [
+                {
+                    "id": "bd-b-1",
+                    "title": "Cross-cultural Design",
+                    "description": "Designing for diverse cultural groups in Mindanao.",
+                    "speaker": "Multicultural Design Expert",
+                    "role": "Cultural UX Researcher",
+                    "room": "B Room 1"
+                },
+                {
+                    "id": "bd-b-2",
+                    "title": "Regional Business Development",
+                    "description": "Growing design businesses outside Metro Manila.",
+                    "speaker": "Regional Business Coach",
+                    "role": "Business Development Consultant",
+                    "room": "B Room 2"
+                },
+                {
+                    "id": "bd-b-3",
+                    "title": "Community-Driven Design",
+                    "description": "Involving local communities in the design process.",
+                    "speaker": "Community Design Facilitator",
+                    "role": "Participatory Design Expert",
+                    "room": "B Room 3"
+                },
+                {
+                    "id": "bd-b-4",
+                    "title": "Local Content Creation",
+                    "description": "Creating regionally relevant content and experiences.",
+                    "speaker": "Content Strategy Expert",
+                    "role": "Regional Content Strategist",
+                    "room": "B Room 4"
+                },
+                {
+                    "id": "bd-b-5",
+                    "title": "Mindanao Tech Ecosystem",
+                    "description": "Understanding and contributing to the regional tech scene.",
+                    "speaker": "Tech Ecosystem Builder",
+                    "role": "Regional Tech Community Lead",
+                    "room": "B Room 5"
+                },
+                {
+                    "id": "bd-b-6",
+                    "title": "Social Impact Design",
+                    "description": "Using design to address social issues in Mindanao.",
+                    "speaker": "Social Impact Designer",
+                    "role": "Non-profit UX Designer",
+                    "room": "B Room 6"
+                }
+            ]
+        }
+    }
+}
