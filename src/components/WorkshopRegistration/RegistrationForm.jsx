@@ -39,8 +39,8 @@ const RegistrationForm = ({
         <button
           disabled={
             loading ||
-            !selectedWorkshops["Block A"] ||
-            !selectedWorkshops["Block B"] ||
+            !selectedWorkshops["blockA"] ||
+            !selectedWorkshops["blockB"] ||
             !helixpayCode.trim()
           }
           className="relative text-white disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer uppercase bg-[#1b50d8] hover:bg-[#1b50d8]/80 border border-[#1b50d8] py-2 px-6 rounded-sm font-semibold tracking-wider flex gap-2 items-center justify-center min-w-[120px]"

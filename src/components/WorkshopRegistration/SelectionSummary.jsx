@@ -1,6 +1,10 @@
 import React from "react";
 
 const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
+  const blockCopy = {
+    blockA: "Block A",
+    blockB: "Block B",
+  };
   return (
     <div className="max-w-4xl w-full mt-8 mb-6">
       <div className=" rounded-lg p-4 border border-gray-600">
@@ -14,7 +18,9 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
             );
             return (
               <div key={blockName} className="text-center">
-                <p className="font-semibold text-gray-800 mb-1">{blockName}</p>
+                <p className="font-semibold text-gray-800 mb-1">
+                  {blockCopy[blockName]}
+                </p>
                 {selectedWorkshop ? (
                   <div className="border rounded p-2">
                     <p className="text-[#ED5D4B] font-bold">

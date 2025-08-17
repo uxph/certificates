@@ -1,7 +1,7 @@
 {
     "2025": {
         "business-of-design": {
-            "Block A": [
+            "blockA": [
                 {
                     "id": "dvo-a-1",
                     "title": "Davao Design Community",
@@ -51,7 +51,7 @@
                     "slotsLeft": 15
                 }
             ],
-            "Block B": [
+            "blockB": [
                 {
                     "id": "dvo-b-1",
                     "title": "Cross-cultural Design",
