@@ -16,6 +16,8 @@ const CheckRegistration = ({
   const [error, setError] = useState("");
   const [registration, setRegistration] = useState(null);
 
+  const redirectedNotice = initialCode && initialCode.trim() !== "";
+
   const handleSubmit = async () => {
     try {
       setError("");
@@ -61,6 +63,12 @@ const CheckRegistration = ({
       <h1 className="text-2xl md:text-4xl font-bold text-center">
         Check Your Workshop Registration
       </h1>
+
+      {redirectedNotice && (
+        <p className="text-center text-green-600">
+          You are already registered! Please check your registration by filling in the information below.
+        </p>
+      )}
 
       <div className="space-y-4">
         <input
