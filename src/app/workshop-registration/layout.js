@@ -3,13 +3,13 @@ import Link from "next/link";
 
 export default function WorkshopRegistrationLayout({ children }) {
   return (
-    <div className="relative overflow-hidden flex w-full min-h-screen bg-[#FEFCF6] text-gray-800 justify-center items-center flex-col py-8 px-4">
+    <div className="relative overflow-hidden flex w-full min-h-screen text-gray-800 justify-center items-center flex-col py-8 px-4">
       {/* Hero banner */}
       <Image
         src="/conf-assets/02_Main.svg"
         alt="UXPH Mini 2025 Banner"
         fill
-        className="pointer-events-none object-cover opacity-10 z-0"
+        className="pointer-events-none object-cover opacity-10 -z-10"
       />
 
       {/* Decorative corner assets */}
@@ -24,7 +24,7 @@ export default function WorkshopRegistrationLayout({ children }) {
             </div>
              */}
 
-      <div className="flex items-center w-24 md:w-40 h-24 md:h-40 relative mb-6">
+      <div className="flex items-center w-24 md:w-52 h-24 md:h-52 relative">
         <Image
           alt="UXPH Mini Logo"
           src={"/Logo_UXPHMini.png"}

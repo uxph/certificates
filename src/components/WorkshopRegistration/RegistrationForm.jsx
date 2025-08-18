@@ -35,7 +35,7 @@ const RegistrationForm = ({
             setMessage({ status: "info", message: "" });
             setHelixpayCode(e.target.value);
           }}
-          className="grow border  rounded-sm w-full py-2 px-3 border-gray-800  placeholder-gray-400"
+          className="grow border rounded-sm w-full py-2 px-3 border-gray-800 placeholder-gray-400 bg-[#FEFCF6]"
           placeholder={helixpayPattern || "Enter your Helixpay code"}
         />
         <button
@@ -68,7 +68,7 @@ const RegistrationForm = ({
       {/* Link to check registration */}
       <div className="mt-4 text-center">
         <p className="text-sm">
-          Already registered?{' '}
+          Already registered?{" "}
           <Link
             href={`/workshop-registration/${eventSlug}/online/check-registration`}
             className="text-main underline font-medium hover:text-main/80"

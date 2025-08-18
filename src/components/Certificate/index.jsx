@@ -100,7 +100,7 @@ const Certificate = ({ title, validator }) => {
   };
 
   return (
-    <div className="relative overflow-hidden flex w-full h-screen max-h-screen max-w-screen bg-[#FEFCF6] text-gray-800 justify-center items-center flex-col">
+    <div className="relative overflow-hidden flex w-full h-screen max-h-screen max-w-screen text-gray-800 justify-center items-center flex-col">
       <Image
         src="/conf-assets/02_Main.svg"
         alt="UXPH Mini 2025 Banner"

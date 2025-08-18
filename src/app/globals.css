@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @plugin "@iconify/tailwind4";
 :root {
-    --background: #ffffff;
+    --background: #FEFCF6;
     --foreground: #171717;
 
     /* Brand colors */
@@ -27,12 +27,6 @@
     --color-mangga: var(--color-mangga);
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
-    }
-}
 
 body {
     background: var(--background);
