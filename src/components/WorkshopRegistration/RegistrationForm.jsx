@@ -18,6 +18,13 @@ const RegistrationForm = ({
     success: "text-green-400",
   };
 
+  const getMessageStyles = (status) => {
+    if (status === "success") {
+      return "bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-md shadow-sm text-center font-semibold text-lg";
+    }
+    return status[status];
+  };
+
   return (
     <div className="max-w-prose w-full mt-8">
       <p className="font-light text-base md:text-xl tracking-wide text-center mb-4">
@@ -53,15 +60,17 @@ const RegistrationForm = ({
         </button>
       </div>
 
-      <div className="h-8 mt-2">
+      <div className="min-h-8 mt-2">
         {message.message && (
-          <p
+          <div
             className={`${
-              status[message.status]
-            } md:text-base text-sm text-center font-medium`}
+              message.status === "success" 
+                ? getMessageStyles("success")
+                : `${status[message.status]} md:text-lg text-base text-center font-medium`
+            }`}
           >
             {message.message}
-          </p>
+          </div>
         )}
       </div>
 

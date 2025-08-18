@@ -16,6 +16,14 @@ export default function OnsiteRegistration({ options }) {
   const [successData, setSuccessData] = useState(null);
   const [copied, setCopied] = useState(false);
 
+  // Helper function to get enhanced message styles
+  const getMessageStyles = (type) => {
+    if (type === "success") {
+      return "bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-md shadow-sm text-center font-semibold text-lg";
+    }
+    return "";
+  };
+
   // Client-side validation (only presence + email format)
   const errors = {};
   if (!form.firstName.trim()) errors.firstName = "First name is required.";
@@ -156,17 +164,19 @@ export default function OnsiteRegistration({ options }) {
           </div>
 
           {message.text && (
-            <p
-              className={`mt-3 text-center text-sm ${
+            <div
+              className={`mt-3 ${
                 message.type === "success"
-                  ? "text-green-400"
-                  : message.type === "error"
-                  ? "text-red-400"
-                  : "text-gray-300"
+                  ? getMessageStyles("success")
+                  : `text-center text-base md:text-lg ${
+                      message.type === "error"
+                        ? "text-red-400"
+                        : "text-gray-300"
+                    }`
               }`}
             >
               {message.text}
-            </p>
+            </div>
           )}
         </div>
       </div>
@@ -271,17 +281,19 @@ export default function OnsiteRegistration({ options }) {
         </button>
 
         {message.text && (
-          <p
-            className={`mt-2 text-sm text-center ${
+          <div
+            className={`mt-2 ${
               message.type === "success"
-                ? "text-green-400"
-                : message.type === "error"
-                ? "text-red-400"
-                : "text-gray-600"
+                ? getMessageStyles("success")
+                : `text-base md:text-lg text-center ${
+                    message.type === "error"
+                      ? "text-red-400"
+                      : "text-gray-600"
+                  }`
             }`}
           >
             {message.text}
-          </p>
+          </div>
         )}
       </form>
     </div>

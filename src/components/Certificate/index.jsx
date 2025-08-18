@@ -165,7 +165,7 @@ const Certificate = ({ title, validator }) => {
           <p
             className={`${
               status[message.status]
-            } md:text-base text-sm text-center font-medium`}
+            } md:text-lg text-base text-center font-medium`}
           >
             {message.message}
           </p>
