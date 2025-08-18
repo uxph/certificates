@@ -79,7 +79,7 @@ const RegistrationForm = ({
         <p className="text-sm">
           Already registered?{" "}
           <Link
-            href={`/workshop-registration/${eventSlug}/online/check-registration`}
+            href={`/workshop-registration/${eventSlug}/check-registration`}
             className="text-main underline font-medium hover:text-main/80"
           >
             Check your registration here

@@ -104,7 +104,7 @@ const CheckRegistration = ({
         <p className="text-sm">
           Haven't registered yet?{" "}
           <Link
-            href={`/workshop-registration/${eventSlug}/online`}
+            href={`/workshop-registration/${eventSlug}`}
             className="text-main underline font-medium hover:text-main/80"
           >
             Register here
