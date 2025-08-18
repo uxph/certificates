@@ -3,6 +3,13 @@
 :root {
     --background: #ffffff;
     --foreground: #171717;
+
+    /* Brand colors */
+    --color-main: #221192; /* Roadshow main */
+    --color-purple: #C896FF; /* Purple accent */
+    --color-macopa: #ED5D4B; /* Macopa accent */
+    --color-guava: #16D06D; /* Guava accent */
+    --color-mangga: #F2C94C; /* Mangga accent */
 }
 
 @theme inline {
@@ -11,6 +18,13 @@
     --font-body: var(--font-body);
     --font-headline: var(--font-headline);
     --font-mono: var(--font-mono);
+
+    /* Brand colors */
+    --color-main: var(--color-main);
+    --color-purple: var(--color-purple);
+    --color-macopa: var(--color-macopa);
+    --color-guava: var(--color-guava);
+    --color-mangga: var(--color-mangga);
 }
 
 @media (prefers-color-scheme: dark) {

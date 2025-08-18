@@ -81,7 +81,7 @@ const CheckRegistration = ({
         <button
           onClick={handleSubmit}
           disabled={loading}
-          className="w-full py-3 bg-[#1b50d8] text-white font-semibold rounded disabled:opacity-50"
+          className="w-full py-3 bg-main text-white font-semibold rounded disabled:opacity-50"
         >
           {loading ? "Checking..." : "Check Registration"}
         </button>
@@ -105,7 +105,7 @@ const CheckRegistration = ({
           Haven't registered yet?{" "}
           <Link
             href={`/workshop-registration/${eventSlug}/online`}
-            className="text-[#1b50d8] underline font-medium hover:text-[#1b50d8]/80"
+            className="text-main underline font-medium hover:text-main/80"
           >
             Register here
           </Link>

@@ -45,7 +45,7 @@ const RegistrationForm = ({
             !selectedWorkshops["blockB"] ||
             !helixpayCode.trim()
           }
-          className="relative text-white disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer uppercase bg-[#1b50d8] hover:bg-[#1b50d8]/80 border border-[#1b50d8] py-2 px-6 rounded-sm font-semibold tracking-wider flex gap-2 items-center justify-center min-w-[120px]"
+          className="relative text-white disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer uppercase bg-main hover:bg-main/80 border border-main py-2 px-6 rounded-sm font-semibold tracking-wider flex gap-2 items-center justify-center min-w-[120px]"
           onClick={onSubmit}
         >
           {loading && <span className="icon-[eos-icons--loading]"></span>}
@@ -71,7 +71,7 @@ const RegistrationForm = ({
           Already registered?{' '}
           <Link
             href={`/workshop-registration/${eventSlug}/online/check-registration`}
-            className="text-[#1b50d8] underline font-medium hover:text-[#1b50d8]/80"
+            className="text-main underline font-medium hover:text-main/80"
           >
             Check your registration here
           </Link>

@@ -124,7 +124,7 @@ const Certificate = ({ title, validator }) => {
                 />
                 <button
                     disabled={loading || ticketId === ""}
-                    className="relative disabled:opacity-80 disabled:cursor-not-allowed cursor-pointer text-white uppercase bg-[#1b50d8] hover:bg-[#1b50d8]/80 border border-[#1b50d8] py-1 rounded-sm font-semibold tracking-wider w-48 flex gap-2 items-center justify-center"
+                    className="relative disabled:opacity-80 disabled:cursor-not-allowed cursor-pointer text-white uppercase bg-main hover:bg-main/80 border border-main py-1 rounded-sm font-semibold tracking-wider w-48 flex gap-2 items-center justify-center"
                     onClick={submit}
                 >
                     {loading && <span className="icon-[eos-icons--loading]"></span>}

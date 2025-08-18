@@ -12,7 +12,7 @@ const WorkshopCard = ({ workshop, blockName, isSelected, onSelect }) => {
     <div
       className={`border rounded-lg p-4 cursor-pointer transition-all duration-200 relative ${
         isSelected
-          ? "border-[#1b50d8] bg-[#1b50d8]/10"
+          ? "border-main bg-main/10"
           : "border-gray-600 hover:border-gray-500"
       } ${workshop.slotsLeft === 0 ? "opacity-60 cursor-not-allowed" : ""}`}
       onClick={handleClick}
@@ -25,15 +25,15 @@ const WorkshopCard = ({ workshop, blockName, isSelected, onSelect }) => {
           checked={isSelected}
           onChange={() => handleClick()}
           disabled={workshop.slotsLeft === 0}
-          className="mt-1 w-4 h-4 text-[#1b50d8] bg-gray-800 border-gray-600 focus:ring-[#1b50d8] disabled:opacity-50 disabled:cursor-not-allowed"
+          className="mt-1 w-4 h-4 text-main bg-gray-800 border-gray-600 focus:ring-main disabled:opacity-50 disabled:cursor-not-allowed"
         />
         <div className="flex-1">
-          <h3 className="text-base md:text-lg font-semibold mb-2 text-[#ED5D4B]">
+          <h3 className="text-base md:text-lg font-semibold mb-2 text-macopa">
             {workshop.title}
           </h3>
 
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-[#1b50d8] rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-main rounded-full flex items-center justify-center">
               <span className="text-white font-semibold text-xs">
                 {workshop.speaker
                   .split(" ")
@@ -42,7 +42,7 @@ const WorkshopCard = ({ workshop, blockName, isSelected, onSelect }) => {
               </span>
             </div>
             <div className="flex-1">
-              <p className="font-semibold text-[#1b50d8] text-sm">
+              <p className="font-semibold text-main text-sm">
                 {workshop.speaker}
               </p>
               <p className="text-xs text-gray-600">{workshop.role}</p>

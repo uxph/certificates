@@ -23,10 +23,10 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
                 </p>
                 {selectedWorkshop ? (
                   <div className="border rounded p-2">
-                    <p className="text-[#ED5D4B] font-bold">
+                    <p className="text-macopa font-bold">
                       {selectedWorkshop.title}
                     </p>
-                    <p className="text-[#1b50d8]">{selectedWorkshop.speaker}</p>
+                    <p className="text-main">{selectedWorkshop.speaker}</p>
                     {selectedWorkshop.room && (
                       <p className="text-xs text-gray-500">Venue: {selectedWorkshop.room}</p>
                     )}

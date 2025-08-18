@@ -129,7 +129,7 @@ export default function OnsiteRegistration({ options }) {
                         />
                         <button
                             onClick={copyCode}
-                            className="uppercase bg-[#1b50d8] hover:bg-[#1b50d8]/80 border border-[#1b50d8] px-4 rounded-sm font-semibold tracking-wider text-white"
+                            className="uppercase bg-main hover:bg-main/80 border border-main px-4 rounded-sm font-semibold tracking-wider text-white"
                         >
                             {copied ? "Copied!" : "Copy"}
                         </button>
@@ -225,7 +225,7 @@ export default function OnsiteRegistration({ options }) {
                 <button
                     type="submit"
                     disabled={loading}
-                    className="uppercase bg-[#1b50d8] hover:bg-[#1b50d8]/80 border border-[#1b50d8] py-2 rounded-sm font-semibold tracking-wider text-white mt-2"
+                    className="uppercase bg-main hover:bg-main/80 border border-main py-2 rounded-sm font-semibold tracking-wider text-white mt-2"
                 >
                     {loading ? "Verifying..." : "Register"}
                 </button>

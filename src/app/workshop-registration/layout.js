@@ -15,22 +15,22 @@ export default function WorkshopRegistrationLayout({ children }) {
                 <Link
                     target="_blank"
                     href={"https://www.facebook.com/uxphofficial/"}
-                    className="icon-[fa-brands--facebook] hover:text-[#1b50d8] transition-colors"
+                    className="icon-[fa-brands--facebook] hover:text-main transition-colors"
                 ></Link>
                 <Link
                     target="_blank"
                     href={"https://instagram.com/uxphofficial/"}
-                    className="icon-[fa-brands--instagram] hover:text-[#1b50d8] transition-colors"
+                    className="icon-[fa-brands--instagram] hover:text-main transition-colors"
                 ></Link>
                 <Link 
                     target="_blank" 
                     href={"https://x.com/uxphofficial/"} 
-                    className="icon-[fa-brands--twitter] hover:text-[#1b50d8] transition-colors"
+                    className="icon-[fa-brands--twitter] hover:text-main transition-colors"
                 ></Link>
                 <Link
                     target="_blank"
                     href={"https://www.linkedin.com/company/uxph"}
-                    className="icon-[fa-brands--linkedin] hover:text-[#1b50d8] transition-colors"
+                    className="icon-[fa-brands--linkedin] hover:text-main transition-colors"
                 ></Link>
             </div>
         </div>
