@@ -103,10 +103,28 @@ export default function OnsiteRegistration({ options }) {
 
     if (successData) {
         return (
-            <div className="flex w-full h-screen max-h-screen max-w-screen bg-[#FEFCF6] text-gray-800 justify-center items-center flex-col px-4 py-16">
+            <div className="relative overflow-hidden flex w-full h-screen max-h-screen max-w-screen bg-[#FEFCF6] text-gray-800 justify-center items-center flex-col px-4 py-16">
+                {/* Hero banner */}
+                <Image
+                    src="/conf-assets/02_Main.svg"
+                    alt="UXPH Mini 2025 Banner"
+                    fill
+                    className="pointer-events-none object-cover opacity-10 z-0"
+                />
+
+                {/* Decorative corner assets */}
+                <div className="pointer-events-none absolute top-0 left-0 w-24 md:w-40 h-24 md:h-40 z-10">
+                    <Image src="/conf-assets/Corner1.svg" alt="" fill className="object-contain" />
+                </div>
+                <div className="pointer-events-none absolute -top-8 right-0 w-24 md:w-40 h-24 md:h-40 z-10">
+                    <Image src="/conf-assets/Corner2.svg" alt="" fill className="object-contain" />
+                </div>
+                <div className="pointer-events-none absolute bottom-0 right-0 w-24 md:w-40 h-24 md:h-40 z-10">
+                    <Image src="/conf-assets/Corner3.svg" alt="" fill className="object-contain" />
+                </div>
                 <div className="flex items-center w-24 md:w-32 h-24 md:h-32 relative">
                     {" "}
-                    <Image alt="UXPH Vertical Logo" src={"/uxph_vertical.svg"} fill={true} className="object-contain" />
+                    <Image alt="UXPH Mini Logo" src={"/Logo_UXPHMini.png"} fill={true} className="object-contain" />
                 </div>
 
                 <div className="w-full max-w-prose bg-white border border-gray-300 rounded-md p-6 my-16">
@@ -154,9 +172,27 @@ export default function OnsiteRegistration({ options }) {
     }
 
     return (
-        <div className="flex w-full h-screen bg-[#FEFCF6] text-gray-800 justify-start py-16 items-center flex-col px-4">
+        <div className="relative overflow-hidden flex w-full h-screen bg-[#FEFCF6] text-gray-800 justify-start py-16 items-center flex-col px-4">
+            {/* Hero banner */}
+            <Image
+                src="/conf-assets/02_Main.svg"
+                alt="UXPH Mini 2025 Banner"
+                fill
+                className="pointer-events-none object-cover opacity-10 z-0"
+            />
+
+            {/* Decorative corner assets */}
+            {/* <div className="pointer-events-none absolute top-0 left-0 w-24 md:w-40 h-24 md:h-40 z-10">
+                <Image src="/conf-assets/Corner1.svg" alt="" fill className="object-contain" />
+            </div>
+            <div className="pointer-events-none absolute -top-8 right-0 w-24 md:w-40 h-24 md:h-40 z-10">
+                <Image src="/conf-assets/Corner2.svg" alt="" fill className="object-contain" />
+            </div> */}
+            {/* <div className="pointer-events-none absolute bottom-0 right-0 w-24 md:w-40 h-24 md:h-40 z-10">
+                <Image src="/conf-assets/Corner3.svg" alt="" fill className="object-contain" />
+            </div> */}
             <div className="flex items-center w-24 md:w-32 h-24 md:h-32 relative">
-                <Image alt="UXPH Vertical Logo" src={"/uxph_vertical.svg"} fill={true} className="object-contain" />
+                <Image alt="UXPH Mini Logo" src={"/Logo_UXPHMini.png"} fill={true} className="object-contain" />
             </div>
 
             <h1 className="text-4xl font-bold my-6">Onsite Registration</h1>
