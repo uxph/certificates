@@ -28,13 +28,13 @@ const WorkshopCard = ({ workshop, blockName, isSelected, onSelect }) => {
           className="mt-1 w-4 h-4 text-main bg-gray-800 border-gray-600 focus:ring-main disabled:opacity-50 disabled:cursor-not-allowed"
         />
         <div className="flex-1">
-          <h3 className=" font-semibold mb-2 text-lg text-main">
+          <h3 className=" font-semibold mb-2 text-xl text-main">
             {workshop.title}
           </h3>
 
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-main rounded-full flex items-center justify-center">
-              <span className="text-white font-semibold text-xs">
+            <div className="w-12 h-12 bg-main rounded-full flex items-center justify-center">
+              <span className="text-white font-semibold text-lg">
                 {workshop.speaker
                   .split(" ")
                   .map((n) => n[0])
@@ -42,12 +42,12 @@ const WorkshopCard = ({ workshop, blockName, isSelected, onSelect }) => {
               </span>
             </div>
             <div className="flex-1">
-              <p className="font-semibold text-macopa text-base">
+              <p className="font-semibold text-macopa text-lg">
                 {workshop.speaker}
               </p>
-              {/* <p className="text-sm text-gray-600">{workshop.role}</p> */}
+              {/* <p className="text-base text-gray-500">{workshop.role}</p> */}
               {workshop.room && (
-                <p className="text-sm text-gray-500">Venue: {workshop.room}</p>
+                <p className="text-base text-gray-600">Venue: {workshop.room}</p>
               )}
             </div>
           </div>
