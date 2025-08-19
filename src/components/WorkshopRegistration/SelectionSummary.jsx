@@ -30,13 +30,13 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
                 </p>
                 <p className="font-medium text-base mb-2">({blockInfo[blockName]?.time})</p>
                 {selectedWorkshop ? (
-                  <div className="border-2 border-green-500 rounded p-2 bg-green-50">
-                    <p className="text-main font-bold">
+                  <div className="border border-main rounded p-2 bg-main/5">
+                    <p className="text-main text-lg font-bold">
                       {selectedWorkshop.title}
                     </p>
-                    <p className="text-gray-700 ">{selectedWorkshop.speaker}</p>
+                    <p className="text-macopa font-bold ">{selectedWorkshop.speaker}</p>
                     {selectedWorkshop.room && (
-                      <p className="text-sm text-gray-500">Venue: {selectedWorkshop.room}</p>
+                      <p className=" text-gray-600">Venue: {selectedWorkshop.room}</p>
                     )}
                   </div>
                 ) : (
