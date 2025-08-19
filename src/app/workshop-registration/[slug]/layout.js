@@ -1,10 +1,26 @@
 import Image from "next/image";
 import Link from "next/link";
+import path from "path";
+import fsPromises from "fs/promises";
 
-export default function WorkshopRegistrationLayout({ children }) {
+async function getEventInfo({ slug }) {
+  const filePath = path.join(process.cwd(), "data/events.json");
+  let data = JSON.parse(await fsPromises.readFile(filePath));
+  return data["2025"]?.[slug];
+}
+
+export default async function SlugLayout({ children, params }) {
+  // Get the slug from the params - this will work at the [slug] level
+  const slug = params?.slug;
+  console.log("Slug in layout:", slug);
+  const eventInfo = slug ? await getEventInfo({ slug }) : null;
+  
+  // Only the logo is dynamic, background stays static
+  const eventLogo = eventInfo?.logo || "/Logo_UXPHMini.png";
+
   return (
     <div className="relative overflow-hidden flex w-full min-h-screen text-gray-800 justify-center items-center flex-col py-8 px-4">
-      {/* Hero banner */}
+      {/* Hero banner - static background */}
       <Image
         src="/conf-assets/02_Main.svg"
         alt="UXPH Mini 2025 Banner"
@@ -27,7 +43,7 @@ export default function WorkshopRegistrationLayout({ children }) {
       <div className="flex items-center w-24 md:w-52 h-24 md:h-52 relative">
         <Image
           alt="UXPH Mini Logo"
-          src={"/Logo_UXPHMini.png"}
+          src={eventLogo}
           fill={true}
           className="object-contain"
         />

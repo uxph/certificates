@@ -137,7 +137,7 @@ const WorkshopRegistration = ({
       // Set success data and show modal
       setSuccessData({
         ...result.data,
-        selectedWorkshops: { ...selectedWorkshops }
+        selectedWorkshops: { ...selectedWorkshops },
       });
       setShowSuccessModal(true);
       setLoading(false);
@@ -165,9 +165,21 @@ const WorkshopRegistration = ({
       <h1 className="text-2xl md:text-4xl font-bold mb-4 text-center">
         {title}
       </h1>
-      {subtitle && (
+      <p className="text-base tracking-widest mb-8 text-center">
+        Please visit the{" "}
+        <a
+          className="underline text-main"
+          href="https://2025.uxph.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          website
+        </a>{" "}
+        for detailed session information.
+      </p>
+      {/* {subtitle && (
         <p className="text-base tracking-widest mb-8 text-center">{subtitle}</p>
-      )}
+      )} */}
 
       <div className="max-w-6xl w-full space-y-8">
         {Object.entries(workshopData).map(([blockName, workshops]) => (
