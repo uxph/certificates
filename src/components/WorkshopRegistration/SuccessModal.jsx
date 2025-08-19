@@ -1,6 +1,6 @@
 import React from "react";
 
-const SuccessModal = ({ isOpen, onClose, attendeeName }) => {
+const SuccessModal = ({ isOpen, onClose, attendeeName, selectedWorkshops, workshopBlocks }) => {
   if (!isOpen) return null;
 
   return (
@@ -39,6 +39,44 @@ const SuccessModal = ({ isOpen, onClose, attendeeName }) => {
               Welcome, <span className="font-semibold">{attendeeName}</span>!
             </p>
           )}
+
+          {/* Workshop Selections */}
+          <div className="text-left mb-6">
+            <h3 className="font-semibold text-gray-900 mb-3 text-center">
+              Your Workshops:
+            </h3>
+            <div className="space-y-3">
+              {Object.entries(selectedWorkshops).map(([blockName, workshopId]) => {
+                const selectedWorkshop = workshopBlocks[blockName]?.find(
+                  (w) => w.id === workshopId
+                );
+                const blockLabel = blockName === 'blockA' ? 'Block A' : 'Block B';
+                
+                return (
+                  <div key={blockName} className="border border-green-200 rounded p-3 bg-green-50">
+                    <p className="font-semibold text-gray-800 mb-1 text-sm">
+                      {blockLabel}
+                    </p>
+                    {selectedWorkshop && (
+                      <>
+                        <p className="text-green-700 font-bold text-base">
+                          {selectedWorkshop.title}
+                        </p>
+                        <p className="text-gray-600 text-sm">
+                          {selectedWorkshop.speaker}
+                        </p>
+                        {selectedWorkshop.room && (
+                          <p className="text-xs text-gray-500">
+                            Venue: {selectedWorkshop.room}
+                          </p>
+                        )}
+                      </>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
 
           <div className="text-left">
             <h3 className="font-semibold text-gray-900 mb-3 text-center">

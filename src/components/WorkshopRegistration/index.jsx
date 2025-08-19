@@ -135,7 +135,10 @@ const WorkshopRegistration = ({
       }
 
       // Set success data and show modal
-      setSuccessData(result.data);
+      setSuccessData({
+        ...result.data,
+        selectedWorkshops: { ...selectedWorkshops }
+      });
       setShowSuccessModal(true);
       setLoading(false);
 
@@ -201,6 +204,8 @@ const WorkshopRegistration = ({
         isOpen={showSuccessModal}
         onClose={() => setShowSuccessModal(false)}
         attendeeName={successData?.attendeeName}
+        selectedWorkshops={successData?.selectedWorkshops}
+        workshopBlocks={workshopData}
       />
     </>
   );
