@@ -18,11 +18,11 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
             );
             return (
               <div key={blockName} className="text-center">
-                <p className="font-semibold text-gray-800 mb-1">
+                <p className="font-bold text-lg text-gray-800 mb-2">
                   {blockCopy[blockName]}
                 </p>
                 {selectedWorkshop ? (
-                  <div className="border rounded p-2">
+                  <div className="border-2 border-green-500 rounded p-2 bg-green-50">
                     <p className="text-macopa font-bold">
                       {selectedWorkshop.title}
                     </p>
@@ -32,8 +32,8 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
                     )}
                   </div>
                 ) : (
-                  <div className=" border border-gray-500 rounded p-2">
-                    <p className="text-gray-400 text-sm">No selection made</p>
+                  <div className="border border-gray-300 rounded p-2 bg-gray-50">
+                    <p className="text-red-500 font-bold text-lg uppercase tracking-wide">Pick One</p>
                   </div>
                 )}
               </div>

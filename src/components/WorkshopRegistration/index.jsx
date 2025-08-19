@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import WorkshopBlock from "./WorkshopBlock";
 import SelectionSummary from "./SelectionSummary";
 import RegistrationForm from "./RegistrationForm";
+import SuccessModal from "./SuccessModal";
 
 const WorkshopRegistration = ({
   workshopBlocks,
@@ -25,6 +26,8 @@ const WorkshopRegistration = ({
     message: "",
   });
   const [loading, setLoading] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [successData, setSuccessData] = useState(null);
 
   // Fetch latest slotsLeft from server
   const refreshSlots = useCallback(async () => {
@@ -131,11 +134,17 @@ const WorkshopRegistration = ({
         throw new Error(result.error);
       }
 
-      setMessage({
-        status: "success",
-        message: `Registration successful! Welcome ${result.data.attendeeName}. You will receive a confirmation email shortly.`,
-      });
+      // Set success data and show modal
+      setSuccessData(result.data);
+      setShowSuccessModal(true);
       setLoading(false);
+
+      // Clear the form
+      setSelectedWorkshops({
+        blockA: "",
+        blockB: "",
+      });
+      setHelixpayCode("");
 
       // Refresh slots after successful registration
       await refreshSlots();
@@ -186,6 +195,12 @@ const WorkshopRegistration = ({
         setMessage={setMessage}
         eventSlug={eventSlug}
         helixpayPattern={helixpayPattern}
+      />
+
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        attendeeName={successData?.attendeeName}
       />
     </>
   );

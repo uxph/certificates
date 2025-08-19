@@ -29,6 +29,13 @@ const WorkshopBlock = ({
                         {blockInfo[blockName].time}
                     </p>
                 )}
+                {!selectedWorkshop && (
+                  <div className="mt-3">
+                    <span className="inline-block text-red-500 font-bold text-3xl tracking-wide uppercase">
+                        Pick One
+                    </span>
+                  </div>
+                )}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {workshops.map((workshop) => (
