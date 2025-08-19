@@ -181,7 +181,7 @@ const WorkshopRegistration = ({
         <p className="text-base tracking-widest mb-8 text-center">{subtitle}</p>
       )} */}
 
-      <div className="max-w-6xl w-full space-y-8">
+      <div className="max-w-6xl w-full space-y-16">
         {Object.entries(workshopData).map(([blockName, workshops]) => (
           <WorkshopBlock
             key={blockName}

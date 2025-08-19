@@ -50,7 +50,11 @@ const SuccessModal = ({ isOpen, onClose, attendeeName, selectedWorkshops, worksh
                 const selectedWorkshop = workshopBlocks[blockName]?.find(
                   (w) => w.id === workshopId
                 );
-                const blockLabel = blockName === 'blockA' ? 'Block A' : 'Block B';
+                const blockInfo = {
+                  blockA: { label: 'Block A', time: '9:00 AM - 10:30 AM' },
+                  blockB: { label: 'Block B', time: '10:45 AM - 12:15 PM' }
+                };
+                const blockLabel = `${blockInfo[blockName]?.label} (${blockInfo[blockName]?.time})`;
                 
                 return (
                   <div key={blockName} className="border border-green-200 rounded p-3 bg-green-50">

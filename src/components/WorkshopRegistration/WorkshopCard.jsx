@@ -28,7 +28,7 @@ const WorkshopCard = ({ workshop, blockName, isSelected, onSelect }) => {
           className="mt-1 w-4 h-4 text-main bg-gray-800 border-gray-600 focus:ring-main disabled:opacity-50 disabled:cursor-not-allowed"
         />
         <div className="flex-1">
-          <h3 className="text-base md:text-lg font-semibold mb-2 text-macopa">
+          <h3 className=" font-semibold mb-2 text-lg text-main">
             {workshop.title}
           </h3>
 
@@ -42,22 +42,22 @@ const WorkshopCard = ({ workshop, blockName, isSelected, onSelect }) => {
               </span>
             </div>
             <div className="flex-1">
-              <p className="font-semibold text-main text-sm">
+              <p className="font-semibold text-macopa text-base">
                 {workshop.speaker}
               </p>
-              <p className="text-xs text-gray-600">{workshop.role}</p>
+              {/* <p className="text-sm text-gray-600">{workshop.role}</p> */}
               {workshop.room && (
-                <p className="text-xs text-gray-500">Venue: {workshop.room}</p>
+                <p className="text-sm text-gray-500">Venue: {workshop.room}</p>
               )}
             </div>
           </div>
 
           {/* Slots Left Indicator */}
           <div className="mt-3 pt-2 border-t border-gray-600">
-            <div className="flex items-center justify-between">
-              <span className="text-xs text-gray-600">Slots available:</span>
+            <div className="flex items-center justify-end gap-4">
+              <span className="text-sm text-gray-600">Slots available:</span>
               <div
-                className={`px-2 py-1 rounded text-xs font-semibold ${
+                className={`px-2 py-1 rounded text-sm font-semibold ${
                   workshop.slotsLeft === 0
                     ? "bg-red-500/20 text-red-600 border border-red-500/30"
                     : workshop.slotsLeft <= 5

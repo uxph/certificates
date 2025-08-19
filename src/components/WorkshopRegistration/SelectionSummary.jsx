@@ -1,14 +1,21 @@
 import React from "react";
 
 const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
-  const blockCopy = {
-    blockA: "Block A",
-    blockB: "Block B",
+  const blockInfo = {
+    blockA: {
+      label: "Block A",
+      time: "9:00 AM - 10:30 AM",
+    },
+    blockB: {
+      label: "Block B",
+      time: "10:45 AM - 12:15 PM",
+    },
   };
+  
   return (
     <div className="max-w-4xl w-full mt-8 mb-6">
       <div className=" rounded-lg p-4 border border-gray-600">
-        <h3 className="text-lg font-semibold mb-3 text-center">
+        <h3 className="text-2xl font-semibold mb-3 text-center">
           Your workshops
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -18,17 +25,18 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
             );
             return (
               <div key={blockName} className="text-center">
-                <p className="font-bold text-lg text-gray-800 mb-2">
-                  {blockCopy[blockName]}
+                <p className="font-bold text-lg text-gray-800">
+                  {blockInfo[blockName]?.label} 
                 </p>
+                <p className="font-medium text-base mb-2">({blockInfo[blockName]?.time})</p>
                 {selectedWorkshop ? (
                   <div className="border-2 border-green-500 rounded p-2 bg-green-50">
-                    <p className="text-macopa font-bold">
+                    <p className="text-main font-bold">
                       {selectedWorkshop.title}
                     </p>
-                    <p className="text-main">{selectedWorkshop.speaker}</p>
+                    <p className="text-gray-700 ">{selectedWorkshop.speaker}</p>
                     {selectedWorkshop.room && (
-                      <p className="text-xs text-gray-500">Venue: {selectedWorkshop.room}</p>
+                      <p className="text-sm text-gray-500">Venue: {selectedWorkshop.room}</p>
                     )}
                   </div>
                 ) : (
