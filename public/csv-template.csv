@@ -1,0 +1,4 @@
+qr_code_text,customer_name,event_name,event_date,event_location,event_start_time,expires_at,order_id,order_status_id,price,product_name,seat,status,ticket_count_label,details,image_path
+HLX-989106-342127-88644,John Doe,UXPH Conference 2024,2024-12-15,Manila,09:00 AM,2024-12-16,ORD001,confirmed,1500.00,Conference Ticket,Seat A1,active,1 ticket,Full conference access with workshops,01_Manila.png
+HLX-DEF456-234567-23456,Jane Smith,UXPH Workshop,2024-12-16,Cebu,02:00 PM,2024-12-17,ORD002,pending,800.00,Workshop Ticket,Seat B3,pending,1 ticket,Design thinking workshop,03_Cebu.png
+HLX-GHI789-345678-34567,Mike Johnson,UXPH Meetup,2024-12-17,Davao,06:00 PM,2024-12-18,ORD003,confirmed,500.00,Meetup Ticket,Seat C5,active,1 ticket,Networking event,05_Davao.png
