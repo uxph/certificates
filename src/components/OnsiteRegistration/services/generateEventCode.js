@@ -1,7 +1,15 @@
+function normalizeSpecialCharacters(str) {
+    return str
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '') // Remove diacritics
+        .replace(/[^a-zA-Z0-9]/g, '') // Remove any remaining special characters
+        .toUpperCase();
+}
+
 function generateEventCode(eventId, lastName) {
     // Ensure we always have at least 3 characters
     const evPart = (eventId || "EVT").substring(0, 3).toUpperCase();
-    const lnPart = (lastName || "XXX").substring(0, 3).toUpperCase().padEnd(3, "X");
+    const lnPart = normalizeSpecialCharacters(lastName || "XXX").substring(0, 3).padEnd(3, "X");
 
     // Generate numeric sections
     //    const num1 = String(Math.floor(Math.random() * 1_000_000)).padStart(6, "0");
