@@ -38,7 +38,7 @@ const Debugger = ({ info, setInfo }) => {
   );
 };
 
-const Certificate = ({ title, validator, certificate_template }) => {
+const Certificate = ({ title, validator, certificate_template, logo }) => {
   const [message, setMessage] = useState({
     status: "info",
     message: "",
@@ -117,20 +117,20 @@ const Certificate = ({ title, validator, certificate_template }) => {
             <div className="pointer-events-none absolute bottom-0 right-0 w-24 md:w-40 h-24 md:h-40 z-0">
                 <Image src="/conf-assets/Corner3.svg" alt="" fill className="object-contain" />
             </div> */}
-      <div className="flex items-center w-24 md:w-40 h-24 md:h-40 relative">
+      <div className="flex items-center w-24 md:w-48 h-24 md:h-48 relative">
         <Image
           alt="UXPH Mini Logo"
-          src={"/Logo_UXPHMini.png"}
+          src={logo || "/Logo_UXPHMini.png"}
           fill={true}
           className="object-contain"
         />
       </div>
-      <h1 className="text-2xl md:text-5xl font-bold mt-4">
+      <h1 className="text-2xl md:text-5xl font-bold my-4">
         Certificate of Attendance
       </h1>
-      <p className="text-base tracking-widest my-4">for the event</p>
+      {/* <p className="text-base tracking-widest my-4">for the event</p>
 
-      <h3 className="text-lg tracking-widest mb-8 font-semibold">{title}</h3>
+      <h3 className="text-lg tracking-widest mb-8 font-semibold">{title}</h3> */}
       <p className="font-light text-base md:text-xl tracking-wide text-center">
         Enter your{" "}
         <a href="#" className="underline font-semibold">
