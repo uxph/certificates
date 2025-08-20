@@ -9,7 +9,7 @@ import SuccessModal from "./SuccessModal";
 const WorkshopRegistration = ({
   workshopBlocks,
   title = "Workshop Registration",
-  subtitle = "Online Workshops",
+  subtitle,
   eventSlug,
   helixpayPattern = "",
   helixpayRegex = "",
@@ -115,6 +115,7 @@ const WorkshopRegistration = ({
           eventSlug: eventSlug,
           helixpayCode: helixpayCode.trim(),
           workshopSelections: selectedWorkshops,
+          title: subtitle,
         }),
       });
 

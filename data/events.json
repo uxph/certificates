@@ -28,9 +28,10 @@
             "title": "Mini Conference 2025 - DVO",
             "logo": "/davao_logo.png",
             "validator": {
-                "regex": "/^HLX-[A-Za-z0-9]{6}-\\d{6}-\\d{5}$/",
+                "regex": "^HLX-[A-Za-z0-9]{6}-\\d{6}-\\d{5}$",
                 "pattern": "HLX-XXXXXX-XXXXXX-XXXXX"
-            }
+            },
+            "onsite_code": "DVO_V3Q8Q"
         }
     }
 }

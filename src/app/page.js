@@ -4,6 +4,8 @@ import fsPromises from "fs/promises";
 import Certificate from "@/components/Certificate";
 import { notFound } from "next/navigation";
 import OnsiteRegistration from "@/components/OnsiteRegistration";
+import PasswordProtection from "@/components/PasswordProtection";
+import { checkAuth } from "./actions/auth";
 
 async function getEvents() {
     const filePath = path.join(process.cwd(), "data/events.json");
@@ -12,10 +14,16 @@ async function getEvents() {
         .map((year) => Object.keys(data[year]).map((ev) => ({ value: ev, label: data[year][ev].title })))
         .flat();
 }
-path;
+
 export default async function Page({ params }) {
     let events = await getEvents();
+    const isAuthenticated = await checkAuth();
+    
     console.log(events);
+
+    if (!isAuthenticated) {
+        return <PasswordProtection />;
+    }
 
     return <OnsiteRegistration options={events} />;
 }

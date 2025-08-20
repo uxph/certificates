@@ -4,7 +4,7 @@ import admin from "firebase-admin";
 
 export async function POST(request) {
   try {
-    const { eventSlug, helixpayCode, workshopSelections } =
+    const { eventSlug, helixpayCode, workshopSelections, title } =
       await request.json();
 
     const db = getFirebaseAdmin().firestore();
@@ -35,6 +35,7 @@ export async function POST(request) {
     const attendeesRef = db.collection("helixpay_event_attendees");
     const attendeeQuery = await attendeesRef
       .where("qr_code_text", "==", helixpayCode.trim())
+      .where("event_name", "==", title)
       .get();
 
     if (attendeeQuery.empty) {
