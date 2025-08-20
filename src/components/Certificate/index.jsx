@@ -38,7 +38,7 @@ const Debugger = ({ info, setInfo }) => {
   );
 };
 
-const Certificate = ({ title, validator }) => {
+const Certificate = ({ title, validator, certificate_template }) => {
   const [message, setMessage] = useState({
     status: "info",
     message: "",
@@ -75,7 +75,7 @@ const Certificate = ({ title, validator }) => {
       if (!result.success) throw new Error(result.error);
 
       let { customer_name } = result.data;
-      await generate({ certName: customer_name });
+      await generate({ certName: customer_name, certificate_template });
       setMessage({
         status: "success",
         message:

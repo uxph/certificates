@@ -1,6 +1,6 @@
 import jsPDF from "jspdf";
 
-const generate = async ({ certName = "" }) => {
+const generate = async ({ certName = "", certificate_template = "/templates/certificates/sample.jpg" }) => {
   return await new Promise(async (resolve) => {
     const doc = new jsPDF("l", "mm", "a4"); // todo compress PDF specs
 
@@ -22,7 +22,7 @@ const generate = async ({ certName = "" }) => {
       // Add the font to jsPDF with the actual font data
       doc.addFont("Poppins-Bold.ttf", "Poppins", "bold");
 
-      doc.addImage("/templates/certificates/davao.png", "PNG", 0, 0, 297, 210);
+      doc.addImage(certificate_template, "PNG", 0, 0, 297, 210);
 
       // Set font to Poppins Bold
       doc.setFont("Poppins", "bold");
