@@ -5,6 +5,7 @@ import Certificate from "@/components/Certificate";
 import { notFound } from "next/navigation";
 import OnsiteRegistration from "@/components/OnsiteRegistration";
 import PasswordProtection from "@/components/PasswordProtection";
+import Navigation from "@/components/Navigation";
 import { checkAuth } from "./actions/auth";
 
 async function getEvents() {

@@ -1,9 +1,9 @@
 import PasswordProtection from "@/components/PasswordProtection";
-import CSVUpload from "@/components/CSVUpload";
+import DatabaseExport from "@/components/DatabaseExport";
 import Navigation from "@/components/Navigation";
 import { checkAuth } from "../actions/auth";
 
-export default async function CSVUploadPage() {
+export default async function DatabaseExportPage() {
   const isAuthenticated = await checkAuth();
   if (!isAuthenticated) {
     return <PasswordProtection />;
@@ -12,7 +12,7 @@ export default async function CSVUploadPage() {
   return (
     <>
       <Navigation />
-      <CSVUpload />
+      <DatabaseExport />
     </>
   );
 }

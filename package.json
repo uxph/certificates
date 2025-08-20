@@ -11,6 +11,7 @@
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "csvtojson": "^2.0.10",
+    "exceljs": "^4.4.0",
     "firebase-admin": "^13.4.0",
     "jspdf": "^3.0.1",
     "next": "15.4.2",
