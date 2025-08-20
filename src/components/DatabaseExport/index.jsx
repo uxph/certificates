@@ -7,41 +7,44 @@ export default function DatabaseExport() {
   const [exportStatus, setExportStatus] = useState("");
   const [exportProgress, setExportProgress] = useState("");
 
-  const collections = [
-    { 
-      id: "helixpay_event_attendees", 
-      name: "Event Attendees", 
-      description: "All event attendees data from HelixPay events",
-      icon: "👥"
+  const venues = [
+    {
+      id: "mini-conf-dvo",
+      name: "Davao",
+      description: "Export workshop attendees for Davao Mini Conference 2025",
+      icon: "🌴",
+      eventTitle: "Mini Conference 2025 - DVO"
     },
-    { 
-      id: "workshop_registrations", 
-      name: "Workshop Registrations", 
-      description: "Workshop registration data and participant information",
-      icon: "🎓"
+    {
+      id: "mini-conf-ceb",
+      name: "Cebu",
+      description: "Export workshop attendees for Cebu Mini Conference 2025",
+      icon: "🏝️",
+      eventTitle: "Mini Conference 2025 - CEB"
     },
-    { 
-      id: "onsite_registrations", 
-      name: "Onsite Registrations", 
-      description: "Onsite registration data from physical events",
-      icon: "📝"
+    {
+      id: "mini-conf-mnl",
+      name: "Manila",
+      description: "Export workshop attendees for Manila Mini Conference 2025",
+      icon: "🏙️",
+      eventTitle: "Mini Conference 2025 - MNL"
     },
   ];
 
-  const handleExport = async (collectionId) => {
+  const handleExport = async (venueId) => {
     setIsExporting(true);
-    setExportStatus(`Exporting ${collectionId}...`);
+    setExportStatus(`Exporting ${venueId} workshop attendees...`);
     setExportProgress("Connecting to database...");
 
     try {
       setExportProgress("Fetching data from Firebase...");
-      
+
       const response = await fetch("/api/db-export", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ collection: collectionId }),
+        body: JSON.stringify({ venue: venueId }),
       });
 
       if (!response.ok) {
@@ -55,17 +58,28 @@ export default function DatabaseExport() {
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `${collectionId}_${new Date().toISOString().split("T")[0]}.xlsx`;
+      
+      // Get the venue object to access the event title
+      const venueObj = venues.find(v => v.id === venueId);
+      const eventName = venueObj ? venueObj.name : venueId;
+      
+      a.download = `workshop_attendees_${eventName}_${venueId}_${
+        new Date().toISOString().split("T")[0]
+      }.xlsx`;
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
 
-      setExportStatus(`✅ Successfully exported ${collectionId}`);
+      setExportStatus(
+        `✅ Successfully exported ${venueId} workshop attendees`
+      );
       setExportProgress("");
     } catch (error) {
       console.error("Export error:", error);
-      setExportStatus(`❌ Error exporting ${collectionId}: ${error.message}`);
+      setExportStatus(
+        `❌ Error exporting ${venueId}: ${error.message}`
+      );
       setExportProgress("");
     } finally {
       setIsExporting(false);
@@ -79,51 +93,59 @@ export default function DatabaseExport() {
           <div className="px-6 py-8">
             <div className="mb-8">
               <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                Database Export
+                Workshop Attendee Export
               </h1>
               <p className="text-gray-600">
-                Export database collections to XLSX format using ExcelJS for analysis and reporting.
+                Export workshop attendees by event venue. Each Excel file will contain multiple sheets - one for each workshop with attendee details.
               </p>
             </div>
 
             {exportStatus && (
-              <div className={`mb-6 p-4 rounded-md ${
-                exportStatus.includes("❌") 
-                  ? "bg-red-50 text-red-700 border border-red-200" 
-                  : exportStatus.includes("✅") 
+              <div
+                className={`mb-6 p-4 rounded-md ${
+                  exportStatus.includes("❌")
+                    ? "bg-red-50 text-red-700 border border-red-200"
+                    : exportStatus.includes("✅")
                     ? "bg-green-50 text-green-700 border border-green-200"
                     : "bg-blue-50 text-blue-700 border border-blue-200"
-              }`}>
+                }`}
+              >
                 <div className="font-medium">{exportStatus}</div>
                 {exportProgress && (
-                  <div className="text-sm mt-1 opacity-75">{exportProgress}</div>
+                  <div className="text-sm mt-1 opacity-75">
+                    {exportProgress}
+                  </div>
                 )}
               </div>
             )}
 
             <div className="grid gap-6">
-              {collections.map((collection) => (
+              {venues.map((venue) => (
                 <div
-                  key={collection.id}
+                  key={venue.id}
                   className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow"
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <span className="text-2xl">{collection.icon}</span>
-                        <h3 className="text-lg font-semibold text-gray-900">
-                          {collection.name}
-                        </h3>
+                        <span className="text-2xl">{venue.icon}</span>
+                        <div>
+                          <h3 className="text-lg font-semibold text-gray-900">
+                            {venue.name}
+                          </h3>
+                          <p className="text-sm text-gray-600">{venue.eventTitle}</p>
+                        </div>
                       </div>
-                      <p className="text-gray-600 mb-4">
-                        {collection.description}
-                      </p>
+                      <p className="text-gray-600 mb-4">{venue.description}</p>
                       <p className="text-sm text-gray-500">
-                        Collection ID: <code className="bg-gray-100 px-2 py-1 rounded font-mono">{collection.id}</code>
+                        Event ID:{" "}
+                        <code className="bg-gray-100 px-2 py-1 rounded font-mono">
+                          {venue.id}
+                        </code>
                       </p>
                     </div>
                     <button
-                      onClick={() => handleExport(collection.id)}
+                      onClick={() => handleExport(venue.id)}
                       disabled={isExporting}
                       className={`px-6 py-2 rounded-md font-medium transition-colors ${
                         isExporting
@@ -137,24 +159,12 @@ export default function DatabaseExport() {
                           Exporting...
                         </div>
                       ) : (
-                        "Export to XLSX"
+                        "Export to Excel"
                       )}
                     </button>
                   </div>
                 </div>
               ))}
-            </div>
-
-            <div className="mt-8 p-4 bg-gray-50 rounded-lg">
-              <h4 className="font-medium text-gray-900 mb-2">Export Features</h4>
-              <ul className="text-sm text-gray-600 space-y-1">
-                <li>• Server-side processing using ExcelJS for security</li>
-                <li>• Automatic column width adjustment based on content</li>
-                <li>• Formatted headers with styling</li>
-                <li>• Handles complex data types (objects, arrays)</li>
-                <li>• Files include collection ID and export date</li>
-                <li>• Direct download to your device</li>
-              </ul>
             </div>
           </div>
         </div>
