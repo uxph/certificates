@@ -24,13 +24,13 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
               (w) => w.id === workshopId
             );
             return (
-              <div key={blockName} className="text-center">
+              <div key={blockName} className="text-center h-full flex flex-col">
                 <p className="font-bold text-lg text-gray-800">
                   {blockInfo[blockName]?.label} 
                 </p>
                 <p className="font-medium text-base mb-2">({blockInfo[blockName]?.time})</p>
                 {selectedWorkshop ? (
-                  <div className="border border-main rounded p-2 bg-main/5">
+                  <div className="border border-main rounded p-2 bg-main/5 flex-1 flex flex-col justify-center">
                     <p className="text-main text-lg font-bold">
                       {selectedWorkshop.title}
                     </p>
@@ -40,7 +40,7 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
                     )}
                   </div>
                 ) : (
-                  <div className="border border-gray-300 rounded p-2 bg-gray-50">
+                  <div className="border border-gray-300 rounded p-2 bg-gray-50 flex-1 flex flex-col justify-center">
                     <p className="text-red-500 font-bold text-lg uppercase tracking-wide">Pick One</p>
                   </div>
                 )}

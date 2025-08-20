@@ -18,8 +18,6 @@ const RegistrationForm = ({
     success: "text-green-400",
   };
 
-
-
   return (
     <div className="max-w-prose w-full mt-8">
       <p className="font-light text-base md:text-xl tracking-wide text-center mb-4">
@@ -58,7 +56,9 @@ const RegistrationForm = ({
       <div className="min-h-8 mt-2">
         {message.message && message.status !== "success" && (
           <div
-            className={`${status[message.status]} md:text-lg text-base text-center font-medium`}
+            className={`${
+              status[message.status]
+            } md:text-lg text-base text-center font-medium`}
           >
             {message.message}
           </div>
@@ -67,7 +67,7 @@ const RegistrationForm = ({
 
       {/* Link to check registration */}
       <div className="mt-4 text-center">
-        <p className="text-sm">
+        <p>
           Already registered?{" "}
           <Link
             href={`/workshop-registration/${eventSlug}/check-registration`}
