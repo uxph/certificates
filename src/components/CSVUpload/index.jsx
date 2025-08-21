@@ -92,7 +92,7 @@ export default function CSVUpload() {
                       disabled={isProcessing}
                     />
                   </label>
-                  <p className="text-xs text-gray-500">or drag and drop</p>
+                  {/* <p className="text-xs text-gray-500">or drag and drop</p> */}
                 </div>
                 {file && (
                   <p className="text-sm text-gray-600">

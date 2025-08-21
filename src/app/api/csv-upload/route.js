@@ -40,15 +40,31 @@ export async function POST(request) {
       );
     }
 
-    // Validate required fields
-    const requiredFields = ['qr_code_text', 'customer_name', 'event_name'];
-    const missingFields = data.some(record => 
-      requiredFields.some(field => !record[field] || record[field].trim() === '')
+    // Validate required fields - check for either the CSV column names or the mapped field names
+    const requiredFields = ['QR Code', 'Customer Name', 'Event Name', 'qr_code_text', 'customer_name', 'event_name'];
+    
+    // Check if CSV contains at least one of each required field type (new format OR old format)
+    const hasNewFormatFields = data.length > 0 && (
+      data[0].hasOwnProperty('QR Code') && 
+      data[0].hasOwnProperty('Customer Name') && 
+      data[0].hasOwnProperty('Event Name')
     );
+    
+    const hasOldFormatFields = data.length > 0 && (
+      data[0].hasOwnProperty('qr_code_text') && 
+      data[0].hasOwnProperty('customer_name') && 
+      data[0].hasOwnProperty('event_name')
+    );
+    
+    const missingFields = !hasNewFormatFields && !hasOldFormatFields;
+
+    console.log('Has new format fields:', hasNewFormatFields);
+    console.log('Has old format fields:', hasOldFormatFields);
+    console.log('Missing fields:', missingFields);
 
     if (missingFields) {
       return NextResponse.json(
-        { error: 'CSV must contain qr_code_text, customer_name, and event_name fields' },
+        { error: 'CSV must contain QR Code/qr_code_text, Customer Name/customer_name, and Event Name/event_name fields' },
         { status: 400 }
       );
     }
@@ -66,7 +82,7 @@ export async function POST(request) {
     };
 
     // Process records in batches
-    const batchSize = 50;
+    const batchSize = 20;
     const batches = [];
     
     for (let i = 0; i < data.length; i += batchSize) {
@@ -75,7 +91,11 @@ export async function POST(request) {
 
     for (const batch of batches) {
       // Check for duplicates in this batch
-      const qrCodes = batch.map(record => record.qr_code_text.trim());
+      const qrCodes = batch.map(record => {
+        // Try to get QR code from either format
+        const qrCode = record['QR Code']?.trim() || record.qr_code_text?.trim();
+        return qrCode;
+      }).filter(Boolean); // Filter out any undefined/null values
       const existingDocs = await collectionRef
         .where('qr_code_text', 'in', qrCodes)
         .get();
@@ -87,11 +107,18 @@ export async function POST(request) {
 
       // Filter out duplicates and prepare new records
       const newRecords = batch.filter(record => {
-        const qrCode = record.qr_code_text.trim();
-        if (existingQrCodes.has(qrCode)) {
-          results.duplicates++;
+        const qrCode = record['QR Code']?.trim() || record.qr_code_text?.trim();
+        if (!qrCode || existingQrCodes.has(qrCode)) {
+          if (qrCode) results.duplicates++;
           return false;
         }
+        
+        // Skip records with product name "TEST TICKET"
+        const productName = record['Product Title']?.trim() || record.product_name?.trim();
+        if (productName === 'TEST TICKET') {
+          return false;
+        }
+        
         return true;
       });
 
@@ -102,35 +129,43 @@ export async function POST(request) {
         newRecords.forEach(record => {
           const docRef = collectionRef.doc();
           
-          // Parse and clean the data
+          // Map CSV columns to database fields
           const cleanRecord = {
-            qr_code_text: record.qr_code_text.trim(),
-            customer_name: record.customer_name.trim(),
-            event_name: record.event_name.trim(),
-            event_date: record.event_date ? new Date(record.event_date) : null,
-            event_location: record.event_location ? record.event_location.trim() : '',
-            event_start_time: record.event_start_time ? record.event_start_time.trim() : '',
+            // Map CSV columns to database fields - try both formats
+            id: record['Ticket ID']?.trim() || record.id || '',
+            order_id: record['Order ID']?.trim() || record.order_id || '',
+            qr_code_text: record['QR Code']?.trim() || record.qr_code_text || '',
+            status: record['Status']?.trim() || record.status || 'ACTIVE',
+            event_name: record['Event Name']?.trim() || record.event_name || '',
+            event_location: record['Event Location']?.trim() || record.event_location || '',
+            event_date: record['Event Date'] ? new Date(record['Event Date']) : (record.event_date ? new Date(record.event_date) : null),
+            event_start_time: record['Event Start Time']?.trim() || record.event_start_time || '',
+            customer_name: record['Customer Name']?.trim() || record.customer_name || '',
+            attendee_name: record['Attendee Name']?.trim() || record.attendee_name || '',
+            price: record['Price'] ? parseFloat(record['Price']) || 0 : (record.price ? parseFloat(record.price) || 0 : 0),
+            product_name: record['Product Title']?.trim() || record.product_name || '',
+            ticket_count_label: record['Ticket Count']?.trim() || record.ticket_count_label || '',
+            seat: record['Seat Code']?.trim() || record.seat || '-',
+            
+            // Set default values for fields not in CSV
+            details: record.details?.trim() || '',
+            image_path: record.image_path?.trim() || '',
+            order_status_id: record.order_status_id?.trim() || '2',
             expires_at: record.expires_at ? new Date(record.expires_at) : null,
-            order_id: record.order_id ? record.order_id.trim() : '',
-            order_status_id: record.order_status_id ? record.order_status_id.trim() : '',
-            price: record.price ? parseFloat(record.price) || 0 : 0,
-            product_name: record.product_name ? record.product_name.trim() : '',
-            seat: record.seat ? record.seat.trim() : '',
-            status: record.status ? record.status.trim() : '',
-            ticket_count_label: record.ticket_count_label ? record.ticket_count_label.trim() : '',
-            details: record.details ? record.details.trim() : '',
-            image_path: record.image_path ? record.image_path.trim() : '',
+            
             // Add any additional fields from CSV that might not be in the standard structure
-            ...Object.fromEntries(
-              Object.entries(record)
-                .filter(([key]) => ![
-                  'qr_code_text', 'customer_name', 'event_name', 'event_date', 
-                  'event_location', 'event_start_time', 'expires_at', 'order_id', 
-                  'order_status_id', 'price', 'product_name', 'seat', 'status', 
-                  'ticket_count_label', 'details', 'image_path'
-                ].includes(key))
-                .map(([key, value]) => [key, value ? value.trim() : ''])
-            ),
+            // ...Object.fromEntries(
+            //   Object.entries(record)
+            //     .filter(([key]) => ![
+            //       'Ticket ID', 'Order ID', 'QR Code', 'Status', 'Event Name', 'Event Location', 
+            //       'Event Date', 'Event Start Time', 'Customer Name', 'Price', 'Product Title', 
+            //       'Ticket Count', 'Seat Code', 'id', 'order_id', 'qr_code_text', 'status', 
+            //       'event_name', 'event_location', 'event_date', 'event_start_time', 'customer_name', 
+            //       'price', 'product_name', 'ticket_count_label', 'seat', 'details', 'image_path', 
+            //       'order_status_id', 'expires_at'
+            //     ].includes(key))
+            //     .map(([key, value]) => [key, value ? value.trim() : ''])
+            // ),
             created_at: new Date(),
             updated_at: new Date()
           };
