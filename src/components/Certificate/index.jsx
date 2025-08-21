@@ -74,8 +74,9 @@ const Certificate = ({ title, validator, certificate_template, logo }) => {
       let result = await response.json();
       if (!result.success) throw new Error(result.error);
 
-      let { customer_name } = result.data;
-      await generate({ certName: customer_name, certificate_template });
+      let { customer_name, attendee_name } = result.data;
+      console.log(result.data);
+      await generate({ certName: attendee_name || customer_name, certificate_template });
       setMessage({
         status: "success",
         message:

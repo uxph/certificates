@@ -80,11 +80,11 @@ export async function POST(req) {
       // console.log(registrationData);
       attendeeList["blockA"][registrationData.blockA].push({
         id: data.id,
-        name: data.customer_name,
+        name: data.attendee_name || data.customer_name,
       });
       attendeeList["blockB"][registrationData.blockB].push({
         id: data.id,
-        name: data.customer_name,
+        name: data.attendee_name || data.customer_name,
       });
     }
 
