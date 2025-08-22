@@ -110,7 +110,7 @@
           "description": "Track 1: Advanced Prototyping in Figma",
           "speaker": "Chi Señires",
           "role": "UX Designer @ Humanforce",
-          "room": "A Room 1"
+          "room": "Lab 1"
         },
         {
           "id": "dvo-a-2",
@@ -118,7 +118,7 @@
           "description": "Track 2: Prompt Prototyping for Startups",
           "speaker": "Jerel Velarde",
           "role": "Director of Product Management @ Full Scale Ventures",
-          "room": "A Room 2"
+          "room": "R305"
         },
         {
           "id": "dvo-a-3",
@@ -126,7 +126,7 @@
           "description": "Track 3: Craft your UX Story",
           "speaker": "Jess Nalangan Mapua",
           "role": "Senior UX Designer @ Superloop",
-          "room": "A Room 3"
+          "room": "R306"
         },
         {
           "id": "dvo-a-4",
@@ -134,7 +134,7 @@
           "description": "Track 4: LEGO® Serious Play® Workshop",
           "speaker": "Cecille Fernandez",
           "role": "Consultant and LEGO® Serious Play® Facilitator @ Brick Management Consulting",
-          "room": "A Room 4"
+          "room": "R307"
         },
         {
           "id": "dvo-a-5",
@@ -142,7 +142,7 @@
           "description": "Track 5: UX Research Workshop",
           "speaker": "Niaw de Leon",
           "role": "Principal Consultant @ Cognible",
-          "room": "A Room 5"
+          "room": "R308"
         },
         {
           "id": "dvo-a-6",
@@ -150,7 +150,7 @@
           "description": "Track 6: Career & Resume Workshop",
           "speaker": "Claudine Joy C. Rada",
           "role": "Lead of the Content Team and an SEO Writer, Stallion",
-          "room": "A Room 6"
+          "room": "R309"
         }
       ],
       "blockB": [
@@ -160,7 +160,7 @@
           "description": "Track 1: From Prompt to Publish",
           "speaker": "Luisa Go",
           "role": "Product Designer @ Pando Development/Scale Me AI",
-          "room": "B Room 1"
+          "room": "R305"
         },
         {
           "id": "dvo-b-2",
@@ -168,7 +168,7 @@
           "description": "Track 2: Art Direction Workshop",
           "speaker": "JP de Guzman",
           "role": "Chief Creative and Founder @ Frost Design Group",
-          "room": "B Room 2"
+          "room": "R306"
         },
         {
           "id": "dvo-b-3",
@@ -176,7 +176,7 @@
           "description": "Track 3: Design Sprints Workshop",
           "speaker": "Karl Dela Cruz",
           "role": "UX Designer @ Ergo Design Studio",
-          "room": "B Room 3"
+          "room": "R308"
         },
         {
           "id": "dvo-b-4",
@@ -184,7 +184,7 @@
           "description": "Track 4: Motion & Webflow Workshop",
           "speaker": "Neil Ryan Manalo",
           "role": "Founder @ Alab Design Co.",
-          "room": "B Room 4"
+          "room": "Lab 1"
         },
         {
           "id": "dvo-b-5",
@@ -192,7 +192,7 @@
           "description": "Track 5: Inclusive UI Workshop",
           "speaker": "Ned Palacios",
           "role": "Software Engineer @ Betterteam",
-          "room": "B Room 5"
+          "room": "Lab 2"
         }
       ]
     }
