@@ -82,10 +82,14 @@ export async function POST(req) {
         id: data.id,
         name: data.attendee_name || data.customer_name,
       });
-      attendeeList["blockB"][registrationData.blockB].push({
-        id: data.id,
-        name: data.attendee_name || data.customer_name,
-      });
+      
+      // Make blockB registration optional since we have full afternoon sessions
+      if (registrationData.blockB) {
+        attendeeList["blockB"][registrationData.blockB].push({
+          id: data.id,
+          name: data.attendee_name || data.customer_name,
+        });
+      }
     }
 
     // Create Excel workbook
