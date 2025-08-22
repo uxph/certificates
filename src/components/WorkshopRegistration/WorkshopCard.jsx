@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const WorkshopCard = ({ workshop, blockName, isSelected, onSelect }) => {
@@ -6,7 +7,6 @@ const WorkshopCard = ({ workshop, blockName, isSelected, onSelect }) => {
       onSelect(workshop.id);
     }
   };
-
 
   return (
     <div
@@ -28,26 +28,36 @@ const WorkshopCard = ({ workshop, blockName, isSelected, onSelect }) => {
           className="mt-1 w-4 h-4 text-main bg-gray-800 border-gray-600 focus:ring-main disabled:opacity-50 disabled:cursor-not-allowed"
         />
         <div className="flex-1">
-          <h3 className=" font-semibold mb-2 text-xl text-main">
-            {workshop.title}
-          </h3>
+          <div className="flex items-start space-x-3">
+            <div className="flex items-center rounded-full w-24 h-24 relative">
+              <Image
+                alt={workshop.speaker}
+                src={`/workshops/${workshop.id}.png`}
+                fill={true}
+                className="object-contain"
+              />
+            </div>
 
-          <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-main rounded-full flex items-center justify-center">
+            {/* <div className="w-12 h-12 bg-main rounded-full flex items-center justify-center">
               <span className="text-white font-semibold text-lg">
                 {workshop.speaker
                   .split(" ")
                   .map((n) => n[0])
                   .join("")}
               </span>
-            </div>
+            </div> */}
             <div className="flex-1">
+              <h3 className=" font-semibold mb-2 text-xl text-main">
+                {workshop.title}
+              </h3>
               <p className="font-semibold text-macopa text-lg">
                 {workshop.speaker}
               </p>
               {/* <p className="text-base text-gray-500">{workshop.role}</p> */}
               {workshop.room && (
-                <p className="text-base text-gray-600">Venue: {workshop.room}</p>
+                <p className="text-base text-gray-600">
+                  Venue: {workshop.room}
+                </p>
               )}
             </div>
           </div>

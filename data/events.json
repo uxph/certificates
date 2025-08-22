@@ -29,7 +29,7 @@
             "logo": "/davao_logo.png",
             "validator": {
                 "regex": "^HLX-[A-Za-z0-9]{7}-\\d{6}-\\d{5}$",
-                "pattern": "HLX-XXXXXX-XXXXXX-XXXXX"
+                "pattern": "HLX-XXXXXXX-XXXXXX-XXXXX"
             },
             "onsite_code": "DVO_V3Q8Q",
             "certificate_template": "/templates/certificates/davao.png"

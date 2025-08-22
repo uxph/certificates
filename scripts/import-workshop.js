@@ -32,7 +32,7 @@ async function importAllCsvFiles() {
       const batch = db.batch();
       jsonArray.forEach((item) => {
         const docRef = db.collection("workshops_counter").doc(); // Change to doc(item.id) if needed
-        batch.set(docRef, { ...item, slotsLeft: 50 });
+        batch.set(docRef, { ...item, slotsLeft: 30 });
       });
 
       await batch.commit();
