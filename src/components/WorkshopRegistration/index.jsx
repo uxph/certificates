@@ -5,6 +5,7 @@ import WorkshopBlock from "./WorkshopBlock";
 import SelectionSummary from "./SelectionSummary";
 import RegistrationForm from "./RegistrationForm";
 import SuccessModal from "./SuccessModal";
+import ConfirmationModal from "./ConfirmationModal";
 
 const WorkshopRegistration = ({
   workshopBlocks,
@@ -28,6 +29,8 @@ const WorkshopRegistration = ({
   const [loading, setLoading] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [successData, setSuccessData] = useState(null);
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [confirmationWorkshop, setConfirmationWorkshop] = useState(null);
 
   // Fetch latest slotsLeft from server
   const refreshSlots = useCallback(async () => {
@@ -61,10 +64,38 @@ const WorkshopRegistration = ({
   }, []);
 
   const handleWorkshopSelect = (blockName, workshopId) => {
+    // Special handling for dvo-a-4 which takes up both blocks
+    if (workshopId === "dvo-a-4") {
+      // Find the workshop data to show in the confirmation modal
+      const workshop = workshopBlocks[blockName]?.find(w => w.id === "dvo-a-4");
+      if (workshop) {
+        setConfirmationWorkshop(workshop);
+        setShowConfirmationModal(true);
+      }
+      return; // Don't proceed with selection yet
+    }
+    
+    // Normal selection logic
     setSelectedWorkshops((prev) => ({
       ...prev,
       [blockName]: workshopId,
     }));
+  };
+
+  const handleDvoA4Confirmation = () => {
+    // User confirmed they understand - select dvo-a-4 in both blocks
+    setSelectedWorkshops({
+      blockA: "dvo-a-4",
+      blockB: "dvo-a-4",
+    });
+    setShowConfirmationModal(false);
+    setConfirmationWorkshop(null);
+  };
+
+  const handleDvoA4Cancellation = () => {
+    // User cancelled - don't select anything
+    setShowConfirmationModal(false);
+    setConfirmationWorkshop(null);
   };
 
   const handleSubmit = async () => {
@@ -77,7 +108,10 @@ const WorkshopRegistration = ({
       console.log(
         !(selectedWorkshops["blockA"] && selectedWorkshops["blockB"])
       );
-      if (!(selectedWorkshops["blockA"] && selectedWorkshops["blockB"])) {
+      // Special validation for dvo-a-4 which takes up both blocks
+      const isDvoA4Selected = selectedWorkshops["blockA"] === "dvo-a-4" || selectedWorkshops["blockB"] === "dvo-a-4";
+      
+      if (!isDvoA4Selected && !(selectedWorkshops["blockA"] && selectedWorkshops["blockB"])) {
         throw new Error(
           "Please select one workshop from both Block A and Block B to continue."
         );
@@ -192,6 +226,7 @@ const WorkshopRegistration = ({
             onWorkshopSelect={(workshopId) =>
               handleWorkshopSelect(blockName, workshopId)
             }
+            isDisabled={blockName === "blockB" && selectedWorkshops.blockA === "dvo-a-4"}
           />
         ))}
       </div>
@@ -219,6 +254,14 @@ const WorkshopRegistration = ({
         attendeeName={successData?.attendeeName}
         selectedWorkshops={successData?.selectedWorkshops}
         workshopBlocks={workshopData}
+      />
+
+      <ConfirmationModal
+        isOpen={showConfirmationModal}
+        onClose={handleDvoA4Cancellation}
+        onConfirm={handleDvoA4Confirmation}
+        workshopTitle={confirmationWorkshop?.title || ""}
+        speaker={confirmationWorkshop?.speaker || ""}
       />
     </>
   );

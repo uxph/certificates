@@ -46,39 +46,69 @@ const SuccessModal = ({ isOpen, onClose, attendeeName, selectedWorkshops, worksh
               Your Workshops:
             </h3>
             <div className="space-y-3">
-              {Object.entries(selectedWorkshops).map(([blockName, workshopId]) => {
-                const selectedWorkshop = workshopBlocks[blockName]?.find(
-                  (w) => w.id === workshopId
-                );
-                const blockInfo = {
-                  blockA: { label: 'Block A', time: '9:00 AM - 10:30 AM' },
-                  blockB: { label: 'Block B', time: '10:45 AM - 12:15 PM' }
-                };
-                const blockLabel = `${blockInfo[blockName]?.label} (${blockInfo[blockName]?.time})`;
-                
-                return (
-                  <div key={blockName} className="border border-green-200 rounded p-3 bg-green-50">
-                    <p className="font-semibold text-gray-800 mb-1 text-sm">
-                      {blockLabel}
-                    </p>
-                    {selectedWorkshop && (
-                      <>
-                        <p className="text-green-700 font-bold text-base">
-                          {selectedWorkshop.title}
-                        </p>
-                        <p className="text-gray-600 text-sm">
-                          {selectedWorkshop.speaker}
-                        </p>
-                        {selectedWorkshop.room && (
-                          <p className="text-xs text-gray-500">
-                            Venue: {selectedWorkshop.room}
+              {/* Special handling for dvo-a-4 which takes up both blocks */}
+              {selectedWorkshops.blockA === "dvo-a-4" || selectedWorkshops.blockB === "dvo-a-4" ? (
+                (() => {
+                  const dvoA4Workshop = workshopBlocks.blockA?.find(w => w.id === "dvo-a-4") || 
+                                        workshopBlocks.blockB?.find(w => w.id === "dvo-a-4");
+                  return (
+                    <div className="border border-green-200 rounded p-3 bg-green-50">
+                      <p className="font-semibold text-gray-800 mb-1 text-sm">
+                        Full Afternoon Session (1:40 PM - 4:25 PM)
+                      </p>
+                      {dvoA4Workshop && (
+                        <>
+                          <p className="text-green-700 font-bold text-base">
+                            {dvoA4Workshop.title}
                           </p>
-                        )}
-                      </>
-                    )}
-                  </div>
-                );
-              })}
+                          <p className="text-gray-600 text-sm">
+                            {dvoA4Workshop.speaker}
+                          </p>
+                          {dvoA4Workshop.room && (
+                            <p className="text-xs text-gray-500">
+                              Venue: {dvoA4Workshop.room}
+                            </p>
+                          )}
+                        </>
+                      )}
+                    </div>
+                  );
+                })()
+              ) : (
+                Object.entries(selectedWorkshops).map(([blockName, workshopId]) => {
+                  const selectedWorkshop = workshopBlocks[blockName]?.find(
+                    (w) => w.id === workshopId
+                  );
+                  const blockInfo = {
+                    blockA: { label: 'Block A', time: '1:40 PM - 2:55 PM' },
+                    blockB: { label: 'Block B', time: '3:10 PM - 4:25 PM' }
+                  };
+                  const blockLabel = `${blockInfo[blockName]?.label} (${blockInfo[blockName]?.time})`;
+                  
+                  return (
+                    <div key={blockName} className="border border-green-200 rounded p-3 bg-green-50">
+                      <p className="font-semibold text-gray-800 mb-1 text-sm">
+                        {blockLabel}
+                      </p>
+                      {selectedWorkshop && (
+                        <>
+                          <p className="text-green-700 font-bold text-base">
+                            {selectedWorkshop.title}
+                          </p>
+                          <p className="text-gray-600 text-sm">
+                            {selectedWorkshop.speaker}
+                          </p>
+                          {selectedWorkshop.room && (
+                            <p className="text-xs text-gray-500">
+                              Venue: {selectedWorkshop.room}
+                            </p>
+                          )}
+                        </>
+                      )}
+                    </div>
+                  );
+                })
+              )}
             </div>
           </div>
 

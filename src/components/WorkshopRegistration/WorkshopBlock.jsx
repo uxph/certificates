@@ -5,17 +5,18 @@ const WorkshopBlock = ({
     blockName, 
     workshops, 
     selectedWorkshop, 
-    onWorkshopSelect 
+    onWorkshopSelect,
+    isDisabled = false
 }) => {
     // Block metadata including display label and schedule time
     const blockInfo = {
         blockA: {
             label: "Block A",
-            time: "9:00 AM - 10:30 AM",
+            time: "1:40 PM - 2:55 PM",
         },
         blockB: {
             label: "Block B",
-            time: "10:45 AM - 12:15 PM",
+            time: "3:10 PM - 4:25 PM",
         },
     };
     return (
@@ -29,10 +30,17 @@ const WorkshopBlock = ({
                         ({blockInfo[blockName].time})
                     </p>
                 )}
-                {!selectedWorkshop && (
+                {!selectedWorkshop && !isDisabled && (
                   <div className="mt-3">
                     <span className="inline-block text-red-500 font-bold text-3xl tracking-wide uppercase">
                         Pick One
+                    </span>
+                  </div>
+                )}
+                {isDisabled && (
+                  <div className="mt-3">
+                    <span className="inline-block text-blue-500 font-bold text-lg tracking-wide">
+                        Full afternoon session selected - this block is now full
                     </span>
                   </div>
                 )}
@@ -45,6 +53,7 @@ const WorkshopBlock = ({
                         blockName={blockName}
                         isSelected={selectedWorkshop === workshop.id}
                         onSelect={onWorkshopSelect}
+                        isDisabled={isDisabled}
                     />
                 ))}
             </div>

@@ -1,9 +1,15 @@
 import Image from "next/image";
 import React from "react";
 
-const WorkshopCard = ({ workshop, blockName, isSelected, onSelect }) => {
+const WorkshopCard = ({
+  workshop,
+  blockName,
+  isSelected,
+  onSelect,
+  isDisabled = false,
+}) => {
   const handleClick = () => {
-    if (workshop.slotsLeft > 0) {
+    if (workshop.slotsLeft > 0 && !isDisabled) {
       onSelect(workshop.id);
     }
   };
@@ -14,7 +20,11 @@ const WorkshopCard = ({ workshop, blockName, isSelected, onSelect }) => {
         isSelected
           ? "border-main bg-main/10"
           : "border-gray-600 hover:border-gray-500"
-      } ${workshop.slotsLeft === 0 ? "opacity-60 cursor-not-allowed" : ""}`}
+      } ${
+        workshop.slotsLeft === 0 || isDisabled
+          ? "opacity-60 cursor-not-allowed"
+          : ""
+      }`}
       onClick={handleClick}
     >
       <div className="flex items-start space-x-3">
@@ -24,7 +34,7 @@ const WorkshopCard = ({ workshop, blockName, isSelected, onSelect }) => {
           value={workshop.id}
           checked={isSelected}
           onChange={() => handleClick()}
-          disabled={workshop.slotsLeft === 0}
+          disabled={workshop.slotsLeft === 0 || isDisabled}
           className="mt-1 w-4 h-4 text-main bg-gray-800 border-gray-600 focus:ring-main disabled:opacity-50 disabled:cursor-not-allowed"
         />
         <div className="flex-1">
@@ -65,6 +75,13 @@ const WorkshopCard = ({ workshop, blockName, isSelected, onSelect }) => {
           {/* Slots Left Indicator */}
           <div className="mt-3 pt-2 border-t border-gray-600">
             <div className="flex items-center justify-end gap-4">
+              {/* Special indicator for dvo-a-4 */}
+              {workshop.id === "dvo-a-4" && (
+                <div className="px-3 py-1 bg-blue-500/20 text-blue-600 border border-blue-500/30 rounded text-sm font-semibold">
+                  Full Afternoon Session
+                </div>
+              )}
+
               <span className="text-sm text-gray-600">Slots available:</span>
               <div
                 className={`px-2 py-1 rounded text-sm font-semibold ${
