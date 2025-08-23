@@ -127,7 +127,7 @@ export async function POST(request) {
       success: true,
       message: "Workshop registration successful!",
       data: {
-        attendeeName: attendeeData.customer_name,
+        attendeeName: attendeeData.attendee_name || attendeeData.customer_name,
         eventSlug: eventSlug,
         workshopSelections: workshopSelections,
         registrationDate: registrationData.registrationDate.toISOString(),
