@@ -34,12 +34,12 @@ export async function POST(request) {
 
     // Check if selected workshops have available slots
     const workshopsCounterRef = db.collection("workshops_counter");
-    
+
     // Check Block A workshop availability
     const blockACounterQuery = await workshopsCounterRef
       .where("workshopId", "==", workshopSelections["blockA"])
       .get();
-    
+
     if (!blockACounterQuery.empty) {
       const blockACounter = blockACounterQuery.docs[0].data();
       if (blockACounter.slotsLeft <= 0) {
@@ -57,7 +57,7 @@ export async function POST(request) {
     const blockBCounterQuery = await workshopsCounterRef
       .where("workshopId", "==", workshopSelections["blockB"])
       .get();
-    
+
     if (!blockBCounterQuery.empty) {
       const blockBCounter = blockBCounterQuery.docs[0].data();
       if (blockBCounter.slotsLeft <= 0) {
@@ -140,23 +140,25 @@ export async function POST(request) {
       );
     }
 
-    // Find and update counter for Block B workshop
-    const blockBQuery = await db
-      .collection("workshops_counter")
-      .where("workshopId", "==", workshopSelections["blockB"])
-      .get();
+    if (workshopSelections["blockB"] !== "dvo-a-4") {
+      // Find and update counter for Block B workshop
+      const blockBQuery = await db
+        .collection("workshops_counter")
+        .where("workshopId", "==", workshopSelections["blockB"])
+        .get();
 
-    if (!blockBQuery.empty) {
-      const blockBWorkshopRef = blockBQuery.docs[0].ref;
+      if (!blockBQuery.empty) {
+        const blockBWorkshopRef = blockBQuery.docs[0].ref;
 
-      batch.set(
-        blockBWorkshopRef,
-        {
-          slotsLeft: admin.firestore.FieldValue.increment(-1),
-          lastRegistration: new Date(),
-        },
-        { merge: true }
-      );
+        batch.set(
+          blockBWorkshopRef,
+          {
+            slotsLeft: admin.firestore.FieldValue.increment(-1),
+            lastRegistration: new Date(),
+          },
+          { merge: true }
+        );
+      }
     }
 
     // Commit the batch update
