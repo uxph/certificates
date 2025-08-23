@@ -85,9 +85,9 @@ const WorkshopCard = ({
               <span className="text-sm text-gray-600">Slots available:</span>
               <div
                 className={`px-2 py-1 rounded text-sm font-semibold ${
-                  workshop.slotsLeft === 0
+                  workshop.slotsLeft <= 0
                     ? "bg-red-500/20 text-red-600 border border-red-500/30"
-                    : workshop.slotsLeft <= 5
+                    : workshop.slotsLeft > 0 && workshop.slotsLeft <= 5
                     ? "bg-yellow-500/20 text-yellow-600 border border-yellow-500/30"
                     : "bg-green-500/20 text-green-600 border border-green-500/30"
                 }`}
