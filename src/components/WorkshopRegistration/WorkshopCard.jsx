@@ -21,7 +21,7 @@ const WorkshopCard = ({
           ? "border-main bg-main/10"
           : "border-gray-600 hover:border-gray-500"
       } ${
-        workshop.slotsLeft === 0 || isDisabled
+        workshop.slotsLeft <= 0 || isDisabled
           ? "opacity-60 cursor-not-allowed"
           : ""
       }`}
@@ -34,7 +34,7 @@ const WorkshopCard = ({
           value={workshop.id}
           checked={isSelected}
           onChange={() => handleClick()}
-          disabled={workshop.slotsLeft === 0 || isDisabled}
+          disabled={workshop.slotsLeft <= 0 || isDisabled}
           className="mt-1 w-4 h-4 text-main bg-gray-800 border-gray-600 focus:ring-main disabled:opacity-50 disabled:cursor-not-allowed"
         />
         <div className="flex-1">
