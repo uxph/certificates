@@ -32,6 +32,45 @@ export async function POST(request) {
       );
     }
 
+    // Check if selected workshops have available slots
+    const workshopsCounterRef = db.collection("workshops_counter");
+    
+    // Check Block A workshop availability
+    const blockACounterQuery = await workshopsCounterRef
+      .where("workshopId", "==", workshopSelections["blockA"])
+      .get();
+    
+    if (!blockACounterQuery.empty) {
+      const blockACounter = blockACounterQuery.docs[0].data();
+      if (blockACounter.slotsLeft <= 0) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: "Block A workshop is full. Please select another workshop.",
+          },
+          { status: 409 }
+        );
+      }
+    }
+
+    // Check Block B workshop availability
+    const blockBCounterQuery = await workshopsCounterRef
+      .where("workshopId", "==", workshopSelections["blockB"])
+      .get();
+    
+    if (!blockBCounterQuery.empty) {
+      const blockBCounter = blockBCounterQuery.docs[0].data();
+      if (blockBCounter.slotsLeft <= 0) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: "Block B workshop is full. Please select another workshop.",
+          },
+          { status: 409 }
+        );
+      }
+    }
+
     const attendeesRef = db.collection("helixpay_event_attendees");
     const attendeeQuery = await attendeesRef
       .where("qr_code_text", "==", helixpayCode.trim())

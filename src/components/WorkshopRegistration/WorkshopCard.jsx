@@ -92,7 +92,7 @@ const WorkshopCard = ({
                     : "bg-green-500/20 text-green-600 border border-green-500/30"
                 }`}
               >
-                {workshop.slotsLeft === 0
+                {workshop.slotsLeft <= 0
                   ? "FULL"
                   : `${workshop.slotsLeft} left`}
               </div>
