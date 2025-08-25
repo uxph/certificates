@@ -1,5 +1,6 @@
 import { Poppins, Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const poppins = Poppins({
     variable: "--font-body",
@@ -26,7 +27,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body className={`${poppins.variable} ${inter.variable} ${geistMono.variable}`}>{children}</body>
+            <body className={`${poppins.variable} ${inter.variable} ${geistMono.variable}`}>
+                {children}
+                <GoogleAnalytics />
+            </body>
         </html>
     );
 }
