@@ -64,14 +64,11 @@ const WorkshopRegistration = ({
   }, []);
 
   const handleWorkshopSelect = (blockName, workshopId) => {
-    // Special handling for dvo-a-4 which takes up both blocks
-    if (workshopId === "dvo-a-4") {
-      // Find the workshop data to show in the confirmation modal
-      const workshop = workshopBlocks[blockName]?.find(w => w.id === "dvo-a-4");
-      if (workshop) {
-        setConfirmationWorkshop(workshop);
-        setShowConfirmationModal(true);
-      }
+    // Special handling for full-afternoon workshops which take up both blocks
+    const workshop = workshopData[blockName]?.find((w) => w.id === workshopId);
+    if (workshop?.full_afternoon) {
+      setConfirmationWorkshop(workshop);
+      setShowConfirmationModal(true);
       return; // Don't proceed with selection yet
     }
     
@@ -83,11 +80,13 @@ const WorkshopRegistration = ({
   };
 
   const handleDvoA4Confirmation = () => {
-    // User confirmed they understand - select dvo-a-4 in both blocks
-    setSelectedWorkshops({
-      blockA: "dvo-a-4",
-      blockB: "dvo-a-4",
-    });
+    // User confirmed they understand - select the full-afternoon workshop in both blocks
+    if (confirmationWorkshop?.id) {
+      setSelectedWorkshops({
+        blockA: confirmationWorkshop.id,
+        blockB: confirmationWorkshop.id,
+      });
+    }
     setShowConfirmationModal(false);
     setConfirmationWorkshop(null);
   };
@@ -108,10 +107,18 @@ const WorkshopRegistration = ({
       console.log(
         !(selectedWorkshops["blockA"] && selectedWorkshops["blockB"])
       );
-      // Special validation for dvo-a-4 which takes up both blocks
-      const isDvoA4Selected = selectedWorkshops["blockA"] === "dvo-a-4" || selectedWorkshops["blockB"] === "dvo-a-4";
+      // Special validation for full-afternoon workshops which take up both blocks
+      const selectedA = workshopData?.blockA?.find(
+        (w) => w.id === selectedWorkshops["blockA"]
+      );
+      const selectedB = workshopData?.blockB?.find(
+        (w) => w.id === selectedWorkshops["blockB"]
+      );
+      const isFullAfternoonSelected = Boolean(
+        selectedA?.full_afternoon || selectedB?.full_afternoon
+      );
       
-      if (!isDvoA4Selected && !(selectedWorkshops["blockA"] && selectedWorkshops["blockB"])) {
+      if (!isFullAfternoonSelected && !(selectedWorkshops["blockA"] && selectedWorkshops["blockB"])) {
         throw new Error(
           "Please select one workshop from both Block A and Block B to continue."
         );
@@ -226,7 +233,12 @@ const WorkshopRegistration = ({
             onWorkshopSelect={(workshopId) =>
               handleWorkshopSelect(blockName, workshopId)
             }
-            isDisabled={blockName === "blockB" && selectedWorkshops.blockA === "dvo-a-4"}
+            isDisabled={
+              blockName === "blockB" &&
+              workshopData?.blockA?.some(
+                (w) => w.id === selectedWorkshops.blockA && w.full_afternoon
+              )
+            }
           />
         ))}
       </div>

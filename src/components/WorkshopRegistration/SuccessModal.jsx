@@ -46,35 +46,42 @@ const SuccessModal = ({ isOpen, onClose, attendeeName, selectedWorkshops, worksh
               Your Workshops:
             </h3>
             <div className="space-y-3">
-              {/* Special handling for dvo-a-4 which takes up both blocks */}
-              {selectedWorkshops.blockA === "dvo-a-4" || selectedWorkshops.blockB === "dvo-a-4" ? (
-                (() => {
-                  const dvoA4Workshop = workshopBlocks.blockA?.find(w => w.id === "dvo-a-4") || 
-                                        workshopBlocks.blockB?.find(w => w.id === "dvo-a-4");
+              {/* Special handling for full-afternoon sessions (both blocks) */}
+              {(() => {
+                const selectedA = workshopBlocks.blockA?.find(
+                  (w) => w.id === selectedWorkshops.blockA
+                );
+                const selectedB = workshopBlocks.blockB?.find(
+                  (w) => w.id === selectedWorkshops.blockB
+                );
+                const fullAfternoonWorkshop = selectedA?.full_afternoon
+                  ? selectedA
+                  : selectedB?.full_afternoon
+                  ? selectedB
+                  : null;
+
+                if (fullAfternoonWorkshop) {
                   return (
                     <div className="border border-green-200 rounded p-3 bg-green-50">
                       <p className="font-semibold text-gray-800 mb-1 text-sm">
                         Full Afternoon Session (1:40 PM - 4:25 PM)
                       </p>
-                      {dvoA4Workshop && (
-                        <>
-                          <p className="text-green-700 font-bold text-base">
-                            {dvoA4Workshop.title}
-                          </p>
-                          <p className="text-gray-600 text-sm">
-                            {dvoA4Workshop.speaker}
-                          </p>
-                          {dvoA4Workshop.room && (
-                            <p className="text-xs text-gray-500">
-                              Venue: {dvoA4Workshop.room}
-                            </p>
-                          )}
-                        </>
+                      <p className="text-green-700 font-bold text-base">
+                        {fullAfternoonWorkshop.title}
+                      </p>
+                      <p className="text-gray-600 text-sm">
+                        {fullAfternoonWorkshop.speaker}
+                      </p>
+                      {fullAfternoonWorkshop.room && (
+                        <p className="text-xs text-gray-500">
+                          Venue: {fullAfternoonWorkshop.room}
+                        </p>
                       )}
                     </div>
                   );
-                })()
-              ) : (
+                }
+                return null;
+              })() || (
                 Object.entries(selectedWorkshops).map(([blockName, workshopId]) => {
                   const selectedWorkshop = workshopBlocks[blockName]?.find(
                     (w) => w.id === workshopId

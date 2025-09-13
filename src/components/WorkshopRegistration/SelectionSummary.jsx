@@ -12,13 +12,20 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
     },
   };
 
-  // Check if dvo-a-4 is selected (which takes up both blocks)
-  const isDvoA4Selected = selectedWorkshops.blockA === "dvo-a-4" || selectedWorkshops.blockB === "dvo-a-4";
+  // Check if a full-afternoon workshop is selected (takes both blocks)
+  const selectedA = workshopBlocks.blockA?.find(
+    (w) => w.id === selectedWorkshops.blockA
+  );
+  const selectedB = workshopBlocks.blockB?.find(
+    (w) => w.id === selectedWorkshops.blockB
+  );
+  const isFullAfternoonSelected = Boolean(
+    selectedA?.full_afternoon || selectedB?.full_afternoon
+  );
   
-  // If dvo-a-4 is selected, show only one card with combined time
-  if (isDvoA4Selected) {
-    const dvoA4Workshop = workshopBlocks.blockA?.find(w => w.id === "dvo-a-4") || 
-                          workshopBlocks.blockB?.find(w => w.id === "dvo-a-4");
+  // If full-afternoon is selected, show only one card with combined time
+  if (isFullAfternoonSelected) {
+    const fullAfternoonWorkshop = selectedA?.full_afternoon ? selectedA : selectedB;
     
     return (
       <div className="max-w-4xl w-full mt-8 mb-6">
@@ -31,14 +38,14 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
               Full Afternoon Session
             </p>
             <p className="font-medium text-base mb-4">(1:40 PM - 4:25 PM)</p>
-            {dvoA4Workshop ? (
+            {fullAfternoonWorkshop ? (
               <div className="border border-main rounded p-4 bg-main/5 max-w-md mx-auto">
                 <p className="text-main text-lg font-bold">
-                  {dvoA4Workshop.title}
+                  {fullAfternoonWorkshop.title}
                 </p>
-                <p className="text-macopa font-bold">{dvoA4Workshop.speaker}</p>
-                {dvoA4Workshop.room && (
-                  <p className=" text-gray-600">Venue: {dvoA4Workshop.room}</p>
+                <p className="text-macopa font-bold">{fullAfternoonWorkshop.speaker}</p>
+                {fullAfternoonWorkshop.room && (
+                  <p className=" text-gray-600">Venue: {fullAfternoonWorkshop.room}</p>
                 )}
               </div>
             ) : (

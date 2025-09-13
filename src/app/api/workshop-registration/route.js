@@ -140,7 +140,8 @@ export async function POST(request) {
       );
     }
 
-    if (workshopSelections["blockB"] !== "dvo-a-4") {
+    // If Block B selection differs from Block A, decrement its counter as well
+    if (workshopSelections["blockB"] && workshopSelections["blockB"] !== workshopSelections["blockA"]) {
       // Find and update counter for Block B workshop
       const blockBQuery = await db
         .collection("workshops_counter")

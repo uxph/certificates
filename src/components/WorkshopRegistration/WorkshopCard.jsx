@@ -75,8 +75,8 @@ const WorkshopCard = ({
           {/* Slots Left Indicator */}
           <div className="mt-3 pt-2 border-t border-gray-600">
             <div className="flex items-center justify-end gap-4">
-              {/* Special indicator for dvo-a-4 */}
-              {workshop.id === "dvo-a-4" && (
+              {/* Indicator for full-afternoon sessions */}
+              {workshop.full_afternoon && (
                 <div className="px-3 py-1 bg-blue-500/20 text-blue-600 border border-blue-500/30 rounded text-sm font-semibold">
                   Full Afternoon Session
                 </div>

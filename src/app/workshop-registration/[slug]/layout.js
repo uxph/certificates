@@ -11,7 +11,8 @@ async function getEventInfo({ slug }) {
 
 export default async function SlugLayout({ children, params }) {
   // Get the slug from the params - this will work at the [slug] level
-  const slug = params?.slug;
+  const p = await params;
+  const slug = p?.slug;
   console.log("Slug in layout:", slug);
   const eventInfo = slug ? await getEventInfo({ slug }) : null;
   
