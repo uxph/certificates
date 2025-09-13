@@ -14,7 +14,9 @@
                 "regex": "^HLX-[A-Za-z0-9]{6}-\\d{6}-\\d{5}$",
                 "pattern": "HLX-XXXXXX-XXXXXX-XXXXX"
             },
-            "onsite_code": "MNL_9YI45"
+            "onsite_code": "MNL_9YI45",
+            "certificate_template": "/templates/certificates/manila.png"
+
         },
         "mini-conf-ceb": {
             "title": "UXPH Mini 2025: Cebu",
@@ -22,7 +24,9 @@
                 "regex": "^HLX-[A-Za-z0-9]{7}-\\d{6}-\\d{5}$",
                 "pattern": "HLX-XXXXXXX-XXXXXX-XXXXX"
             },
-            "onsite_code": "CEB_98YMM"
+            "onsite_code": "CEB_98YMM",
+            "certificate_template": "/templates/certificates/cebu.png"
+
         },
         "mini-conf-dvo": {
             "title": "UXPH Mini 2025: Davao",
