@@ -40,12 +40,15 @@ const WorkshopCard = ({
         <div className="flex-1">
           <div className="flex items-start space-x-3">
             <div className="flex items-center rounded-full w-24 h-24 relative">
+              {/* {workshop?.id &&  */}
+
               <Image
                 alt={workshop.speaker}
-                src={`/workshops/${workshop.id}.png`}
+                src={`/workshops/${workshop.id}.png` ?? ""}
                 fill={true}
                 className="object-contain"
               />
+              {/* } */}
             </div>
 
             {/* <div className="w-12 h-12 bg-main rounded-full flex items-center justify-center">

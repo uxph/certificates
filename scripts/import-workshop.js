@@ -24,6 +24,8 @@ async function importAllCsvFiles() {
     for (const file of files) {
       const filePath = path.join(csvDirectory, file);
       const jsonArray = await csv().fromFile(filePath);
+      if(filePath.includes("dvo")) continue;
+
 
       // delete all first
       await db.collection("workshops_counter").doc().delete();

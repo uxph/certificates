@@ -5,9 +5,11 @@ export async function POST(req) {
     let body = await req.json();
     let { ticketId, title } = body;
     try {
+        const attendeesCollection = process.env.ATTENDEES_COLLECTION || "helixpay_event_attendees";
+
         let data = await getFirebaseAdmin()
             .firestore()
-            .collection("helixpay_event_attendees")
+            .collection(attendeesCollection)
             .where("event_name", "==", title)
             .where("qr_code_text", "==", ticketId)
             .get();

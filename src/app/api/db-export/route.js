@@ -59,15 +59,17 @@ export async function POST(req) {
     // Get workshop registrations from Firebase
     const db = getFirebaseAdmin().firestore();
 
+    const attendeesCollection = process.env.ATTENDEES_COLLECTION || "helixpay_event_attendees";
+
     const attendees = await db
-      .collection("helixpay_event_attendees")
+      .collection(attendeesCollection)
       .where("event_name", "==", eventInfo.title)
       .get();
 
     for (const attendee of attendees.docs) {
       const data = attendee.data();
       const registration = await db
-        .collection("helixpay_event_attendees")
+        .collection(attendeesCollection)
         .doc(attendee.id)
         .collection("workshop_registrations")
         .doc(venue)

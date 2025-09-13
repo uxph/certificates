@@ -23,9 +23,11 @@ export async function POST(req) {
 
         let code = generateEventCode(eventId, lastName);
 
+        const attendeesCollection = process.env.ATTENDEES_COLLECTION || "helixpay_event_attendees";
+
         await getFirebaseAdmin()
             .firestore()
-            .collection("helixpay_event_attendees")
+            .collection(attendeesCollection)
             .add({
                 event_name: eventName.label,
                 customer_name: `${firstName} ${lastName}`,

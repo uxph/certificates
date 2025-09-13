@@ -72,7 +72,8 @@ export async function POST(request) {
     // Initialize Firebase
     const firebaseAdmin = getFirebaseAdmin();
     const db = firebaseAdmin.firestore();
-    const collectionRef = db.collection('helixpay_event_attendees');
+    const attendeesCollection = process.env.ATTENDEES_COLLECTION || 'helixpay_event_attendees';
+    const collectionRef = db.collection(attendeesCollection);
 
     const results = {
       totalRecords: data.length,

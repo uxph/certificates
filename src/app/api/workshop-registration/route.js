@@ -8,6 +8,8 @@ export async function POST(request) {
       await request.json();
 
     const db = getFirebaseAdmin().firestore();
+    const attendeesCollection =
+      process.env.ATTENDEES_COLLECTION || "helixpay_event_attendees";
 
     // Validate required fields
     if (!eventSlug || !helixpayCode || !workshopSelections) {
@@ -71,7 +73,7 @@ export async function POST(request) {
       }
     }
 
-    const attendeesRef = db.collection("helixpay_event_attendees");
+    const attendeesRef = db.collection(attendeesCollection);
     const attendeeQuery = await attendeesRef
       .where("qr_code_text", "==", helixpayCode.trim())
       .where("event_name", "==", title)
@@ -141,7 +143,10 @@ export async function POST(request) {
     }
 
     // If Block B selection differs from Block A, decrement its counter as well
-    if (workshopSelections["blockB"] && workshopSelections["blockB"] !== workshopSelections["blockA"]) {
+    if (
+      workshopSelections["blockB"] &&
+      workshopSelections["blockB"] !== workshopSelections["blockA"]
+    ) {
       // Find and update counter for Block B workshop
       const blockBQuery = await db
         .collection("workshops_counter")
@@ -205,9 +210,11 @@ export async function GET(request) {
     }
 
     const db = getFirebaseAdmin().firestore();
+    const attendeesCollection =
+      process.env.ATTENDEES_COLLECTION || "helixpay_event_attendees";
 
     // Query helixpay_event_attendees collection
-    const attendeesRef = db.collection("helixpay_event_attendees");
+    const attendeesRef = db.collection(attendeesCollection);
     const attendeeQuery = await attendeesRef
       .where("qr_code_text", "==", helixpayCode.trim())
       .get();
