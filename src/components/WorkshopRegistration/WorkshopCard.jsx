@@ -15,6 +15,24 @@ const WorkshopCard = ({
     }
   };
 
+  const speakerList = Array.isArray(workshop?.speakers)
+    ? workshop.speakers
+    : workshop?.speaker
+    ? [{ name: workshop.speaker, role: workshop.role }]
+    : [];
+
+  const speakerNames = speakerList
+    .map((s) => (typeof s === "string" ? s : s?.name))
+    .filter(Boolean)
+    .join(", ");
+
+  const rolesCombined = speakerList
+    .map((s) => (typeof s === "object" ? s?.role : undefined))
+    .filter(Boolean)
+    .join(" • ");
+
+  const isPanel = Array.isArray(workshop?.speakers) && workshop.speakers.length > 1;
+
   return (
     <div
       className={`border rounded-lg p-4 cursor-pointer transition-all duration-200 relative ${
@@ -25,7 +43,7 @@ const WorkshopCard = ({
         workshop.slotsLeft <= 0 || isDisabled
           ? "opacity-60 cursor-not-allowed"
           : ""
-      }`}
+      } `}
       onClick={handleClick}
     >
       <div className="flex items-start space-x-3">
@@ -39,18 +57,17 @@ const WorkshopCard = ({
           className="mt-1 w-4 h-4 text-main bg-gray-800 border-gray-600 focus:ring-main disabled:opacity-50 disabled:cursor-not-allowed"
         />
         <div className="flex-1">
-          <div className="flex items-start space-x-3">
-            <div className="flex items-center rounded-full w-24 h-24 relative">
-              {/* {workshop?.id &&  */}
-
-              <Image
-                alt={workshop.speaker}
-                src={`/workshops/${eventSlug}/${workshop.id}.png` ?? ""}
-                fill={true}
-                className="object-contain"
-              />
-              {/* } */}
-            </div>
+          <div className={`flex items-start ${isPanel ? "" : "space-x-3"}`}>
+            {!isPanel && (
+              <div className="flex items-center rounded-full w-24 h-24 relative">
+                <Image
+                  alt={speakerNames || workshop.title}
+                  src={`/workshops/${eventSlug}/${workshop.id}.png`}
+                  fill={true}
+                  className="object-contain"
+                />
+              </div>
+            )}
 
             {/* <div className="w-12 h-12 bg-main rounded-full flex items-center justify-center">
               <span className="text-white font-semibold text-lg">
@@ -61,13 +78,39 @@ const WorkshopCard = ({
               </span>
             </div> */}
             <div className="flex-1">
-              <h3 className=" font-semibold mb-2 text-xl text-main">
-                {workshop.title}
-              </h3>
-              <p className="font-semibold text-macopa text-lg">
-                {workshop.speaker}
-              </p>
-              {/* <p className="text-base text-gray-500">{workshop.role}</p> */}
+              <div className="flex items-center gap-2 mb-2">
+                <h3 className="font-semibold text-xl text-main">{workshop.title}</h3>
+              </div>
+              {isPanel ? (
+                <div className="mt-1 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {speakerList.map((sp, idx) => {
+                    const name = typeof sp === "string" ? sp : sp?.name;
+                    const role = typeof sp === "object" ? sp?.role : undefined;
+                    const letter = String.fromCharCode(97 + idx); // a,b,c,d...
+                    const src = `/workshops/${eventSlug}/${workshop.id}-${letter}.png`;
+                    return (
+                      <div key={idx} className="flex items-center gap-3">
+                        <div className="relative w-12 h-12 md:w-14 md:h-14 rounded overflow-hidden">
+                          <Image alt={name || workshop.title} src={src} fill={true} className="object-cover" />
+                        </div>
+                        <div className="leading-tight">
+                          <div className="font-semibold text-macopa text-xl md:text-2xl">{name}</div>
+                          {role && <div className="text-lg md:text-xl text-gray-500">{role}</div>}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <>
+                  {speakerNames && (
+                    <p className="font-semibold text-macopa text-lg">{speakerNames}</p>
+                  )}
+                  {rolesCombined && (
+                    <p className="text-base text-gray-500">{rolesCombined}</p>
+                  )}
+                </>
+              )}
               {workshop.room && (
                 <p className="text-base text-gray-600">
                   Venue: {workshop.room}
@@ -79,7 +122,12 @@ const WorkshopCard = ({
           {/* Slots Left Indicator */}
           <div className="mt-3 pt-2 border-t border-gray-600">
             <div className="flex items-center justify-end gap-4">
-              {/* Indicator for full-afternoon sessions */}
+              {/* Indicators (aligned): full-afternoon and panel */}
+              {isPanel && (
+                <div className="px-3 py-1 bg-purple-500/20 text-purple-600 border border-purple-500/30 rounded text-sm font-semibold">
+                  Panel
+                </div>
+              )}
               {workshop.full_afternoon && (
                 <div className="px-3 py-1 bg-blue-500/20 text-blue-600 border border-blue-500/30 rounded text-sm font-semibold">
                   Full Afternoon Session

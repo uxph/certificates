@@ -26,6 +26,12 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
   // If full-afternoon is selected, show only one card with combined time
   if (isFullAfternoonSelected) {
     const fullAfternoonWorkshop = selectedA?.full_afternoon ? selectedA : selectedB;
+    const speakerNames = Array.isArray(fullAfternoonWorkshop?.speakers)
+      ? fullAfternoonWorkshop.speakers
+          .map((s) => (typeof s === "string" ? s : s?.name))
+          .filter(Boolean)
+          .join(", ")
+      : fullAfternoonWorkshop?.speaker;
     
     return (
       <div className="max-w-4xl w-full mt-8 mb-6">
@@ -43,7 +49,9 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
                 <p className="text-main text-lg font-bold">
                   {fullAfternoonWorkshop.title}
                 </p>
-                <p className="text-macopa font-bold">{fullAfternoonWorkshop.speaker}</p>
+                {speakerNames && (
+                  <p className="text-macopa font-bold">{speakerNames}</p>
+                )}
                 {fullAfternoonWorkshop.room && (
                   <p className=" text-gray-600">Venue: {fullAfternoonWorkshop.room}</p>
                 )}
@@ -70,6 +78,12 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
             const selectedWorkshop = workshopBlocks[blockName]?.find(
               (w) => w.id === workshopId
             );
+            const speakerNames = Array.isArray(selectedWorkshop?.speakers)
+              ? selectedWorkshop.speakers
+                  .map((s) => (typeof s === "string" ? s : s?.name))
+                  .filter(Boolean)
+                  .join(", ")
+              : selectedWorkshop?.speaker;
             return (
               <div key={blockName} className="text-center h-full flex flex-col">
                 <p className="font-bold text-lg text-gray-800">
@@ -81,7 +95,9 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
                     <p className="text-main text-lg font-bold">
                       {selectedWorkshop.title}
                     </p>
-                    <p className="text-macopa font-bold ">{selectedWorkshop.speaker}</p>
+                    {speakerNames && (
+                      <p className="text-macopa font-bold ">{speakerNames}</p>
+                    )}
                     {selectedWorkshop.room && (
                       <p className=" text-gray-600">Venue: {selectedWorkshop.room}</p>
                     )}

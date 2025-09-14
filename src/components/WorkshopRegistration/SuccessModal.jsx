@@ -61,6 +61,12 @@ const SuccessModal = ({ isOpen, onClose, attendeeName, selectedWorkshops, worksh
                   : null;
 
                 if (fullAfternoonWorkshop) {
+                  const speakerNames = Array.isArray(fullAfternoonWorkshop?.speakers)
+                    ? fullAfternoonWorkshop.speakers
+                        .map((s) => (typeof s === 'string' ? s : s?.name))
+                        .filter(Boolean)
+                        .join(', ')
+                    : fullAfternoonWorkshop?.speaker;
                   return (
                     <div className="border border-green-200 rounded p-3 bg-green-50">
                       <p className="font-semibold text-gray-800 mb-1 text-sm">
@@ -69,9 +75,9 @@ const SuccessModal = ({ isOpen, onClose, attendeeName, selectedWorkshops, worksh
                       <p className="text-green-700 font-bold text-base">
                         {fullAfternoonWorkshop.title}
                       </p>
-                      <p className="text-gray-600 text-sm">
-                        {fullAfternoonWorkshop.speaker}
-                      </p>
+                      {speakerNames && (
+                        <p className="text-gray-600 text-sm">{speakerNames}</p>
+                      )}
                       {fullAfternoonWorkshop.room && (
                         <p className="text-xs text-gray-500">
                           Venue: {fullAfternoonWorkshop.room}
@@ -91,6 +97,12 @@ const SuccessModal = ({ isOpen, onClose, attendeeName, selectedWorkshops, worksh
                     blockB: { label: 'Block B', time: '3:10 PM - 4:25 PM' }
                   };
                   const blockLabel = `${blockInfo[blockName]?.label} (${blockInfo[blockName]?.time})`;
+                  const speakerNames = Array.isArray(selectedWorkshop?.speakers)
+                    ? selectedWorkshop.speakers
+                        .map((s) => (typeof s === 'string' ? s : s?.name))
+                        .filter(Boolean)
+                        .join(', ')
+                    : selectedWorkshop?.speaker;
                   
                   return (
                     <div key={blockName} className="border border-green-200 rounded p-3 bg-green-50">
@@ -102,9 +114,9 @@ const SuccessModal = ({ isOpen, onClose, attendeeName, selectedWorkshops, worksh
                           <p className="text-green-700 font-bold text-base">
                             {selectedWorkshop.title}
                           </p>
-                          <p className="text-gray-600 text-sm">
-                            {selectedWorkshop.speaker}
-                          </p>
+                          {speakerNames && (
+                            <p className="text-gray-600 text-sm">{speakerNames}</p>
+                          )}
                           {selectedWorkshop.room && (
                             <p className="text-xs text-gray-500">
                               Venue: {selectedWorkshop.room}
