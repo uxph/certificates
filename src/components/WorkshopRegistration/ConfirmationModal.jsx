@@ -44,7 +44,7 @@ const ConfirmationModal = ({
           </h2>
 
           <div className="text-left mb-6">
-            <div className="border border-yellow-200 rounded p-3 bg-yellow-50 mb-4">
+            <div className="border border-yellow-200 rounded p-3 bg-white mb-4">
               <p className="text-yellow-800 font-semibold text-base mb-2">
                 {workshopTitle}
               </p>

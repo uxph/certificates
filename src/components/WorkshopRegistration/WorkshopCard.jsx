@@ -35,7 +35,7 @@ const WorkshopCard = ({
 
   return (
     <div
-      className={`border rounded-lg p-4 cursor-pointer transition-all duration-200 relative ${
+      className={`border rounded-lg p-4 cursor-pointer transition-all duration-200 bg-white relative ${
         isSelected
           ? "border-main bg-main/10"
           : "border-gray-600 hover:border-gray-500"

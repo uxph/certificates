@@ -26,7 +26,7 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
       : fullAfternoonWorkshop?.speaker;
     
     return (
-      <div className="max-w-4xl w-full mt-8 mb-6">
+      <div className="max-w-4xl w-full mt-8 mb-6 bg-white">
         <div className=" rounded-lg p-4 border border-gray-600">
           <h3 className="text-2xl font-semibold mb-3 text-center">
             Your workshop
@@ -37,7 +37,7 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
             </p>
             <p className="font-medium text-base mb-4">(1:40 PM - 4:25 PM)</p>
             {fullAfternoonWorkshop ? (
-              <div className="border border-main rounded p-4 bg-main/5 max-w-md mx-auto">
+              <div className="border border-main rounded p-4 bg-white max-w-md mx-auto">
                 <p className="text-main text-lg font-bold">
                   {fullAfternoonWorkshop.title}
                 </p>
@@ -60,7 +60,7 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
   }
   
   return (
-    <div className="max-w-4xl w-full mt-8 mb-6">
+    <div className="max-w-4xl w-full mt-8 mb-6 bg-white">
       <div className=" rounded-lg p-4 border border-gray-600">
         <h3 className="text-2xl font-semibold mb-3 text-center">
           Your workshops
@@ -83,7 +83,7 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
                 </p>
                 <p className="font-medium text-base mb-2">({blockInfo[blockName]?.time})</p>
                 {selectedWorkshop ? (
-                  <div className="border border-main rounded p-2 bg-main/5 flex-1 flex flex-col justify-center">
+                  <div className="border border-main rounded p-2 bg-white flex-1 flex flex-col justify-center">
                     <p className="text-main text-lg font-bold">
                       {selectedWorkshop.title}
                     </p>
