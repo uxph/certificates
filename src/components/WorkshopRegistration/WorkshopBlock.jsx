@@ -1,5 +1,6 @@
 import React from "react";
 import WorkshopCard from "./WorkshopCard";
+import { blockInfo } from "./blockInfo";
 
 const WorkshopBlock = ({ 
     blockName, 
@@ -9,17 +10,7 @@ const WorkshopBlock = ({
     eventSlug,
     isDisabled = false
 }) => {
-    // Block metadata including display label and schedule time
-    const blockInfo = {
-        blockA: {
-            label: "Block A",
-            time: "1:40 PM - 2:55 PM",
-        },
-        blockB: {
-            label: "Block B",
-            time: "3:10 PM - 4:25 PM",
-        },
-    };
+    // Using global blockInfo from shared module
     return (
         <div className="space-y-4">
             <div className="space-y-1 text-center mb-6">

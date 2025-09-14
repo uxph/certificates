@@ -1,4 +1,5 @@
 import React from "react";
+import { blockInfo } from "./blockInfo";
 
 const SuccessModal = ({ isOpen, onClose, attendeeName, selectedWorkshops, workshopBlocks }) => {
   if (!isOpen) return null;
@@ -92,10 +93,6 @@ const SuccessModal = ({ isOpen, onClose, attendeeName, selectedWorkshops, worksh
                   const selectedWorkshop = workshopBlocks[blockName]?.find(
                     (w) => w.id === workshopId
                   );
-                  const blockInfo = {
-                    blockA: { label: 'Block A', time: '1:40 PM - 2:55 PM' },
-                    blockB: { label: 'Block B', time: '3:10 PM - 4:25 PM' }
-                  };
                   const blockLabel = `${blockInfo[blockName]?.label} (${blockInfo[blockName]?.time})`;
                   const speakerNames = Array.isArray(selectedWorkshop?.speakers)
                     ? selectedWorkshop.speakers

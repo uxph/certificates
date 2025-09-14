@@ -1,6 +1,13 @@
 import React from "react";
+import { fullAfternoonTime } from "./blockInfo";
 
-const ConfirmationModal = ({ isOpen, onClose, onConfirm, workshopTitle, speaker }) => {
+const ConfirmationModal = ({
+  isOpen,
+  onClose,
+  onConfirm,
+  workshopTitle,
+  speaker,
+}) => {
   if (!isOpen) return null;
 
   return (
@@ -32,7 +39,9 @@ const ConfirmationModal = ({ isOpen, onClose, onConfirm, workshopTitle, speaker 
             </svg>
           </div>
 
-          <h2 className="text-xl font-bold text-gray-900 mb-3">Important Notice</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">
+            Important Notice
+          </h2>
 
           <div className="text-left mb-6">
             <div className="border border-yellow-200 rounded p-3 bg-yellow-50 mb-4">
@@ -41,9 +50,11 @@ const ConfirmationModal = ({ isOpen, onClose, onConfirm, workshopTitle, speaker 
               </p>
               <p className="text-yellow-700 text-sm">{speaker}</p>
             </div>
-            
+
             <p className="text-gray-700 text-sm leading-relaxed border-l-4 border-yellow-500 pl-3 py-2 bg-yellow-50 rounded-r">
-              This workshop requires both A and B slots (1:40 PM - 4:25 PM). You cannot transfer to a separate workshop or join halfway through by selecting this.
+              This workshop requires both A and B slots ({fullAfternoonTime}).
+              You cannot transfer to a separate workshop or join halfway through
+              by selecting this.
             </p>
           </div>
 

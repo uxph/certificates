@@ -1,16 +1,8 @@
 import React from "react";
+import { blockInfo } from "./blockInfo";
 
 const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
-  const blockInfo = {
-    blockA: {
-      label: "Block A",
-      time: "1:40 PM - 2:55 PM",
-    },
-    blockB: {
-      label: "Block B",
-      time: "3:10 PM - 4:25 PM",
-    },
-  };
+  // Using global blockInfo
 
   // Check if a full-afternoon workshop is selected (takes both blocks)
   const selectedA = workshopBlocks.blockA?.find(
