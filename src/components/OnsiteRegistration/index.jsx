@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import clsx from "clsx";
 export default function OnsiteRegistration({ options }) {
   const [form, setForm] = useState({
     firstName: "",
@@ -165,15 +166,14 @@ export default function OnsiteRegistration({ options }) {
 
           {message.text && (
             <div
-              className={`mt-3 ${
+              className={clsx(
+                "mt-3",
                 message.type === "success"
                   ? getMessageStyles("success")
-                  : `text-center text-base md:text-lg ${
-                      message.type === "error"
-                        ? "text-red-400"
-                        : "text-gray-300"
-                    }`
-              }`}
+                  : "text-center text-base md:text-lg",
+                message.type !== "success" &&
+                  (message.type === "error" ? "text-red-400" : "text-gray-300")
+              )}
             >
               {message.text}
             </div>
@@ -282,15 +282,14 @@ export default function OnsiteRegistration({ options }) {
 
         {message.text && (
           <div
-            className={`mt-2 ${
+            className={clsx(
+              "mt-2",
               message.type === "success"
                 ? getMessageStyles("success")
-                : `text-base md:text-lg text-center ${
-                    message.type === "error"
-                      ? "text-red-400"
-                      : "text-gray-600"
-                  }`
-            }`}
+                : "text-base md:text-lg text-center",
+              message.type !== "success" &&
+                (message.type === "error" ? "text-red-400" : "text-gray-600")
+            )}
           >
             {message.text}
           </div>

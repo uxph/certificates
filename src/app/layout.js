@@ -1,6 +1,7 @@
 import { Poppins, Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import clsx from "clsx";
 
 const poppins = Poppins({
     variable: "--font-body",
@@ -27,7 +28,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body className={`${poppins.variable} ${inter.variable} ${geistMono.variable}`}>
+            <body className={clsx(poppins.variable, inter.variable, geistMono.variable)}>
                 {children}
                 <GoogleAnalytics />
             </body>

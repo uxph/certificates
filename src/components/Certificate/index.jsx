@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import clsx from "clsx";
 import generate from "./services/generate";
 import Image from "next/image";
 import Link from "next/link";
@@ -170,9 +171,10 @@ const Certificate = ({ title, validator, certificate_template, logo, slug }) => 
       <div className="h-8 mt-2">
         {message.message && (
           <p
-            className={`${
-              status[message.status]
-            } md:text-lg text-base text-center font-medium`}
+            className={clsx(
+              status[message.status],
+              "md:text-lg text-base text-center font-medium"
+            )}
           >
             {message.message}
           </p>

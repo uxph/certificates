@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import clsx from "clsx";
 
 export default function DatabaseExport() {
   const [isExporting, setIsExporting] = useState(false);
@@ -102,13 +103,14 @@ export default function DatabaseExport() {
 
             {exportStatus && (
               <div
-                className={`mb-6 p-4 rounded-md ${
+                className={clsx(
+                  "mb-6 p-4 rounded-md",
                   exportStatus.includes("❌")
                     ? "bg-red-50 text-red-700 border border-red-200"
                     : exportStatus.includes("✅")
                     ? "bg-green-50 text-green-700 border border-green-200"
                     : "bg-blue-50 text-blue-700 border border-blue-200"
-                }`}
+                )}
               >
                 <div className="font-medium">{exportStatus}</div>
                 {exportProgress && (
@@ -147,11 +149,12 @@ export default function DatabaseExport() {
                     <button
                       onClick={() => handleExport(venue.id)}
                       disabled={isExporting}
-                      className={`px-6 py-2 rounded-md font-medium transition-colors ${
+                      className={clsx(
+                        "px-6 py-2 rounded-md font-medium transition-colors",
                         isExporting
                           ? "bg-gray-300 text-gray-500 cursor-not-allowed"
                           : "bg-blue-600 text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                      }`}
+                      )}
                     >
                       {isExporting ? (
                         <div className="flex items-center gap-2">

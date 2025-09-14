@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import clsx from "clsx";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -28,11 +29,12 @@ export default function Navigation() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={clsx(
+                    "flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                     isActive
                       ? "bg-blue-100 text-blue-700"
                       : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                  }`}
+                  )}
                 >
                   <span className="text-lg">{item.icon}</span>
                   {item.label}

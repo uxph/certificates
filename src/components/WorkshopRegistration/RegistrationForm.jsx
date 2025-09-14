@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import Link from "next/link";
 
 const RegistrationForm = ({
@@ -56,9 +57,10 @@ const RegistrationForm = ({
       <div className="min-h-8 mt-2">
         {message.message && message.status !== "success" && (
           <div
-            className={`${
-              status[message.status]
-            } md:text-lg text-base text-center font-medium`}
+            className={clsx(
+              status[message.status],
+              "md:text-lg text-base text-center font-medium"
+            )}
           >
             {message.message}
           </div>
