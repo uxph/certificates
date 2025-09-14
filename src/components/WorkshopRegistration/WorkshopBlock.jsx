@@ -6,6 +6,7 @@ const WorkshopBlock = ({
     workshops, 
     selectedWorkshop, 
     onWorkshopSelect,
+    eventSlug,
     isDisabled = false
 }) => {
     // Block metadata including display label and schedule time
@@ -54,6 +55,7 @@ const WorkshopBlock = ({
                         isSelected={selectedWorkshop === workshop.id}
                         onSelect={onWorkshopSelect}
                         isDisabled={isDisabled}
+                        eventSlug={eventSlug}
                     />
                 ))}
             </div>

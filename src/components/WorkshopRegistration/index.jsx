@@ -229,6 +229,7 @@ const WorkshopRegistration = ({
             key={blockName}
             blockName={blockName}
             workshops={workshops}
+            eventSlug={eventSlug}
             selectedWorkshop={selectedWorkshops[blockName]}
             onWorkshopSelect={(workshopId) =>
               handleWorkshopSelect(blockName, workshopId)

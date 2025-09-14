@@ -6,6 +6,7 @@ const WorkshopCard = ({
   blockName,
   isSelected,
   onSelect,
+  eventSlug,
   isDisabled = false,
 }) => {
   const handleClick = () => {
@@ -44,7 +45,7 @@ const WorkshopCard = ({
 
               <Image
                 alt={workshop.speaker}
-                src={`/workshops/${workshop.id}.png` ?? ""}
+                src={`/workshops/${eventSlug}/${workshop.id}.png` ?? ""}
                 fill={true}
                 className="object-contain"
               />
