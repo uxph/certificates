@@ -226,7 +226,9 @@
           "speaker": "Jan Dale Carlo Catalonia",
           "role": "Coach @ KadaKarer",
           "room": "Lab 3",
-          "level": "For All Levels"
+          "level": "For All Levels",
+          "full_afternoon": true
+
         },
         {
           "id": "ceb-a-4",
@@ -311,15 +313,6 @@
         }
       ],
       "blockB": [
-        {
-          "id": "ceb-b-1",
-          "title": "Career Advancement: Resume and Interview Bonanza",
-          "description": "Career Advancement: Resume and Interview Bonanza",
-          "speaker": "Thea Pacaldo",
-          "role": "Coach @ KadaKarer",
-          "room": "Lab 1",
-          "level": "For All Levels"
-        },
         {
           "id": "ceb-b-2",
           "title": "Webflow Speedrun",

@@ -42,3 +42,5 @@ next-env.d.ts
 
 scripts/data/*
 scripts/serviceAccountKey.json
+reports/
+bots/
