@@ -71,7 +71,7 @@ const SuccessModal = ({ isOpen, onClose, attendeeName, selectedWorkshops, worksh
                   return (
                     <div className="border border-green-200 rounded p-3 bg-green-50">
                       <p className="font-semibold text-gray-800 mb-1 text-sm">
-                        Full Afternoon Session (1:40 PM - 4:25 PM)
+                        Session occupying 2 slots (1:40 PM - 4:25 PM)
                       </p>
                       <p className="text-green-700 font-bold text-base">
                         {fullAfternoonWorkshop.title}

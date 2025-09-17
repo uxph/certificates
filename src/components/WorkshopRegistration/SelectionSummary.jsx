@@ -33,7 +33,7 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
           </h3>
           <div className="text-center">
             <p className="font-bold text-lg text-gray-800 mb-2">
-              Full Afternoon Session
+              Session occupying 2 slots
             </p>
             <p className="font-medium text-base mb-4">(1:40 PM - 4:25 PM)</p>
             {fullAfternoonWorkshop ? (

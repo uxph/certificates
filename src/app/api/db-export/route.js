@@ -85,7 +85,7 @@ export async function POST(req) {
         name: data.attendee_name || data.customer_name,
       });
       
-      // Make blockB registration optional since we have full afternoon sessions
+      // Make blockB registration optional since we have sessions occupying 2 slots
       if (registrationData.blockB) {
         attendeeList["blockB"]?.[registrationData.blockB]?.push({
           id: data.id,
