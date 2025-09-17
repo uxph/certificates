@@ -20,6 +20,7 @@
         },
         "mini-conf-ceb": {
             "title": "UXPH Mini 2025: Cebu",
+            "logo": "/cebu_logo.png",
             "validator": {
                 "regex": "^HLX-[A-Za-z0-9]{7}-\\d{6}-\\d{5}$",
                 "pattern": "HLX-XXXXXXX-XXXXXX-XXXXX"
