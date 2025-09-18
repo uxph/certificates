@@ -76,6 +76,11 @@ const WorkshopCard = ({
               </span>
             </div> */}
             <div className="flex-1">
+              {workshop.level && (
+                <p className="text-sm font-semibold uppercase tracking-wide text-macopa/80 mb-1">
+                  Level: {workshop.level}
+                </p>
+              )}
               <div className="flex items-center gap-2 mb-2">
                 <h3 className="font-semibold text-xl text-main">{workshop.title}</h3>
               </div>

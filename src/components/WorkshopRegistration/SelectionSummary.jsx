@@ -47,6 +47,9 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
                 {fullAfternoonWorkshop.room && (
                   <p className=" text-gray-600">Venue: {fullAfternoonWorkshop.room}</p>
                 )}
+                {fullAfternoonWorkshop.level && (
+                  <p className="text-gray-600 mt-2">Level: {fullAfternoonWorkshop.level}</p>
+                )}
               </div>
             ) : (
               <div className="border border-gray-300 rounded p-4 bg-gray-50 max-w-md mx-auto">
@@ -92,6 +95,9 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
                     )}
                     {selectedWorkshop.room && (
                       <p className=" text-gray-600">Venue: {selectedWorkshop.room}</p>
+                    )}
+                    {selectedWorkshop.level && (
+                      <p className="text-gray-600 mt-2">Level: {selectedWorkshop.level}</p>
                     )}
                   </div>
                 ) : (
