@@ -32,7 +32,8 @@ const WorkshopCard = ({
     .filter(Boolean)
     .join(" • ");
 
-  const isPanel = Array.isArray(workshop?.speakers) && workshop.speakers.length > 1;
+  const isPanel = workshop.isPanel;
+  const isMultipleSpeakers =  Array.isArray(workshop?.speakers) && workshop.speakers.length > 1;
 
   return (
     <div
@@ -54,8 +55,8 @@ const WorkshopCard = ({
           className="mt-1 w-4 h-4 text-main bg-gray-800 border-gray-600 focus:ring-main disabled:opacity-50 disabled:cursor-not-allowed"
         />
         <div className="flex-1">
-          <div className={clsx("flex items-start", !isPanel && "space-x-3")}>
-            {!isPanel && (
+          <div className={clsx("flex items-start", !isMultipleSpeakers && "space-x-3")}>
+            {!isMultipleSpeakers && (
               <div className="flex items-center rounded-full w-24 h-24 relative">
                 <Image
                   alt={speakerNames || workshop.title}
@@ -78,7 +79,7 @@ const WorkshopCard = ({
               <div className="flex items-center gap-2 mb-2">
                 <h3 className="font-semibold text-xl text-main">{workshop.title}</h3>
               </div>
-              {isPanel ? (
+              {isMultipleSpeakers ? (
                 <div className="mt-1 grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {speakerList.map((sp, idx) => {
                     const name = typeof sp === "string" ? sp : sp?.name;
