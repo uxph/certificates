@@ -34,6 +34,9 @@ const WorkshopCard = ({
 
   const isPanel = workshop.isPanel;
   const isMultipleSpeakers =  Array.isArray(workshop?.speakers) && workshop.speakers.length > 1;
+  const tags = Array.isArray(workshop?.tags)
+    ? workshop.tags.filter((tag) => typeof tag === "string" && tag.trim().length > 0)
+    : [];
 
   return (
     <div
@@ -124,7 +127,17 @@ const WorkshopCard = ({
 
           {/* Slots Left Indicator */}
           <div className="mt-3 pt-2 border-t border-gray-600">
-            <div className="flex items-center justify-end gap-4">
+            <div className="flex flex-wrap items-center justify-end gap-2 sm:gap-3">
+              {tags.length > 0 && (
+                tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="inline-flex items-center rounded border border-main/30 bg-main/10 px-3 py-1 text-sm font-semibold text-main"
+                  >
+                    {tag}
+                  </span>
+                ))
+              )}
               {/* Indicators (aligned): full-afternoon and panel */}
               {isPanel && (
                 <div className="px-3 py-1 bg-purple-500/20 text-purple-600 border border-purple-500/30 rounded text-sm font-semibold">
