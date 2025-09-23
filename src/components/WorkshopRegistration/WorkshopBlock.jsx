@@ -32,7 +32,7 @@ const WorkshopBlock = ({
                 {isDisabled && (
                   <div className="mt-3">
                     <span className="inline-block text-blue-500 font-bold text-lg tracking-wide">
-                        Full afternoon session selected - this block is now full
+                        Session occupying 2 slots selected - this block is now full
                     </span>
                   </div>
                 )}

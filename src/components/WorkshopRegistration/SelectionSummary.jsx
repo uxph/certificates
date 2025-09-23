@@ -24,6 +24,11 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
           .filter(Boolean)
           .join(", ")
       : fullAfternoonWorkshop?.speaker;
+    const tags = Array.isArray(fullAfternoonWorkshop?.tags)
+      ? fullAfternoonWorkshop.tags.filter(
+          (tag) => typeof tag === "string" && tag.trim().length > 0
+        )
+      : [];
     
     return (
       <div className="max-w-4xl w-full mt-8 mb-6 bg-white">
@@ -33,7 +38,7 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
           </h3>
           <div className="text-center">
             <p className="font-bold text-lg text-gray-800 mb-2">
-              Full Afternoon Session
+              Session occupying 2 slots
             </p>
             <p className="font-medium text-base mb-4">(1:40 PM - 4:25 PM)</p>
             {fullAfternoonWorkshop ? (
@@ -46,6 +51,21 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
                 )}
                 {fullAfternoonWorkshop.room && (
                   <p className=" text-gray-600">Venue: {fullAfternoonWorkshop.room}</p>
+                )}
+                {fullAfternoonWorkshop.level && (
+                  <p className="text-gray-600 mt-2">Level: {fullAfternoonWorkshop.level}</p>
+                )}
+                {tags.length > 0 && (
+                  <div className="mt-3 flex flex-wrap gap-2 justify-center">
+                    {tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="inline-flex items-center rounded-full border border-main/60 bg-main/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-main"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 )}
               </div>
             ) : (
@@ -76,6 +96,11 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
                   .filter(Boolean)
                   .join(", ")
               : selectedWorkshop?.speaker;
+            const tags = Array.isArray(selectedWorkshop?.tags)
+              ? selectedWorkshop.tags.filter(
+                  (tag) => typeof tag === "string" && tag.trim().length > 0
+                )
+              : [];
             return (
               <div key={blockName} className="text-center h-full flex flex-col">
                 <p className="font-bold text-lg text-gray-800">
@@ -92,6 +117,21 @@ const SelectionSummary = ({ selectedWorkshops, workshopBlocks }) => {
                     )}
                     {selectedWorkshop.room && (
                       <p className=" text-gray-600">Venue: {selectedWorkshop.room}</p>
+                    )}
+                    {selectedWorkshop.level && (
+                      <p className="text-gray-600 mt-2">Level: {selectedWorkshop.level}</p>
+                    )}
+                    {tags.length > 0 && (
+                      <div className="mt-3 flex flex-wrap gap-2 justify-center">
+                        {tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="inline-flex items-center rounded-full border border-main/60 bg-main/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-main"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     )}
                   </div>
                 ) : (

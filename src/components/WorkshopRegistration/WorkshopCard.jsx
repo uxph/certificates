@@ -32,7 +32,11 @@ const WorkshopCard = ({
     .filter(Boolean)
     .join(" • ");
 
-  const isPanel = Array.isArray(workshop?.speakers) && workshop.speakers.length > 1;
+  const isPanel = workshop.isPanel;
+  const isMultipleSpeakers =  Array.isArray(workshop?.speakers) && workshop.speakers.length > 1;
+  const tags = Array.isArray(workshop?.tags)
+    ? workshop.tags.filter((tag) => typeof tag === "string" && tag.trim().length > 0)
+    : [];
 
   return (
     <div
@@ -54,8 +58,8 @@ const WorkshopCard = ({
           className="mt-1 w-4 h-4 text-main bg-gray-800 border-gray-600 focus:ring-main disabled:opacity-50 disabled:cursor-not-allowed"
         />
         <div className="flex-1">
-          <div className={clsx("flex items-start", !isPanel && "space-x-3")}>
-            {!isPanel && (
+          <div className={clsx("flex items-start", !isMultipleSpeakers && "space-x-3")}>
+            {!isMultipleSpeakers && (
               <div className="flex items-center rounded-full w-24 h-24 relative">
                 <Image
                   alt={speakerNames || workshop.title}
@@ -75,10 +79,15 @@ const WorkshopCard = ({
               </span>
             </div> */}
             <div className="flex-1">
+              {workshop.level && (
+                <p className="text-sm font-semibold uppercase tracking-wide text-macopa/80 mb-1">
+                  Level: {workshop.level}
+                </p>
+              )}
               <div className="flex items-center gap-2 mb-2">
                 <h3 className="font-semibold text-xl text-main">{workshop.title}</h3>
               </div>
-              {isPanel ? (
+              {isMultipleSpeakers ? (
                 <div className="mt-1 grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {speakerList.map((sp, idx) => {
                     const name = typeof sp === "string" ? sp : sp?.name;
@@ -118,7 +127,17 @@ const WorkshopCard = ({
 
           {/* Slots Left Indicator */}
           <div className="mt-3 pt-2 border-t border-gray-600">
-            <div className="flex items-center justify-end gap-4">
+            <div className="flex flex-wrap items-center justify-end gap-2 sm:gap-3">
+              {tags.length > 0 && (
+                tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="inline-flex items-center rounded border border-main/30 bg-main/10 px-3 py-1 text-sm font-semibold text-main"
+                  >
+                    {tag}
+                  </span>
+                ))
+              )}
               {/* Indicators (aligned): full-afternoon and panel */}
               {isPanel && (
                 <div className="px-3 py-1 bg-purple-500/20 text-purple-600 border border-purple-500/30 rounded text-sm font-semibold">
@@ -127,7 +146,7 @@ const WorkshopCard = ({
               )}
               {workshop.full_afternoon && (
                 <div className="px-3 py-1 bg-blue-500/20 text-blue-600 border border-blue-500/30 rounded text-sm font-semibold">
-                  Full Afternoon Session
+                  Occupies 2 slots
                 </div>
               )}
 

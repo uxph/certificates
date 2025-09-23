@@ -200,200 +200,199 @@
     "mini-conf-ceb": {
       "blockA": [
         {
-          "id": "ceb-a-1",
+          "id": "ceb-WA1",
           "title": "Pixels at Work: Directing Art for Digital Products",
           "description": "Pixels at Work: Directing Art for Digital Products",
           "speaker": "JP De Guzman",
           "role": "Chief Creative and Founder @ Frost Design Group",
-          "room": "Lab 1",
+          "room": "1B12E (Basement 1)",
           "level": "Intermediate",
           "full_afternoon": true
         },
         {
-          "id": "ceb-a-2",
+          "id": "ceb-WA2",
           "title": "Lego Serious Play: Building Psychologically Safe Spaces",
           "description": "Lego Serious Play: Building Psychologically Safe Spaces",
           "speaker": "Lizzie Garilao & Maita Pelea",
           "role": "LSP Facilitator @ Brick Management Consulting, Inc.",
-          "room": "Lab 2",
+          "room": "1B12F (Basement 1)",
           "level": "For All Levels",
           "full_afternoon": true
         },
         {
-          "id": "ceb-a-3",
+          "id": "ceb-WA3",
           "title": "Career Advancement: Resume and Interview Bonanza",
           "description": "Career Advancement: Resume and Interview Bonanza",
-          "speaker": "Jan Dale Carlo Catalonia",
           "role": "Coach @ KadaKarer",
-          "room": "Lab 3",
-          "level": "For All Levels"
+          "room": "2B06 (Basement 2)",
+          "level": "For All Levels",
+          "speakers": [
+            {
+              "name": "Jan Dale Carlo Catalonia",
+              "role": "Coach @ KadaKareer"
+            },
+            { "name": "Thea Pacaldo", "role": "Coach @ KadaKareer" }
+          ],
+          "full_afternoon": true
         },
         {
-          "id": "ceb-a-4",
+          "id": "ceb-WA4",
           "title": "Creating Design Systems with AI",
           "description": "Creating Design Systems with AI",
           "speaker": "William Tolbize",
           "role": "Senior UI Designer @ HelloFresh",
-          "room": "Lab 4",
+          "room": "Mac Lab 1",
           "level": "Intermediate"
         },
         {
-          "id": "ceb-a-5",
+          "id": "ceb-WA5",
           "title": "Designers Who Ship: Building Websites from 0→1 with Framer and Vibe",
           "description": "Designers Who Ship: Building Websites from 0→1 with Framer and Vibe",
           "speaker": "Art San Diego",
           "role": "Founder & Design Engineer @ Simetri Studio",
-          "room": "Lab 5",
+          "room": "Mac Lab 2",
           "level": "Intermediate"
         },
         {
-          "id": "ceb-a-6",
+          "id": "ceb-WA6",
           "title": "The AI x Design Field Guide",
           "description": "The AI x Design Field Guide",
           "speaker": "Richard Parayno",
           "role": "Co-founder, Chief Product & Design Officer @ Navegante",
-          "room": "Lab 6",
+          "room": "101 (1st floor)",
           "level": "For All Levels"
         },
         {
-          "id": "ceb-a-7",
+          "id": "ceb-WA7",
           "title": "3D Thinking: Expanding the Designer's Toolkit with Blender",
           "description": "3D Thinking: Expanding the Designer's Toolkit with Blender",
           "speaker": "Bessa Nicole Tamarra",
           "role": "Design Lead @ DEVOGO Studio",
-          "room": "Lab 7",
+          "room": "102 (1st floor)",
           "level": "Beginner-Friendly"
         },
         {
-          "id": "ceb-a-8",
+          "id": "ceb-WA8",
           "title": "To p or not to p? What is the (research) question? Using stronger quantitative techniques in your UX research",
           "description": "To p or not to p? What is the (research) question? Using stronger quantitative techniques in your UX research",
           "speaker": "Jordan Aiko Deja",
           "role": "Research Fellow @ DLSU Human-X Interactions Lab",
-          "room": "Lab 8",
+          "room": "207 (2nd floor)",
           "level": "Beginner-Friendly"
         },
         {
-          "id": "ceb-a-9",
+          "id": "ceb-WA9",
           "title": "Lightning Decision Jams: How to Turn Problems into Action in Under an Hour",
           "description": "Lightning Decision Jams: How to Turn Problems into Action in Under an Hour",
           "speaker": "Shannen Yu Sapar",
           "role": "Founder & Design Lead @ Brickroad Studios",
-          "room": "Lab 9",
+          "room": "208 (2nd floor)",
           "level": "For All Levels"
         },
         {
-          "id": "ceb-a-10",
+          "id": "ceb-WA10",
           "title": "Crafting Futures: Co-Designing with Communities, Innovating with Local Culture",
           "description": "Crafting Futures: Co-Designing with Communities, Innovating with Local Culture",
           "speaker": "Jay Nathan Jore",
           "role": "Program Coordinator @ UP Cebu, Design Program & Director, Office for the Initiatives in Culture and the Arts @ UP Cebu, Curator @ UP Cebu Museum of Art and Culture",
-          "room": "Lab 10",
+          "room": "209 (2nd floor)",
           "level": "For All Levels"
         },
         {
-          "id": "ceb-a-11",
+          "id": "ceb-WA11",
           "title": "Intro to Object-oriented UX: Shifting design from screens to systems",
           "description": "Intro to Object-oriented UX: Shifting design from screens to systems",
           "speaker": "Genica Mijares-Sy",
           "role": "UX Designer @ Trax Technologies",
-          "room": "Lab 11",
+          "room": "210 (2nd floor)",
           "level": "Intermediate"
         },
         {
-          "id": "ceb-a-12",
+          "id": "ceb-WA12",
           "title": "The Visual Language of UI Design",
           "description": "The Visual Language of UI Design",
           "speaker": "Rey Orlanes & Mariel Cerio",
           "role": "Visual Designers @ Frost Design & Consulting Group Inc.",
-          "room": "Lab 12",
-          "level": "Beginner-Friendly"
+          "room": "211 (2nd floor)",
+          "level": "Beginner-Friendly",
+          "tags": ["Laptop or tablet needed"]
         }
       ],
       "blockB": [
         {
-          "id": "ceb-b-1",
-          "title": "Career Advancement: Resume and Interview Bonanza",
-          "description": "Career Advancement: Resume and Interview Bonanza",
-          "speaker": "Thea Pacaldo",
-          "role": "Coach @ KadaKarer",
-          "room": "Lab 1",
-          "level": "For All Levels"
-        },
-        {
-          "id": "ceb-b-2",
+          "id": "ceb-WB4",
           "title": "Webflow Speedrun",
           "description": "Webflow Speedrun",
           "speaker": "JP Dionisio",
           "role": "Developer @ Webflow",
-          "room": "Lab 2",
+          "room": "Mac Lab 1",
           "level": "Intermediate"
         },
         {
-          "id": "ceb-b-3",
+          "id": "ceb-WB5",
           "title": "Advanced Prototyping in Figma",
           "description": "Advanced Prototyping in Figma",
           "speaker": "Chi Señires",
           "role": "UX Designer @ Humanforce",
-          "room": "Lab 3",
+          "room": "Mac Lab 2",
           "level": "Intermediate"
         },
         {
-          "id": "ceb-b-4",
+          "id": "ceb-WB6",
           "title": "Exploring AI in UI Design",
           "description": "Exploring AI in UI Design",
           "speaker": "Bruce Alturas",
           "role": "UI/UX Designer @ Symph Inc.",
-          "room": "Lab 4",
+          "room": "101 (1st floor)",
           "level": "Intermediate"
         },
         {
-          "id": "ceb-b-5",
+          "id": "ceb-WB7",
           "title": "3DIY: 3D Printing Crash Course for Tangible DIY Prototypes",
           "description": "3DIY: 3D Printing Crash Course for Tangible DIY Prototypes",
           "speaker": "Fidel Riacfranca",
           "role": "Co-Founder @ This Modern Lab",
-          "room": "Lab 5",
+          "room": "102 (1st floor)",
           "level": "Intermediate"
         },
         {
-          "id": "ceb-b-6",
+          "id": "ceb-WB8",
           "title": "From Sticky Notes to Stakeholder Buy-in",
           "description": "From Sticky Notes to Stakeholder Buy-in",
           "speaker": "Mica Diaz de Rivera",
           "role": "UX Designer",
-          "room": "Lab 6",
+          "room": "207 (2nd floor)",
           "level": "Intermediate"
         },
         {
-          "id": "ceb-b-7",
+          "id": "ceb-WB9",
           "title": "Storytelling in UX: Communicating Design Decisions with Confidence Workshop",
           "description": "Storytelling in UX: Communicating Design Decisions with Confidence Workshop",
           "speaker": "Jess Nalangan Mapua",
           "role": "Senior UX Designer @ Superloop",
-          "room": "Lab 7",
+          "room": "208 (2nd floor)",
           "level": "Intermediate"
         },
         {
-          "id": "ceb-b-8",
+          "id": "ceb-WB10",
           "title": "Leading With Play: Driving Creativity Through Collaboration",
           "description": "Leading With Play: Driving Creativity Through Collaboration",
           "speaker": "Emem Seno",
           "role": "Creative Director @ The Backbone",
-          "room": "Lab 8",
+          "room": "209 (2nd floor)",
           "level": "Intermediate"
         },
         {
-          "id": "ceb-b-9",
+          "id": "ceb-WB11",
           "title": "Audit Your UX: A Hands-On Workshop on Clarity, Friction, and Emotion",
           "description": "Audit Your UX: A Hands-On Workshop on Clarity, Friction, and Emotion",
           "speaker": "Chaz Grant Borromeo",
           "role": "Product Designer @ Interview Query",
-          "room": "Lab 9",
+          "room": "210 (2nd floor)",
           "level": "Intermediate"
         },
         {
-          "id": "ceb-b-10",
+          "id": "ceb-WB12",
           "title": "The Long and Winding UX Road: Bring your boldest questions about design and career—leave with clarity, ideas, and support.",
           "description": "The Long and Winding UX Road: Bring your boldest questions about design and career—leave with clarity, ideas, and support.",
           "speakers": [
@@ -414,8 +413,9 @@
               "role": "Head Design Lead @ HQZen"
             }
           ],
-          "room": "Panel Room",
-          "level": "Beginner"
+          "room": "211 (2nd floor)",
+          "level": "Beginner",
+          "isPanel": true
         }
       ]
     }

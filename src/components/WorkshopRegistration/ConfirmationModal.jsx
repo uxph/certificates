@@ -53,8 +53,7 @@ const ConfirmationModal = ({
 
             <p className="text-gray-700 text-sm leading-relaxed border-l-4 border-yellow-500 pl-3 py-2 bg-yellow-50 rounded-r">
               This workshop requires both A and B slots ({fullAfternoonTime}).
-              You cannot transfer to a separate workshop or join halfway through
-              by selecting this.
+              You cannot transfer to a different workshop after the break.
             </p>
           </div>
 
