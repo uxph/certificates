@@ -33,17 +33,23 @@ const WorkshopCard = ({
     .join(" • ");
 
   const isPanel = workshop.isPanel;
-  const isMultipleSpeakers =  Array.isArray(workshop?.speakers) && workshop.speakers.length > 1;
+  const isMultipleSpeakers =
+    Array.isArray(workshop?.speakers) && workshop.speakers.length > 1;
   const tags = Array.isArray(workshop?.tags)
-    ? workshop.tags.filter((tag) => typeof tag === "string" && tag.trim().length > 0)
+    ? workshop.tags.filter(
+        (tag) => typeof tag === "string" && tag.trim().length > 0
+      )
     : [];
 
   return (
     <div
       className={clsx(
         "border rounded-lg p-4 cursor-pointer transition-all duration-200 bg-white relative",
-        isSelected ? "border-main bg-main/10" : "border-gray-600 hover:border-gray-500",
-        (workshop.slotsLeft <= 0 || isDisabled) && "opacity-60 cursor-not-allowed"
+        isSelected
+          ? "border-main bg-main/10"
+          : "border-gray-600 hover:border-gray-500",
+        (workshop.slotsLeft <= 0 || isDisabled) &&
+          "opacity-60 cursor-not-allowed"
       )}
       onClick={handleClick}
     >
@@ -58,7 +64,12 @@ const WorkshopCard = ({
           className="mt-1 w-4 h-4 text-main bg-gray-800 border-gray-600 focus:ring-main disabled:opacity-50 disabled:cursor-not-allowed"
         />
         <div className="flex-1">
-          <div className={clsx("flex items-start", !isMultipleSpeakers && "space-x-3")}>
+          <div
+            className={clsx(
+              "flex items-start",
+              !isMultipleSpeakers && "space-x-3"
+            )}
+          >
             {!isMultipleSpeakers && (
               <div className="flex items-center rounded-full w-24 h-24 relative">
                 <Image
@@ -85,8 +96,15 @@ const WorkshopCard = ({
                 </p>
               )}
               <div className="flex items-center gap-2 mb-2">
-                <h3 className="font-semibold text-xl text-main">{workshop.title}</h3>
+                <h3 className="font-semibold text-xl text-main">
+                  {workshop.title}
+                </h3>
               </div>
+                {isMultipleSpeakers && workshop.room && (
+                  <p className="text-base mb-4 text-gray-600">
+                    Venue: {workshop.room}
+                  </p>
+                )}
               {isMultipleSpeakers ? (
                 <div className="mt-1 grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {speakerList.map((sp, idx) => {
@@ -97,11 +115,22 @@ const WorkshopCard = ({
                     return (
                       <div key={idx} className="flex items-center gap-3">
                         <div className="relative w-12 h-12 md:w-14 md:h-14 rounded overflow-hidden">
-                          <Image alt={name || workshop.title} src={src} fill={true} className="object-cover" />
+                          <Image
+                            alt={name || workshop.title}
+                            src={src}
+                            fill={true}
+                            className="object-cover"
+                          />
                         </div>
                         <div className="leading-tight">
-                          <div className="font-semibold text-macopa text-xl md:text-2xl">{name}</div>
-                          {role && <div className="text-lg md:text-xl text-gray-500">{role}</div>}
+                          <div className="font-semibold text-macopa text-lg">
+                            {name}
+                          </div>
+                          {role && (
+                            <div className="text-base text-gray-500">
+                              {role}
+                            </div>
+                          )}
                         </div>
                       </div>
                     );
@@ -110,17 +139,19 @@ const WorkshopCard = ({
               ) : (
                 <>
                   {speakerNames && (
-                    <p className="font-semibold text-macopa text-lg">{speakerNames}</p>
+                    <p className="font-semibold text-macopa text-lg">
+                      {speakerNames}
+                    </p>
                   )}
                   {rolesCombined && (
                     <p className="text-base text-gray-500">{rolesCombined}</p>
                   )}
+                  {workshop.room && (
+                    <p className="text-base text-gray-600">
+                      Venue: {workshop.room}
+                    </p>
+                  )}
                 </>
-              )}
-              {workshop.room && (
-                <p className="text-base text-gray-600">
-                  Venue: {workshop.room}
-                </p>
               )}
             </div>
           </div>
@@ -128,7 +159,7 @@ const WorkshopCard = ({
           {/* Slots Left Indicator */}
           <div className="mt-3 pt-2 border-t border-gray-600">
             <div className="flex flex-wrap items-center justify-end gap-2 sm:gap-3">
-              {tags.length > 0 && (
+              {tags.length > 0 &&
                 tags.map((tag) => (
                   <span
                     key={tag}
@@ -136,8 +167,7 @@ const WorkshopCard = ({
                   >
                     {tag}
                   </span>
-                ))
-              )}
+                ))}
               {/* Indicators (aligned): full-afternoon and panel */}
               {isPanel && (
                 <div className="px-3 py-1 bg-purple-500/20 text-purple-600 border border-purple-500/30 rounded text-sm font-semibold">
