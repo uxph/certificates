@@ -52,7 +52,7 @@ const ConfirmationModal = ({
             </div>
 
             <p className="text-gray-700 text-sm leading-relaxed border-l-4 border-yellow-500 pl-3 py-2 bg-yellow-50 rounded-r">
-              This workshop requires both A and B slots ({fullAfternoonTime}).
+              This workshop requires both A and B blocks ({fullAfternoonTime}).
               You cannot transfer to a different workshop after the break.
             </p>
           </div>
