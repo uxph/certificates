@@ -260,7 +260,8 @@
           "speaker": "Richard Parayno",
           "role": "Co-founder, Chief Product & Design Officer @ Navegante",
           "room": "101 (1st floor)",
-          "level": "For All Levels"
+          "level": "For All Levels",
+          "tags": ["Laptop required"]
         },
         {
           "id": "ceb-WA7",
@@ -269,7 +270,8 @@
           "speaker": "Bessa Nicole Tamarra",
           "role": "Design Lead @ DEVOGO Studio",
           "room": "102 (1st floor)",
-          "level": "Beginner-Friendly"
+          "level": "Beginner-Friendly",
+          "tags": ["Laptop required"]
         },
         {
           "id": "ceb-WA8",
@@ -344,7 +346,8 @@
           "speaker": "Bruce Alturas",
           "role": "UI/UX Designer @ Symph Inc.",
           "room": "101 (1st floor)",
-          "level": "Intermediate"
+          "level": "Intermediate",
+          "tags": ["Laptop required"]
         },
         {
           "id": "ceb-WB7",
@@ -353,7 +356,8 @@
           "speaker": "Fidel Riacfranca",
           "role": "Co-Founder @ This Modern Lab",
           "room": "102 (1st floor)",
-          "level": "Intermediate"
+          "level": "Intermediate",
+          "tags": ["Laptop required"]
         },
         {
           "id": "ceb-WB8",
