@@ -55,6 +55,7 @@ export async function POST(req) {
         return acc;
       }, {}),
     };
+    const registeredAttendeeIds = new Set();
 
     // Get workshop registrations from Firebase
     const db = getFirebaseAdmin().firestore();
@@ -80,17 +81,32 @@ export async function POST(req) {
       }
       const registrationData = registration.data();
       // console.log(registrationData);
-      attendeeList["blockA"][registrationData.blockA].push({
-        id: data.id,
-        name: data.attendee_name || data.customer_name,
-      });
-      
+      const attendeeName = data.attendee_name || data.customer_name;
+      let hasRegistered = false;
+
+      const blockASelection = attendeeList["blockA"][registrationData.blockA];
+      if (blockASelection) {
+        blockASelection.push({
+          id: data.id,
+          name: attendeeName,
+        });
+        hasRegistered = true;
+      }
+
       // Make blockB registration optional since we have sessions occupying 2 blocks
       if (registrationData.blockB) {
-        attendeeList["blockB"]?.[registrationData.blockB]?.push({
-          id: data.id,
-          name: data.attendee_name || data.customer_name,
-        });
+        const blockBSelection = attendeeList["blockB"]?.[registrationData.blockB];
+        if (blockBSelection) {
+          blockBSelection.push({
+            id: data.id,
+            name: attendeeName,
+          });
+          hasRegistered = true;
+        }
+      }
+
+      if (hasRegistered) {
+        registeredAttendeeIds.add(data.id);
       }
     }
 
@@ -197,17 +213,39 @@ export async function POST(req) {
     });
 
     // Summary information
+    const now = new Date();
+    const exportDate = now.toLocaleDateString('en-US', { timeZone: 'Asia/Manila' });
+    const exportTime = now.toLocaleTimeString('en-US', {
+      timeZone: 'Asia/Manila',
+      hour12: false,
+    });
+
     summarySheet.addRow(['Event ID', venue]);
     summarySheet.addRow(['Event Name', eventInfo.title]);
-    summarySheet.addRow(['Total Attendees', attendees.docs.length]);
+    summarySheet.addRow(['Total Registered Attendees', registeredAttendeeIds.size]);
+    summarySheet.addRow(['Total Attendee Records', attendees.docs.length]);
     
     // Count total workshops with attendees
-    const totalWorkshops = Object.values(attendeeList.blockA).filter(a => a.length > 0).length + 
+    const totalWorkshops = Object.values(attendeeList.blockA).filter(a => a.length > 0).length +
                           Object.values(attendeeList.blockB).filter(a => a.length > 0).length;
     summarySheet.addRow(['Total Workshops with Attendees', totalWorkshops]);
-    
-    summarySheet.addRow(['Export Date', new Date().toLocaleDateString()]);
-    summarySheet.addRow(['Export Time', new Date().toLocaleTimeString()]);
+
+    summarySheet.addRow([]);
+    summarySheet.addRow(['Block A Workshops', 'Attendee Count']);
+    workshopInfo.blockA.forEach(workshop => {
+      const attendees = attendeeList.blockA[workshop.id] || [];
+      summarySheet.addRow([workshop.title, attendees.length]);
+    });
+
+    summarySheet.addRow([]);
+    summarySheet.addRow(['Block B Workshops', 'Attendee Count']);
+    workshopInfo.blockB.forEach(workshop => {
+      const attendees = attendeeList.blockB[workshop.id] || [];
+      summarySheet.addRow([workshop.title, attendees.length]);
+    });
+
+    summarySheet.addRow(['Export Date (PH GMT+8)', exportDate]);
+    summarySheet.addRow(['Export Time (PH GMT+8)', exportTime]);
 
     // Format summary sheet
     summarySheet.getColumn(1).width = 25;
