@@ -223,17 +223,10 @@
           "id": "ceb-WA3",
           "title": "Career Advancement: Resume and Interview Bonanza",
           "description": "Career Advancement: Resume and Interview Bonanza",
+          "speaker": "Jan Dale Carlo Catalonia",
           "role": "Coach @ KadaKarer",
           "room": "2B06 (Basement 2)",
-          "level": "For All Levels",
-          "speakers": [
-            {
-              "name": "Jan Dale Carlo Catalonia",
-              "role": "Coach @ KadaKareer"
-            },
-            { "name": "Thea Pacaldo", "role": "Coach @ KadaKareer" }
-          ],
-          "full_afternoon": true
+          "level": "For All Levels"
         },
         {
           "id": "ceb-WA4",
@@ -321,6 +314,15 @@
         }
       ],
       "blockB": [
+        {
+          "id": "ceb-WB3",
+          "title": "Career Advancement: Resume and Interview Bonanza",
+          "description": "Career Advancement: Resume and Interview Bonanza",
+          "speaker": "Thea Pacaldo",
+          "role": "Coach @ KadaKarer",
+          "room": "2B06 (Basement 2)",
+          "level": "For All Levels"
+        },
         {
           "id": "ceb-WB4",
           "title": "Webflow Speedrun",
