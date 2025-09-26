@@ -9,6 +9,7 @@ export default function Navigation() {
 
   const navItems = [
     { href: "/csv-upload", label: "CSV Upload", icon: "📤" },
+    { href: "/csv-upload-email", label: "CSV Upload (Email)", icon: "✉️" },
     { href: "/db-export", label: "Database Export", icon: "📊" },
   ];
 

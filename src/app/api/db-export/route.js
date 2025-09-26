@@ -82,6 +82,12 @@ export async function POST(req) {
       const registrationData = registration.data();
       // console.log(registrationData);
       const attendeeName = data.attendee_name || data.customer_name;
+      const attendeeEmail =
+        (typeof data.email === "string" && data.email.trim()) ||
+        (typeof data.customer_email === "string" && data.customer_email.trim()) ||
+        (typeof data.school_email === "string" && data.school_email.trim()) ||
+        (typeof data.contact_email === "string" && data.contact_email.trim()) ||
+        "";
       let hasRegistered = false;
 
       const blockASelection = attendeeList["blockA"][registrationData.blockA];
@@ -89,6 +95,7 @@ export async function POST(req) {
         blockASelection.push({
           id: data.id,
           name: attendeeName,
+          email: attendeeEmail,
         });
         hasRegistered = true;
       }
@@ -100,6 +107,7 @@ export async function POST(req) {
           blockBSelection.push({
             id: data.id,
             name: attendeeName,
+            email: attendeeEmail,
           });
           hasRegistered = true;
         }
@@ -131,7 +139,7 @@ export async function POST(req) {
       });
 
       // Add headers
-      const headers = ['ID', 'Customer Name'];
+      const headers = ['ID', 'Customer Name', 'Email'];
       const headerRow = worksheet.addRow(headers);
       headerRow.font = { bold: true, color: { argb: 'FFFFFFFF' } };
       headerRow.fill = {
@@ -142,12 +150,13 @@ export async function POST(req) {
 
       // Add attendee data
       attendees.forEach(attendee => {
-        worksheet.addRow([attendee.id, attendee.name]);
+        worksheet.addRow([attendee.id, attendee.name, attendee.email || '']);
       });
 
       // Auto-fit columns
       worksheet.getColumn(1).width = Math.max(2, ...attendees.map(a => String(a.id).length)) + 2;
       worksheet.getColumn(2).width = Math.max(12, ...attendees.map(a => String(a.name).length)) + 2;
+      worksheet.getColumn(3).width = Math.max(12, ...attendees.map(a => String(a.email || '').length)) + 2;
 
       // Add borders to all cells
       worksheet.eachRow((row, rowNumber) => {
@@ -176,7 +185,7 @@ export async function POST(req) {
       });
 
       // Add headers
-      const headers = ['ID', 'Customer Name'];
+      const headers = ['ID', 'Customer Name', 'Email'];
       const headerRow = worksheet.addRow(headers);
       headerRow.font = { bold: true, color: { argb: 'FFFFFFFF' } };
       headerRow.fill = {
@@ -187,12 +196,13 @@ export async function POST(req) {
 
       // Add attendee data
       attendees.forEach(attendee => {
-        worksheet.addRow([attendee.id, attendee.name]);
+        worksheet.addRow([attendee.id, attendee.name, attendee.email || '']);
       });
 
       // Auto-fit columns
       worksheet.getColumn(1).width = Math.max(2, ...attendees.map(a => String(a.id).length)) + 2;
       worksheet.getColumn(2).width = Math.max(12, ...attendees.map(a => String(a.name).length)) + 2;
+      worksheet.getColumn(3).width = Math.max(12, ...attendees.map(a => String(a.email || '').length)) + 2;
 
       // Add borders to all cells
       worksheet.eachRow((row, rowNumber) => {
