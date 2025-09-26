@@ -56,10 +56,24 @@ export async function POST(request) {
       return '';
     };
 
+    const sanitizeEmail = (value) => {
+      const cleaned = sanitize(value);
+      if (!cleaned) {
+        return '';
+      }
+
+      const normalized = cleaned.toLowerCase();
+      if (normalized === '-' || normalized === '--' || normalized === '—') {
+        return '';
+      }
+
+      return cleaned;
+    };
+
     data.forEach((record, index) => {
       const recordPosition = index + 1;
       const qrCode = sanitize(record['qr_code_text'] ?? record['QR Code']);
-      const email = sanitize(record['Email Address']) || sanitize(record['School Email']);
+      const email = sanitizeEmail(record['Email Address']) || sanitizeEmail(record['School Email']);
       const customerName = sanitize(record['customer_name'] ?? record['Customer Name']);
 
       if (!qrCode) {
