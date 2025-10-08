@@ -424,6 +424,10 @@
           "isPanel": true
         }
       ]
+    },
+    "mini-conf-mnl":{
+      "blockA": [],
+      "blockB": []
     }
   }
 }
