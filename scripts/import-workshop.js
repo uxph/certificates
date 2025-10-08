@@ -26,7 +26,7 @@ async function importAllCsvFiles() {
     for (const file of files) {
       const filePath = path.join(csvDirectory, file);
       const jsonArray = await csv().fromFile(filePath);
-      if(filePath.includes("dvo")) continue;
+      if(filePath.includes("dvo") || filePath.includes("ceb")) continue;
 
       console.log(`Importing CSV to DB from ${file}`);
 
