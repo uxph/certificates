@@ -10,9 +10,10 @@
         },
         "mini-conf-mnl": {
             "title": "UXPH Mini 2025: Manila",
+            "logo": "/manila_logo.png",
             "validator": {
-                "regex": "^HLX-[A-Za-z0-9]{6}-\\d{6}-\\d{5}$",
-                "pattern": "HLX-XXXXXX-XXXXXX-XXXXX"
+                "regex": "^HLX-[A-Za-z0-9]{7}-\\d{6}-\\d{5}$",
+                "pattern": "HLX-XXXXXXX-XXXXXX-XXXXX"
             },
             "onsite_code": "MNL_9YI45",
             "certificate_template": "/templates/certificates/manila.png"

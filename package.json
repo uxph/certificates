@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "bots:cebu": "node scripts/bots/register-mini-conf-ceb.js"
+    "bots:cebu": "node scripts/bots/register-mini-conf-ceb.js",
+    "bots:mnl": "node scripts/bots/register-mini-conf-mnl.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
