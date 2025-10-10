@@ -432,18 +432,18 @@
           "title": "Inclusive Design of AI Products",
           "description": "Inclusive Design of AI Products",
           "speaker": "Francis Bautista",
-          "role": "CEO at Indigo Research",
+          "role": "CEO @ Indigo Research",
           "room": "",
           "level": "Open to All"
         },
         {
           "id": "mnl-WA2",
-          "title": "Using CURSOR to Design your Systems",
-          "description": "Using CURSOR to Design your Systems",
-          "speaker": "Clarisse Medallo",
-          "role": "Head of DesignOps at Human Managed",
+          "title": "Design, Build, Ship: Creating Websites from 0→1 with Framer & AI",
+          "description": "Design, Build, Ship: Creating Websites from 0→1 with Framer & AIs",
+          "speaker": "Art San Diego",
+          "role": "Founder & Design Engineer @ Simetri Studio",
           "room": "",
-          "level": "For All Levels"
+          "level": "Beginner-Friendly"
         },
         {
           "id": "mnl-WA3",
@@ -456,8 +456,8 @@
         },
         {
           "id": "mnl-WA4",
-          "title": "Innovate: An Introduction to Design Futuring",
-          "description": "Innovate: An Introduction to Design Futuring",
+          "title": "Imagine -> Innovate: An Intro to Design Futuring",
+          "description": "Imagine -> Innovate: An Intro to Design Futuring",
           "speaker": "Bianca Aguilar",
           "role": "Freelance Designer",
           "room": "",
@@ -468,7 +468,7 @@
           "title": "Beyond the End User: How Service Design Opens More Opportunities",
           "description": "Beyond the End User: How Service Design Opens More Opportunities",
           "speaker": "Bradd Michael Gabe",
-          "role": "Web Product Owner at Accelbyte Inc",
+          "role": "Web Product Owner @ Accelbyte Inc",
           "room": "",
           "level": "For All Levels"
         },
@@ -477,7 +477,7 @@
           "title": "Advanced Prototyping in Figma",
           "description": "Advanced Prototyping in Figma",
           "speaker": "Chi Señires",
-          "role": "UX Designer at Humanforce",
+          "role": "UX Designer @ Humanforce",
           "room": "",
           "level": "Intermediate"
         },
@@ -486,14 +486,14 @@
           "title": "How to Shift Careers Without Starting Over",
           "description": "How to Shift Careers Without Starting Over",
           "speaker": "Fah Bernadette",
-          "role": "COO at Luminality Pte Ltd, Chief of Staff at Pumapapel Pop-up Design Studio",
+          "role": "COO @ Luminality Pte Ltd",
           "room": "",
           "level": "For All Levels"
         },
         {
           "id": "mnl-WA8",
-          "title": "Building Psychologically Safe Spaces with Lego Serious Play",
-          "description": "Building Psychologically Safe Spaces with Lego Serious Play",
+          "title": "Build the Career You Want: A LEGO® SERIOUS PLAY® Workshop",
+          "description": "Build the Career You Want: A LEGO® SERIOUS PLAY® Workshop",
           "speaker": "Maita Pelea",
           "role": "Brick Management Consulting",
           "room": "",
@@ -505,7 +505,7 @@
           "title": "BASIQS+: Empowering Creative Talent towards Entrepreneurship",
           "description": "BASIQS+: Empowering Creative Talent towards Entrepreneurship",
           "speaker": "Karla Legaspi",
-          "role": "Head of Programs for Community and Ecosystem at QBO",
+          "role": "Head of Programs for Community and Ecosystem @ QBO",
           "room": "",
           "level": "Open to All"
         },
@@ -514,7 +514,7 @@
           "title": "Turning Ideas into Real Startups",
           "description": "Turning Ideas into Real Startups",
           "speaker": "Pjotr Steinmetz",
-          "role": "Founder at StellarPH",
+          "role": "Founder @ StellarPH",
           "room": "",
           "level": "For All Levels"
         }
@@ -525,70 +525,79 @@
           "title": "Build for Everyone: A Hands-on Guide to Resilient UIs",
           "description": "Build for Everyone: A Hands-on Guide to Resilient UIs",
           "speaker": "Ned Palacios",
-          "role": "Software Engineer at Betterteam",
+          "role": "Software Engineer @ Betterteam",
           "room": "",
           "level": "Intermediate"
         },
         {
           "id": "mnl-WB2",
-          "title": "From Data to Decisions: Storycraft for Strategic UX Research",
-          "description": "From Data to Decisions: Storycraft for Strategic UX Research",
-          "speaker": "Patrick Narvasa",
-          "role": "Design Strategist at Make",
-          "room": "",
-          "level": "Intermediate"
-        },
-        {
-          "id": "mnl-WB3",
-          "title": "How to standout and close clients in the age of AI",
-          "description": "How to standout and close clients in the age of AI",
-          "speaker": "Richard Pines",
-          "role": "CEO/Founder at WebPowerhouse",
+          "title": "Leading Change through Design: A Human-Centered Approach Workshop",
+          "description": "Leading Change through Design: A Human-Centered Approach Workshop",
+          "speaker": "Kevin Martin Dela Cruz",
+          "role": "External Affairs Officer and Entrepreneurship Academic Lead @Life Academy International College",
           "room": "",
           "level": "Open to All"
         },
         {
+          "id": "mnl-WB3",
+          "title": "From Data to Decisions: Storycraft for Strategic UX Research",
+          "description": "From Data to Decisions: Storycraft for Strategic UX Research",
+          "speaker": "Patrick Narvasa",
+          "role": "Design Strategist @ Make",
+          "room": "",
+          "level": "Intermediate"
+        },
+        {
           "id": "mnl-WB4",
-          "title": "Design That Moves the Needle: How Design Decisions Drive Business Outcomes",
-          "description": "Design That Moves the Needle: How Design Decisions Drive Business Outcomes",
-          "speaker": "John Joseph Soriano",
-          "role": "Head of Marketing at Paymongo",
+          "title": "How to standout and close clients in the age of AI",
+          "description": "How to standout and close clients in the age of AI",
+          "speaker": "Richard Pines",
+          "role": "CEO/Founder @ WebPowerhouse",
           "room": "",
           "level": "Open to All"
         },
         {
           "id": "mnl-WB5",
-          "title": "The AI x Design Field Guide",
-          "description": "The AI x Design Field Guide",
-          "speaker": "Richard Parayno",
-          "role": "Co-founder, Chief Product & Design Officer at Navegante",
+          "title": "Design That Moves the Needle: How Design Decisions Drive Business Outcomes",
+          "description": "Design That Moves the Needle: How Design Decisions Drive Business Outcomes",
+          "speaker": "John Joseph Soriano",
+          "role": "Head of Marketing @ Paymongo",
           "room": "",
           "level": "Open to All"
         },
         {
           "id": "mnl-WB6",
-          "title": "Craft your UX Story: A Hands-on Workshop on Presenting Design Work",
-          "description": "Craft your UX Story: A Hands-on Workshop on Presenting Design Work",
-          "speaker": "Jess Nalangan Mapua",
-          "role": "Senior UX Designer at Superloop",
-          "room": "",
-          "level": "Intermediate"
-        },
-        {
-          "id": "mnl-WB8",
-          "title": "Ship the Feeling: Building Micro-Animations in Rive",
-          "description": "Ship the Feeling: Building Micro-Animations in Rive",
-          "speaker": "Jasmae Mino",
-          "role": "Lead Product Designer at Security Bank",
+          "title": "The AI x Design Field Guide",
+          "description": "The AI x Design Field Guide",
+          "speaker": "Richard Parayno",
+          "role": "Co-founder, Chief Product & Design Officer @ Navegante",
           "room": "",
           "level": "Open to All"
         },
         {
+          "id": "mnl-WB7",
+          "title": "Craft your UX Story: A Hands-on Workshop on Presenting Design Work",
+          "description": "Craft your UX Story: A Hands-on Workshop on Presenting Design Work",
+          "speaker": "Jess Nalangan Mapua",
+          "role": "Senior UX Designer @ Superloop",
+          "room": "",
+          "level": "Intermediate"
+        },
+        {
           "id": "mnl-WB9",
+          "title": "Ship the Feeling: Building Micro-Animations in Rive",
+          "description": "Ship the Feeling: Building Micro-Animations in Rive",
+          "speaker": "Jasmae Mino",
+          "role": "Lead Product Designer @ Security Bank",
+          "room": "",
+          "level": "Open to All"
+        },
+        {
+          "id": "mnl-WB10",
           "title": "Beyond Pain Points: Identifying Customer Needs through the Jobs to Be Done Lens",
           "description": "Beyond Pain Points: Identifying Customer Needs through the Jobs to Be Done Lens",
           "speaker": "Gaille Syquia",
-          "role": "Co-Founder and President at Customer Experience Society of the Philippines",
+          "role": "Co-Founder and President @ Customer Experience Society of the Philippines",
           "room": "",
           "level": "Beginner-Friendly"
         }
