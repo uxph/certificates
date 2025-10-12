@@ -2,13 +2,14 @@ import React from "react";
 import WorkshopCard from "./WorkshopCard";
 import { blockInfo } from "./blockInfo";
 
-const WorkshopBlock = ({ 
-    blockName, 
-    workshops, 
-    selectedWorkshop, 
+const WorkshopBlock = ({
+    blockName,
+    workshops,
+    selectedWorkshop,
     onWorkshopSelect,
     eventSlug,
-    isDisabled = false
+    isDisabled = false,
+    registrationClosed = false,
 }) => {
     // Using global blockInfo from shared module
     return (
@@ -22,14 +23,21 @@ const WorkshopBlock = ({
                         ({blockInfo[blockName].time})
                     </p>
                 )}
-                {!selectedWorkshop && !isDisabled && (
+                {!selectedWorkshop && !isDisabled && !registrationClosed && (
                   <div className="mt-3">
                     <span className="inline-block text-red-500 font-bold text-3xl tracking-wide uppercase">
                         Pick One
                     </span>
                   </div>
                 )}
-                {isDisabled && (
+                {registrationClosed && (
+                  <div className="mt-3">
+                    <span className="inline-block text-amber-600 font-semibold text-lg tracking-wide">
+                        Registration is closed for this event
+                    </span>
+                  </div>
+                )}
+                {!registrationClosed && isDisabled && (
                   <div className="mt-3">
                     <span className="inline-block text-blue-500 font-bold text-lg tracking-wide">
                         Session occupying 2 blocks selected - this block is now full

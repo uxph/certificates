@@ -12,6 +12,7 @@ const RegistrationForm = ({
   setMessage,
   eventSlug,
   helixpayPattern = "",
+  isRegistrationOpen = true,
 }) => {
   const status = {
     info: "text-gray-400",
@@ -21,6 +22,11 @@ const RegistrationForm = ({
 
   return (
     <div className="max-w-prose w-full mt-8">
+      {!isRegistrationOpen && (
+        <div className="mb-4 rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-center text-sm font-semibold text-amber-700">
+          Registration actions are disabled while this event is closed.
+        </div>
+      )}
       <p className="font-light text-base md:text-xl tracking-wide text-center mb-4">
         Enter your{" "}
         <span className="underline font-semibold">Helixpay code</span> to
@@ -38,13 +44,15 @@ const RegistrationForm = ({
           }}
           className="grow border rounded-sm w-full py-2 px-3 border-gray-800 placeholder-gray-400 bg-[#FEFCF6]"
           placeholder={helixpayPattern || "Enter your Helixpay code"}
+          disabled={!isRegistrationOpen}
         />
         <button
           disabled={
             loading ||
             !selectedWorkshops["blockA"] ||
             !selectedWorkshops["blockB"] ||
-            !helixpayCode.trim()
+            !helixpayCode.trim() ||
+            !isRegistrationOpen
           }
           className="relative text-white disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer uppercase bg-main hover:bg-main/80 border border-main py-2 px-6 rounded-sm font-semibold tracking-wider flex gap-2 items-center justify-center min-w-[120px]"
           onClick={onSubmit}

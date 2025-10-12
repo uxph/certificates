@@ -14,6 +14,7 @@ const WorkshopRegistration = ({
   eventSlug,
   helixpayPattern = "",
   helixpayRegex = "",
+  isRegistrationOpen = true,
 }) => {
   const router = useRouter();
   const [workshopData, setWorkshopData] = useState(workshopBlocks);
@@ -64,6 +65,8 @@ const WorkshopRegistration = ({
   }, []);
 
   const handleWorkshopSelect = (blockName, workshopId) => {
+    if (!isRegistrationOpen) return;
+
     // Special handling for full-afternoon workshops which take up both blocks
     const workshop = workshopData[blockName]?.find((w) => w.id === workshopId);
     if (workshop?.full_afternoon) {
@@ -99,6 +102,14 @@ const WorkshopRegistration = ({
 
   const handleSubmit = async () => {
     try {
+      if (!isRegistrationOpen) {
+        setMessage({
+          status: "error",
+          message: "Workshop registration is currently closed for this event.",
+        });
+        return;
+      }
+
       setMessage({
         status: "info",
         message: "",
@@ -223,6 +234,12 @@ const WorkshopRegistration = ({
         <p className="text-base tracking-widest mb-8 text-center">{subtitle}</p>
       )} */}
 
+      {!isRegistrationOpen && (
+        <div className="max-w-prose w-full mb-8 rounded-md border border-amber-200 bg-amber-50 px-4 py-3 text-center text-amber-700 font-semibold">
+          Workshop registration for this event is currently closed.
+        </div>
+      )}
+
       <div className="max-w-6xl w-full space-y-16">
         {Object.entries(workshopData).map(([blockName, workshops]) => (
           <WorkshopBlock
@@ -235,11 +252,13 @@ const WorkshopRegistration = ({
               handleWorkshopSelect(blockName, workshopId)
             }
             isDisabled={
-              blockName === "blockB" &&
-              workshopData?.blockA?.some(
-                (w) => w.id === selectedWorkshops.blockA && w.full_afternoon
-              )
+              !isRegistrationOpen ||
+              (blockName === "blockB" &&
+                workshopData?.blockA?.some(
+                  (w) => w.id === selectedWorkshops.blockA && w.full_afternoon
+                ))
             }
+            registrationClosed={!isRegistrationOpen}
           />
         ))}
       </div>
@@ -258,6 +277,7 @@ const WorkshopRegistration = ({
         onSubmit={handleSubmit}
         setMessage={setMessage}
         eventSlug={eventSlug}
+        isRegistrationOpen={isRegistrationOpen}
         helixpayPattern={helixpayPattern}
       />
 
