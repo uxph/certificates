@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getFirebaseAdmin } from "@/services/firebaseAdmin";
 import admin from "firebase-admin";
+import { isWorkshopRegistrationOpen } from "@/services/workshopRegistrationSettings";
 
 export async function POST(request) {
   try {
@@ -30,6 +31,17 @@ export async function POST(request) {
           error: "Please select one workshop from both Block A and Block B",
         },
         { status: 400 }
+      );
+    }
+
+    const registrationOpen = await isWorkshopRegistrationOpen(eventSlug);
+    if (!registrationOpen) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Workshop registration is currently closed for this event.",
+        },
+        { status: 403 }
       );
     }
 

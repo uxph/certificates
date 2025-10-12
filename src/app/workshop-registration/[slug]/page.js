@@ -4,6 +4,7 @@ import fsPromises from "fs/promises";
 import WorkshopRegistration from "@/components/WorkshopRegistration";
 import { notFound } from "next/navigation";
 import { getFirebaseAdmin } from "@/services/firebaseAdmin";
+import { isWorkshopRegistrationOpen } from "@/services/workshopRegistrationSettings";
 
 async function getWorkshopInfo({ slug }) {
     const filePath = path.join(process.cwd(), "data/workshops.json");
@@ -61,6 +62,7 @@ export default async function Page({ params }) {
     let workshopBlocks = await getWorkshopInfo({ slug });
     workshopBlocks = await attachSlotsLeft(workshopBlocks);
     let eventInfo = await getEventInfo({ slug });
+    const isRegistrationOpen = await isWorkshopRegistrationOpen(slug);
 
     if (!workshopBlocks || !eventInfo) return notFound();
 
@@ -72,6 +74,7 @@ export default async function Page({ params }) {
             eventSlug={slug}
             helixpayPattern={eventInfo?.validator?.pattern || "HLX-XXXXXX-XXXXXX-XXXXX"}
             helixpayRegex={eventInfo?.validator?.regex || "^HLX-[A-Za-z0-9]{6}-\\d{6}-\\d{5}$"}
+            isRegistrationOpen={isRegistrationOpen}
         />
     );
 }
