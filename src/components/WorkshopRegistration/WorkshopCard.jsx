@@ -2,6 +2,17 @@ import Image from "next/image";
 import React from "react";
 import clsx from "clsx";
 
+const NEWLY_ADDED_WINDOW_MS = 24 * 60 * 60 * 1000;
+
+const isWithinNewlyAddedWindow = (timestamp) => {
+  if (!timestamp) return false;
+  const addedAt = new Date(timestamp);
+  if (Number.isNaN(addedAt.getTime())) return false;
+  const now = Date.now();
+  if (now < addedAt.getTime()) return false;
+  return now - addedAt.getTime() < NEWLY_ADDED_WINDOW_MS;
+};
+
 const WorkshopCard = ({
   workshop,
   blockName,
@@ -10,6 +21,15 @@ const WorkshopCard = ({
   eventSlug,
   isDisabled = false,
 }) => {
+  const fallbackImage = "/uxph_logo.png";
+  const handleImageError = (event) => {
+    const target = event?.currentTarget;
+    if (!target) return;
+    target.onerror = null;
+    target.src = fallbackImage;
+    target.srcset = fallbackImage;
+  };
+
   const handleClick = () => {
     if (workshop.slotsLeft > 0 && !isDisabled) {
       onSelect(workshop.id);
@@ -40,6 +60,7 @@ const WorkshopCard = ({
         (tag) => typeof tag === "string" && tag.trim().length > 0
       )
     : [];
+  const isNewlyAdded = isWithinNewlyAddedWindow(workshop?.newlyAddedAt);
 
   return (
     <div
@@ -77,6 +98,7 @@ const WorkshopCard = ({
                   src={`/workshops/${eventSlug}/${workshop.id}.png`}
                   fill={true}
                   className="object-contain"
+                  onError={handleImageError}
                 />
               </div>
             )}
@@ -99,12 +121,17 @@ const WorkshopCard = ({
                 <h3 className="font-semibold text-xl text-main">
                   {workshop.title}
                 </h3>
-              </div>
-                {isMultipleSpeakers && workshop.room && (
-                  <p className="text-base mb-4 text-gray-600">
-                    Venue: {workshop.room}
-                  </p>
+                {isNewlyAdded && (
+                  <span className="inline-flex items-center rounded border border-emerald-500/30 bg-emerald-500/15 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-emerald-600">
+                    Newly added!
+                  </span>
                 )}
+              </div>
+              {isMultipleSpeakers && workshop.room && (
+                <p className="text-base mb-4 text-gray-600">
+                  Venue: {workshop.room}
+                </p>
+              )}
               {isMultipleSpeakers ? (
                 <div className="mt-1 grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {speakerList.map((sp, idx) => {
@@ -120,6 +147,7 @@ const WorkshopCard = ({
                             src={src}
                             fill={true}
                             className="object-cover"
+                            onError={handleImageError}
                           />
                         </div>
                         <div className="leading-tight">
