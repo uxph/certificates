@@ -443,7 +443,8 @@
           "speaker": "Art San Diego",
           "role": "Founder & Design Engineer @ Simetri Studio",
           "room": "",
-          "level": "Beginner-Friendly"
+          "level": "Beginner-Friendly",
+          "tags": ["Laptop required"]
         },
         {
           "id": "mnl-WA3",
@@ -461,7 +462,8 @@
           "speaker": "Bianca Aguilar",
           "role": "Freelance Designer",
           "room": "",
-          "level": "For All Levels"
+          "level": "For All Levels",
+          "tags": ["Laptop required"]
         },
         {
           "id": "mnl-WA5",
@@ -479,7 +481,8 @@
           "speaker": "Chi Señires",
           "role": "UX Designer @ Humanforce",
           "room": "",
-          "level": "Intermediate"
+          "level": "Intermediate",
+          "tags": ["Laptop required"]
         },
         {
           "id": "mnl-WA7",
@@ -527,7 +530,8 @@
           "speaker": "Ned Palacios",
           "role": "Software Engineer @ Betterteam",
           "room": "",
-          "level": "Intermediate"
+          "level": "Intermediate",
+          "tags": ["Laptop required"]
         },
         {
           "id": "mnl-WB2",
@@ -554,7 +558,8 @@
           "speaker": "Richard Pines",
           "role": "CEO/Founder @ WebPowerhouse",
           "room": "",
-          "level": "Open to All"
+          "level": "Open to All",
+          "tags": ["Laptop required"]
         },
         {
           "id": "mnl-WB5",
@@ -590,7 +595,8 @@
           "speaker": "Jasmae Mino",
           "role": "Lead Product Designer @ Security Bank",
           "room": "",
-          "level": "Open to All"
+          "level": "Open to All",
+          "tags": ["Laptop required"]
         },
         {
           "id": "mnl-WB10",
