@@ -491,7 +491,8 @@
           "speaker": "Fah Bernadette",
           "role": "COO @ Luminality Pte Ltd",
           "room": "",
-          "level": "For All Levels"
+          "level": "For All Levels",
+          "tags": ["Laptop required"]
         },
         {
           "id": "mnl-WA8",
