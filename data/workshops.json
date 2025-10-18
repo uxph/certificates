@@ -540,7 +540,7 @@
           "description": "Build for Everyone: A Hands-on Guide to Resilient UIs",
           "speaker": "Ned Palacios",
           "role": "Software Engineer @ Betterteam",
-          "room": "1509",
+          "room": "1507",
           "level": "Intermediate",
           "tags": ["Laptop required"]
         },
@@ -550,7 +550,7 @@
           "description": "Leading Change through Design: A Human-Centered Approach Workshop",
           "speaker": "Kevin Martin Dela Cruz",
           "role": "External Affairs Officer and Entrepreneurship Academic Lead @Life Academy International College",
-          "room": "1507",
+          "room": "1509",
           "level": "Open to All"
         },
         {
@@ -568,7 +568,7 @@
           "description": "From First Build to Enterprise Scale: Turning Designs into Real Websites with Webflow",
           "speaker": "Richard Pines",
           "role": "CEO/Founder @ WebPowerhouse",
-          "room": "1503",
+          "room": "1504",
           "level": "Open to All",
           "tags": ["Laptop required"]
         },
@@ -578,7 +578,7 @@
           "description": "Design That Moves the Needle: How Design Decisions Drive Business Outcomes",
           "speaker": "John Joseph Soriano",
           "role": "Head of Marketing @ Paymongo",
-          "room": "1501",
+          "room": "1506",
           "level": "Open to All"
         },
         {
@@ -597,7 +597,7 @@
           "description": "Storytelling in UX: Communicating Design Decisions with Confidence",
           "speaker": "Jess Nalangan Mapua",
           "role": "Senior UX Designer @ Superloop",
-          "room": "1504",
+          "room": "1503",
           "level": "Intermediate"
         },
         {
@@ -606,7 +606,7 @@
           "description": "Ship the Feeling: Building Micro-Animations in Rive",
           "speaker": "Jasmae Mino",
           "role": "Lead Product Designer @ Security Bank",
-          "room": "1506",
+          "room": "1501",
           "level": "Open to All",
           "tags": ["Laptop required"]
         },
